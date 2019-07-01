@@ -1,0 +1,36 @@
+.cardCard{
+  /* background-color:red; */
+  height:8vh;
+  width:100%;
+  display: flex;
+  justify-content: space-between;
+  border-bottom:2px solid #D0B5EA;
+  margin-bottom:1rem;
+}
+
+.NameContainer{
+  display: flex;
+  align-items: center;
+  color:#D0B5EA;
+}
+
+.buttonContainer{
+  /* background-color: aliceblue; */
+  width:10vw;
+  height:100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.cardButton{
+  background-color:#BD96E1;
+  height:1.4rem;
+  width:1.4rem;
+  border:none;
+}
+
+.cardButton:hover{
+  background-color:#DAC5EE;
+  cursor: pointer;
+}
