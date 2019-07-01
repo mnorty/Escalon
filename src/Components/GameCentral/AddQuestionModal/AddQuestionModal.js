@@ -29,8 +29,12 @@ class AddQuestionModal extends Component {
               <div className='QuestionDetails'>Middle</div>
             </div>
             <div className='questionDisplayContainer'>
-              <div className='questionDisplay'>Bottom
+              <div className='questionDisplay'>
                 <QuestionDisplay/>
+                <QuestionDisplay/>
+                <QuestionDisplay/>
+                <QuestionDisplay/>
+                
               </div>
             </div>
         </div>
