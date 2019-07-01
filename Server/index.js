@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express')
 const session = require('express-session')
 const massive = require('massive')
-const roomCtrl = require('./Controllers/RoomController')
+const roomCtrl = require('./Controllers/GameController')
 const app = express()
 const {CONNECTION_STRING, SERVER_PORT, SESSION_SECRET} = process.env
 const SocketConnection = require('./Controllers/SocketController')
@@ -25,7 +25,7 @@ app.use(
 
 //POST ENDPOINTS
 app.post('/user', roomCtrl.createUser)
-app.post('/room/create', roomCtrl.createRoom)
+app.post('/game/create', roomCtrl.createGame)
 
 //PUT ENDPOINTS
 
