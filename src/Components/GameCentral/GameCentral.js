@@ -2,7 +2,6 @@ import React,{Component} from 'react'
 import './GameCentral.css'
 import GameDisplay from './GameDisplay'
 import GameCreateModal from './GameCreateModal'
-import modal from './GameCreateModal'
 
 class GameCentral extends Component {
   constructor(props){
@@ -47,7 +46,7 @@ class GameCentral extends Component {
             ?<GameCreateModal createDisplay={this.state.CreateModal} callbackFromParent={closeCreateModel}/>
             :null
           }
-              {/* <GameCreateModal/> */}
+              <GameCreateModal/>
             </div>
             <div className='gameDisplayContainer'>
             <div className='gameDisplay'>

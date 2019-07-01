@@ -17,7 +17,7 @@
 .gameCreateModalContent{
   background-color: #FFFFFF;
   margin: 20% auto;
-  padding:1rem;
+  /* padding:1rem; */
   width:80%;
   box-shadow:0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.2);
   height:50vh;
@@ -26,10 +26,62 @@
 
 .closeBtn{
   float:right;
-
+  margin-top:.6rem;
+  margin-right:1rem;
+  
 }
 
 .closeBtn:hover{
   text-decoration: none;
   cursor:pointer
 }
+.headerContainer{
+  display: flex;
+  background-color:lightgray;
+}
+#CreateModalHeader{
+  height:6.5vh;
+  width:100%;
+  top:0;
+  left:0;
+  display: flex;
+  align-items: center;
+  justify-content: center
+
+}
+
+.progressHeader{
+  margin:.25rem
+}
+.CreateGameEntryContainer{
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  height:43.5vh;
+  width:100%;
+}
+
+.CreateGameEntry{
+  height:90%;
+  width:87%;
+  /* background-color:lightgray; */
+  display:flex;
+  flex-direction: column;
+}
+
+.entryTitles{
+  margin-top:0;
+  margin-bottom:0;
+}
+
+.nextContainer{
+  height:100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#modalCreateBtn{
+  background-color:#ED0FA0;
+}
+
