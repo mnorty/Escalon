@@ -1,0 +1,43 @@
+.questionBtnContainer{
+  width:100%;
+  height:8vh;
+  /* background-color:grey; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#addQuestionButton{
+  width:30vw;
+  border:none;
+  background-color:rgba(237, 15, 160, 1);
+}
+
+.questionContainer{
+  width:100%;
+  height:30vh;
+  /* background-color:lightgray; */
+  display: flex;
+  justify-content: center;
+}
+
+.QuestionDetails{
+  width:95%;
+  height:100%;
+  background-color:rgba(51, 51, 51, 0.15);
+}
+
+.questionDisplayContainer{
+  width:100%;
+  height:40vh;
+  /* background-color:grey; */
+  display: flex;
+  justify-content: center;
+}
+
+.questionDisplay{
+  width:95%;
+  height:100%;
+  background-color:lightgray;
+}
+

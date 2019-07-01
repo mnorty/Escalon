@@ -1,6 +1,7 @@
 import React,{Component} from 'react'
 import '../GameCreateModal.css'
 import './AddQuestionModal.css'
+import QuestionDisplay from './QuestionDisplay'
 
 
 class AddQuestionModal extends Component {
@@ -21,7 +22,17 @@ class AddQuestionModal extends Component {
             </header>
             <span className='closeBtn' onClick={closeAddQuestion}>&times;</span>
           </div>
-          <h1>Add Question Modal</h1>
+            <div className='questionBtnContainer' >
+              <button className='centralCreateButton' id='addQuestionButton'>ADD QUESTION</button>
+            </div>
+            <div className='questionContainer'>
+              <div className='QuestionDetails'>Middle</div>
+            </div>
+            <div className='questionDisplayContainer'>
+              <div className='questionDisplay'>Bottom
+                <QuestionDisplay/>
+              </div>
+            </div>
         </div>
       </div>
     )
