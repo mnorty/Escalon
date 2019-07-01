@@ -4,14 +4,14 @@
   width:100%;
   display: flex;
   justify-content: space-between;
-  border-bottom:2px solid #D0B5EA;
+  border-bottom:2px solid #FFFFFF;
   margin-bottom:1rem;
 }
 
 .NameContainer{
   display: flex;
   align-items: center;
-  color:#D0B5EA;
+  color:#FFFFFF;
 }
 
 .buttonContainer{
@@ -24,13 +24,14 @@
 }
 
 .cardButton{
-  background-color:#BD96E1;
+  background-color:rgba(255, 255, 255, 0.3);
   height:1.4rem;
   width:1.4rem;
   border:none;
+  outline:none;
 }
 
 .cardButton:hover{
-  background-color:#DAC5EE;
+  background-color:rgba(255, 255, 255, 0.6);
   cursor: pointer;
 }
