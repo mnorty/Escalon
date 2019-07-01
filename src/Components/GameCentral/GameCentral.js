@@ -20,6 +20,12 @@ class GameCentral extends Component {
         CreateModal: 'true'
       })
     }
+        const closeCreateModel = (dataFromChild) => {
+          console.log(dataFromChild)
+          this.setState({
+            CreateModal: dataFromChild
+          })
+        }
     return(
       <div >
         <header className='navBar'>
@@ -38,7 +44,7 @@ class GameCentral extends Component {
           <div className='createGameContainer' >
             <button className='centralCreateButton' id='createGameModal' onClick={openCreateModel}>CREATE GAME</button>
             {this.state.CreateModal !== 'false'
-            ?<GameCreateModal/>
+            ?<GameCreateModal createDisplay={this.state.CreateModal} callbackFromParent={closeCreateModel}/>
             :null
           }
               {/* <GameCreateModal/> */}
