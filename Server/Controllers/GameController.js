@@ -15,11 +15,11 @@ module.exports = {
             res.status(401).send('Please login')
         }
     },
-    createRoom: (req, res) => {
-        const roomID = uuid()
-        res.status(200).send(roomID)
+    createGame: (req, res) => {
+        const gameID = uuid()
+        res.status(200).send(gameID)
     },
-    joinRoom: (req, res) => {
+    joinGame: (req, res) => {
         res.status(200).send('Hello World')
     }
 }
