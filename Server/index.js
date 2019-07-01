@@ -23,12 +23,17 @@ app.use(
 )
 
 //GET ENDPOINTS
-
+app.get(‘/auth/gamecentral’, authController.accessGameCentral);
+app.get(‘/auth/admin’, authController.getAdmin);
+app.get(‘/auth/logout’, authController.logout);
 //POST ENDPOINTS
 app.post('/user', roomCtrl.createUser)
 app.post('/room/create', roomCtrl.createRoom)
+app.post(‘/auth/register’, authController.register);
+app.post(‘/auth/login’, authController.login);
 
 //PUT ENDPOINTS
+
 
 //DELETE ENDPOINTS
 
