@@ -31,6 +31,8 @@ export const FormContainer = styled.form`
   align-items: center;
 `
 
+
+
 export const FormHeader = styled.div`
   width: 80%;
   height: 10%;
