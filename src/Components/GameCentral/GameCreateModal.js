@@ -7,7 +7,6 @@ class GameCreateModal extends Component {
     const closeCreateModel = () => {
       this.props.callbackFromParent('false')
     }
-    console.log(this.props)
     const opedAddQuestion = () => {
       this.props.callbackForAddQuestion('true')
     }
@@ -29,7 +28,7 @@ class GameCreateModal extends Component {
             </header>
             <span className='closeBtn' onClick={closeCreateModel}>&times;</span>
           </div>
-          <body className='CreateGameEntryContainer'>
+          <div className='CreateGameEntryContainer'>
             <div className='CreateGameEntry'>
               <p className='entryTitles'>Game Title</p>
               <input type="text"></input>
@@ -41,7 +40,7 @@ class GameCreateModal extends Component {
                <button className='centralCreateButton' id='modalCreateBtn' onClick={clickFunction}>NEXT</button>
               </div>
             </div>
-          </body>
+          </div>
         </div>
       </div>
     )

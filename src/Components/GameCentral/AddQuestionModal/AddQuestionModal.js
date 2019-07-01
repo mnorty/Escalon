@@ -8,7 +8,6 @@ class AddQuestionModal extends Component {
     const closeAddQuestion = () => {
       this.props.closeAddQuestion('false')
     }
-    console.log(this.props)
     return(
       <div id='gameCreateModal' className='modal'>
         <div className='gameCreateModalContent'>

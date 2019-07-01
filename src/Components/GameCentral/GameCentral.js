@@ -29,13 +29,11 @@ class GameCentral extends Component {
     }
     
     const closeCreateModel = (dataFromChild) => {
-      console.log(dataFromChild)
       this.setState({
         CreateModal: dataFromChild
         })
         }
     const closeAddQuestion = (dataFromChild) => {
-      console.log(dataFromChild)
       this.setState({
         AddQuestion: dataFromChild
         })
@@ -55,7 +53,7 @@ class GameCentral extends Component {
         <div className='gameCentralHeader'>
           <div className='gameCentralLogo'>Game Central</div>
         </div>
-        <body className='gameCentralContainer'>
+        <div className='gameCentralContainer'>
           <div className='createGameContainer' >
             <button className='centralCreateButton' id='createGameModal' onClick={openCreateModel}>CREATE GAME</button>
             {this.state.CreateModal !== 'false'
@@ -74,7 +72,7 @@ class GameCentral extends Component {
               <GameDisplay/>
             </div>
           </div>
-        </body>
+        </div>
       </div>
     )
   }
