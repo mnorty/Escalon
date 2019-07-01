@@ -1,6 +1,6 @@
 import React from "react";
 import "reset-css";
-import Navbar from '../Navbar/Navbar'
+// import Navbar from '../Components/Navbar/Navbar'
 import axios from 'axios'
 // import {connect} from 'react-redux'
 // import {Register} from '../Register'

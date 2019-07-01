@@ -2,14 +2,14 @@ require('dotenv').config();
 const express = require('express')
 const session = require('express-session')
 const massive = require('massive')
-const ctrl = require('./Controllers/Controller')
+const ctrl = require('./Controllers/AuthController')
 const app = express()
 const {CONNECTION_STRING, SERVER_PORT, SESSION_SECRET} = process.env
 const SocketConnection = require('./Controllers/SocketController')
 
-SocketConnection(server)
+// SocketConnection(server)
 app.use(express.json())
-app.use(express.static(`${_dirname}/../build`))
+// app.use(express.static(`${_dirname}/../build`))
 app.use(
     session({
         secret: SESSION_SECRET,
