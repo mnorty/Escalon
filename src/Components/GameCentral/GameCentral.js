@@ -61,7 +61,7 @@ class GameCentral extends Component {
             ?<GameCreateModal createDisplay={this.state.CreateModal} callbackFromParent={closeCreateModel} callbackForAddQuestion={openAddQuestion}/>
             :null
           }
-          
+
             {this.state.AddQuestion !== 'false'
             ?<AddQuestionModal closeAddQuestion={closeAddQuestion}/>
             :null

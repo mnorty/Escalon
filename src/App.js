@@ -1,13 +1,17 @@
-import React from 'react';
-import GameCentral from './Components/GameCentral/GameCentral'
+import React, {Component} from 'react'
+import Navbar from '../src/Navbar/Navbar'
+import router from '../src/router'
 
 
-function App() {
-  return (
-    <div className="App">
-      <GameCentral/>
-    </div>
-  );
+class App extends Component {
+    render() {
+        return(
+            <div>
+                <Navbar />
+                {router}
+            </div>
+        )
+    }
 }
 
 export default App;
