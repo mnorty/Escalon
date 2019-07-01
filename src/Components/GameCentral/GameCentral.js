@@ -46,7 +46,7 @@ class GameCentral extends Component {
             ?<GameCreateModal createDisplay={this.state.CreateModal} callbackFromParent={closeCreateModel}/>
             :null
           }
-              <GameCreateModal/>
+              {/* <GameCreateModal/> */}
             </div>
             <div className='gameDisplayContainer'>
             <div className='gameDisplay'>
