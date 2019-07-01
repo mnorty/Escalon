@@ -8,14 +8,24 @@ class GameCreateModal extends Component {
       this.props.callbackFromParent('false')
     }
     console.log(this.props)
+    const opedAddQuestion = () => {
+      this.props.callbackForAddQuestion('true')
+    }
+
+    const clickFunction = () => {
+      closeCreateModel();
+      opedAddQuestion();
+    }
     return(
       <div id='gameCreateModal' className='modal'>
         <div className='gameCreateModalContent'>
           <div className='headerContainer'>
             <header id='CreateModalHeader'>
-                <h3 className='progressHeader'>Create Game</h3>
-                <h3 className='progressHeader'>Add Questions</h3>
-                <h3 className='progressHeader'>Add Answers</h3>
+                <h4 className='progressHeader'>Create Game</h4>
+                <p>|</p>
+                <h4 className='progressHeader'>Add Questions</h4>
+                <p>|</p>
+                <h4 className='progressHeader'>Add Answers</h4>
             </header>
             <span className='closeBtn' onClick={closeCreateModel}>&times;</span>
           </div>
@@ -28,7 +38,7 @@ class GameCreateModal extends Component {
               <p className='entryTitles'>Game Template</p>
               <input type="text"></input>
               <div  className='nextContainer'>
-               <button className='centralCreateButton' id='modalCreateBtn'>NEXT</button>
+               <button className='centralCreateButton' id='modalCreateBtn' onClick={clickFunction}>NEXT</button>
               </div>
             </div>
           </body>

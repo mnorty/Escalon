@@ -1,5 +1,4 @@
 #gameCreateModal{
-
 }
 
 .modal{
@@ -85,3 +84,7 @@
   background-color:#ED0FA0;
 }
 
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}

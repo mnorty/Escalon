@@ -2,12 +2,14 @@ import React,{Component} from 'react'
 import './GameCentral.css'
 import GameDisplay from './GameDisplay'
 import GameCreateModal from './GameCreateModal'
+import AddQuestionModal from './AddQuestionModal/AddQuestionModal'
 
 class GameCentral extends Component {
   constructor(props){
     super(props)
     this.state= {
-      CreateModal: 'false'
+      CreateModal: 'false',
+      AddQuestion: 'false'
     }
   }
   
@@ -19,12 +21,26 @@ class GameCentral extends Component {
         CreateModal: 'true'
       })
     }
-        const closeCreateModel = (dataFromChild) => {
-          console.log(dataFromChild)
-          this.setState({
-            CreateModal: dataFromChild
-          })
+
+    const openAddQuestion = () => {
+      this.setState({
+        AddQuestion: 'true'
+      })
+    }
+    
+    const closeCreateModel = (dataFromChild) => {
+      console.log(dataFromChild)
+      this.setState({
+        CreateModal: dataFromChild
+        })
         }
+    const closeAddQuestion = (dataFromChild) => {
+      console.log(dataFromChild)
+      this.setState({
+        AddQuestion: dataFromChild
+        })
+        }
+
     return(
       <div >
         <header className='navBar'>
@@ -43,10 +59,15 @@ class GameCentral extends Component {
           <div className='createGameContainer' >
             <button className='centralCreateButton' id='createGameModal' onClick={openCreateModel}>CREATE GAME</button>
             {this.state.CreateModal !== 'false'
-            ?<GameCreateModal createDisplay={this.state.CreateModal} callbackFromParent={closeCreateModel}/>
+            ?<GameCreateModal createDisplay={this.state.CreateModal} callbackFromParent={closeCreateModel} callbackForAddQuestion={openAddQuestion}/>
+            :null
+          }
+            {this.state.AddQuestion !== 'false'
+            ?<AddQuestionModal closeAddQuestion={closeAddQuestion}/>
             :null
           }
               {/* <GameCreateModal/> */}
+              {/* <AddQuestionModal callbackFromParent={openAddQuestion}/> */}
             </div>
             <div className='gameDisplayContainer'>
             <div className='gameDisplay'>
