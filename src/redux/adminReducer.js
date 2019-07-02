@@ -1,5 +1,6 @@
 const initialState = {
-    roomID = ''
+    roomID: '',
+    user: {}
 }
 
 const SET_ROOMID = 'SET_ROOMID'
@@ -19,10 +20,21 @@ function reducer(state = initialState, action) {
                 ...state,
                 roomID: action.payload
             }
+            case LOGIN_USER:
+                return {...state, user: action.payload}
         default:
             return state
     }
 }
 
+
+const LOGIN_USER = 'LOGIN_USER'
+
+export function login(user) {
+    return {
+        type: LOGIN_USER,
+        payload: user,
+    }
+}
 
 export default reducer
