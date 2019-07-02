@@ -75,6 +75,7 @@ handleLoginUser = (event) => {
           {/* <LoginNavbar /> */}
         {
           this.state.showRegisterDisplay ?
+          
           <AppContainer>
           <FormContainer onSubmit={this.handleRegisterUser}>
             <FormHeader>
@@ -97,7 +98,7 @@ handleLoginUser = (event) => {
           </FormHeader>
           <FormInput onChange={this.handleInputChange} email="email" name="email"/>
           <FormInput onChange={this.handleInputChange} password="password" name="password"/>
-          <FormBtn>Submit</FormBtn>
+          <FormBtn>Log In</FormBtn>
           <FormBtn register onClick={this.toggleRegisterMenu}>Register</FormBtn>
         </FormContainer>
       </AppContainer>

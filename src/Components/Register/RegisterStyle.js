@@ -79,10 +79,10 @@ export const FormBtn = styled.button`
   }
 `
 
-export const ThemeSwitcherBtn = styled.button`
-  width: 25%;
-  height: 10%;
-  background: ${props => props.register ? 'pink' : 'aquamarine'};
-  color: white;
-  border: none;
-`
+// export const ThemeSwitcherBtn = styled.button`
+//   width: 25%;
+//   height: 10%;
+//   background: ${props => props.register ? 'pink' : 'aquamarine'};
+//   color: white;
+//   border: none;
+// `
