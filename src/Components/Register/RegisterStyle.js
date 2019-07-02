@@ -1,14 +1,14 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
 // Animations
-const glow = keyframes`
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-  }
-`
+// const glow = keyframes`
+//   50% {
+//     transform: scale(1.1);
+//   }
+//   100% {
+//     transform: scale(1);
+//   }
+// `
 
 // Styled Components
 export const AppContainer = styled.div`

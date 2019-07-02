@@ -24,7 +24,7 @@ class Navbar extends Component {
             <div className='title'>Game Show</div>
             <ul className='nav-links'>
               <li>GameList</li>
-              <li>GameCentral</li>
+              <Link to='/gamecentral'>Game Central</Link>
               <Link to='/register'>Register</Link>
               <li>Account</li>
             </ul>
