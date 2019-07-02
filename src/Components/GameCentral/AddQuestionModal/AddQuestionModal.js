@@ -21,7 +21,7 @@ class AddQuestionModal extends Component {
     this.setState({
       [e.target.name]: e.target.value
     })
-    console.log(this.state)
+    // console.log(this.state)
   }
 
   render(){
@@ -37,7 +37,7 @@ class AddQuestionModal extends Component {
                 <p>|</p>
                 <h4 className='progressHeader'>Add Questions</h4>
             </header>
-            <span className='closeBtn' onClick={closeAddQuestion}>&times;</span>
+            <span className='closeBtn' onClick={closeAddQuestion}></span>
           </div>
             <div className='questionBtnContainer' >
               <button className='centralCreateButton' id='addQuestionButton'>ADD QUESTION</button>
