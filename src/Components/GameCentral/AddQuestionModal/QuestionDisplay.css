@@ -1,0 +1,21 @@
+.questionCard{
+  height:4vh;
+  width:100%;
+  /* background-color:red; */
+  border-bottom:solid 2px black;
+  display:flex;
+  justify-content: space-between;
+  align-items:center;
+}
+
+.qBtnContainer{
+  display: flex;
+  justify-content: space-between;
+}
+
+.QButton{
+  height:2vh;
+  width:2vw;
+  background-color:grey;
+  margin-left:.2rm;
+}
