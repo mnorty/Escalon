@@ -2,15 +2,17 @@ require('dotenv').config();
 const express = require('express')
 const session = require('express-session')
 const massive = require('massive')
-const ctrl = require('./Controllers/AuthController')
+const authController = require('./Controllers/AuthController')
 const gameCtrl = require('./Controllers/GameController')
 const app = express()
 const {CONNECTION_STRING, SERVER_PORT, SESSION_SECRET} = process.env
 const SocketConnection = require('./Controllers/SocketController')
 
+let server;
+
 SocketConnection(server)
 app.use(express.json())
-app.use(express.static(`${_dirname}/../build`))
+app.use(express.static(`${__dirname}/../build`))
 app.use(
     session({
         secret: SESSION_SECRET,
@@ -47,7 +49,7 @@ app.post('/auth/login', authController.login);
 
 massive(CONNECTION_STRING).then((database) => {
     app.set('db', database)
-    app.listen(SERVER_PORT, () => console.log(`Hulk Smashing on ${SERVER_PORT}`))
+    server = app.listen(SERVER_PORT, () => console.log(`Hulk Smashing on ${SERVER_PORT}`))
 })
 
 

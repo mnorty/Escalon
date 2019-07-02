@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { setUsername } from "react-redux";
+// import { setUsername } from "react-redux";
 import { connect } from "react-redux";
 
 class JoinGame extends Component {
@@ -28,22 +28,23 @@ class JoinGame extends Component {
       })
       .catch(err => {
         console.log(err);
-        console.log(err.response.data);
       });
     e.target.username.value = "";
   };
 
-  // handleJoinGameID = (e) => {
-  //     e.preventDefault()
-  //     const { gameID } this.state;
-  //     axios
-  //     .get('')
-  // }
+  handleJoinGameID = e => {
+    e.preventDefault();
+    const { gameID } = this.state;
+    axios.get("/user/joingame", { gameID }).then(res => {
+      this.props.history.push("/game");
+    });
+  };
 
   render() {
+    console.log(this.state)
     return (
       <div className="join-container">
-        <form onSubmit={this.handleUserLogin}>
+        <form>
           <label className="username-input" htmlFor="username">
             Username
           </label>
@@ -55,13 +56,8 @@ class JoinGame extends Component {
           <label className="gameID-input" htmlFor="gameID">
             Username
           </label>
-          <input
-            type="text"
-            id="gameID"
-            onChange={this.handleLoginInfoUpdate}
-          />
-
-          <button onClick={this.handle} />
+          <input type="text" id="gameID" onChange={this.handleJoinGameID} />
+          <button>Join Game</button>
         </form>
       </div>
     );
@@ -72,4 +68,7 @@ function mapStateToProps(reduxState) {
   return reduxState;
 }
 
-export default connect(mapStateToProps, setUsername)(JoinGame);
+export default connect(
+  mapStateToProps,
+  // setUsername
+)(JoinGame);
