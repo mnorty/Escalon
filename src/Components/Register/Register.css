@@ -1,0 +1,52 @@
+.registerCont {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.registerContHolder {
+    margin-top: 5em;
+    max-width: 35em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.registerHeader {
+    text-align: center;
+    margin-bottom: 3em;
+}
+
+.registerForm{
+    width: 100%;
+}
+.registerFormBtn {
+    display: flex;
+    justify-content: center;
+}
+.registerForm input{
+    width: 100%;
+}
+
+
+.registerForm p{
+    margin-left: 1em;
+    margin-bottom: .2em;
+}
+
+.registerContHolder button {
+    margin-top: .5em;
+}
+
+@media (max-width: 700px) {
+    .registerContHolder {
+        width: 100%;
+        margin: 7em 1em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .registerContHolder button {
+        width: 100%;
+    }
+}

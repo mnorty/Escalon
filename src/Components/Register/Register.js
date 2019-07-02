@@ -1,19 +1,7 @@
 import React from "react";
-import "reset-css";
-// import Navbar from '../Components/Navbar/Navbar'
-import axios from 'axios'
-// import {connect} from 'react-redux'
-// import {Register} from '../Register'
+import axios from 'axios';
+import './Register.css';
 
-// Styled Components
-import {
-  AppContainer,
-  FormContainer,
-  FormHeader,
-  FormTitle,
-  FormInput,
-  FormBtn
-} from "./RegisterStyle";
 
 class Register extends React.Component {
   constructor() {
@@ -35,86 +23,78 @@ class Register extends React.Component {
     })
   }
 
-handleInputChange  = (event) => {
-  this.setState({
-    [event.target.name] : event.target.value
-  })
-}
+  handleInputChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
 
-handleRegisterUser = (event) => {
-  event.preventDefault()
-  const{firstname, lastname, password, email} = this.state
-  axios.post('/auth/newUser', {firstname, lastname, password, email})
-  .then((response) => {
-    // Store user to redux
-    this.props.login(response.data)
-    if(response.data.email){
-      this.props.history.push('')
-    }
-  })
-}
+  handleRegisterUser = (event) => {
+    event.preventDefault()
+    const { firstname, lastname, password, email } = this.state
+    axios.post('/auth/newUser', { firstname, lastname, password, email })
+      .then((response) => {
+        // Store user to redux
+        this.props.login(response.data)
+        if (response.data.email) {
+          this.props.history.push('')
+        }
+      })
+  }
 
-handleLoginUser = (event) => {
-  event.preventDefault()
-  const{password, email} = this.state
-  axios.post( '/auth/login',{password, email})
-  .then((response) => {
-    // store the redux user
-    this.props.login(response.data)
-    if(response.data.email){
-      this.props.history.push('')
-    }
-  })
-}
-
+  handleLoginUser = (event) => {
+    event.preventDefault()
+    const { password, email } = this.state
+    axios.post('/auth/login', { password, email })
+      .then((response) => {
+        // store the redux user
+        this.props.login(response.data)
+        if (response.data.email) {
+          console.log('logged in')
+          // this.props.history.push('')
+        }
+      })
+  }
   render() {
-    console.log(this.state)
     return (
-      
-      <div>
-          {/* <LoginNavbar /> */}
+      <div className='registerCont'>
         {
           this.state.showRegisterDisplay ?
-          <AppContainer>
-          <FormContainer onSubmit={this.handleRegisterUser}>
-            <FormHeader>
-              <FormTitle>Create Account</FormTitle>
-              {/* <FormTitle>Already have an account? Log In.</FormTitle> */}
-            </FormHeader>
-            <FormInput onChange={this.handleInputChange} firstname="firstname" name='firstname' />
-            <FormInput onChange={this.handleInputChange} lastname="lastname" name='lastname' />
-            <FormInput onChange={this.handleInputChange} email="email" name='email' />
-            <FormInput onChange={this.handleInputChange} password="password" name='password' />
-            <FormBtn>Submit</FormBtn>
-            <FormBtn register onClick={this.toggleRegisterMenu}>Cancel</FormBtn>
-          </FormContainer>
-        </AppContainer>
-
-        : <AppContainer>
-        <FormContainer onSubmit={this.handleLoginUser}>
-          <FormHeader>
-            <FormTitle>Log In To An Account</FormTitle>
-          </FormHeader>
-          <FormInput onChange={this.handleInputChange} email="email" name="email"/>
-          <FormInput onChange={this.handleInputChange} password="password" name="password"/>
-          <FormBtn>Submit</FormBtn>
-          <FormBtn register onClick={this.toggleRegisterMenu}>Register</FormBtn>
-        </FormContainer>
-      </AppContainer>
+            <div className='registerContHolder'>
+              <div className='registerHeader'>
+                <h1>Create An Account</h1>
+                <p>Already have an account? <span onClick={this.toggleRegisterMenu}>Log in</span></p>
+              </div>
+              <form className='registerForm' onSubmit={this.handleRegisterUser}>
+                <p>First Name</p>
+                <input onChange={this.handleInputChange} firstname="firstname" name='firstname' />
+                <p>Last Name</p>
+                <input onChange={this.handleInputChange} lastname="lastname" name='lastname' />
+                <p>Email</p>
+                <input onChange={this.handleInputChange} email="email" name='email' />
+                <p>Password</p>
+                <input onChange={this.handleInputChange} password="password" name='password' />
+                <div className='registerFormBtn'><button>create account</button></div>
+              </form>
+            </div>
+            :
+            <div className='registerContHolder'>
+              <div className='registerHeader'>
+                <h1>Log in to Account</h1>
+                <p>Don't have an account? <span onClick={this.toggleRegisterMenu}>Create one</span></p>
+              </div>
+              <form className='registerForm' onSubmit={this.handleRegisterUser}>
+                <p>Email</p>
+                <input onChange={this.handleInputChange} email="email" name='email' />
+                <p>Password</p>
+                <input onChange={this.handleInputChange} password="password" name='password' />
+                <div className='registerFormBtn'><button>log in</button></div>
+              </form>
+            </div>
         }
-      
-        
-
-
-        
       </div>
     );
   }
 };
 
-// function mapStateToProps(state) {
-//   return state
-// }
-
-export default Register
-//  connect(mapStateToProps, {register})(Register);
+export default Register;
