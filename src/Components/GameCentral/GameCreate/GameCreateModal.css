@@ -1,5 +1,5 @@
-#gameCreateModal{
-}
+/* #gameCreateModal{
+} */
 
 .modal{
   /* display:none; */
@@ -19,15 +19,17 @@
   /* padding:1rem; */
   width:80%;
   box-shadow:0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.2);
-  height:60vh;
+  min-height:60vh;
 
 }
 
 .closeBtn{
+  background-image: url('../../../Assets//x-circle.svg');
   float:right;
   margin-top:.6rem;
   margin-right:1rem;
-  
+  width:1.70rem;  
+  height:1.5rem;
 }
 
 .closeBtn:hover{
