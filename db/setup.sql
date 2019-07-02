@@ -22,7 +22,8 @@ id SERIAL PRIMARY KEY,
 admins_id INTEGER REFERENCES admins(id),
 game_title VARCHAR(200),
 game_intro VARCHAR(500),
-creation_date DATE DEFAULT CURRENT_DATE
+creation_date DATE DEFAULT CURRENT_DATE,
+gameroom_id TEXT
 );
 
 CREATE TABLE questions (
