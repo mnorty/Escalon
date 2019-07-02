@@ -1,0 +1,44 @@
+.lobbyContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 81vh;
+  width:100%;
+}
+
+.lobbybox{
+  height:80vh;
+  width:40vw;
+  /* background-color:red; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.lobbyDescription{
+  height:40vh;
+  /* background-color:lightgray; */
+  width:40vw;
+  border-bottom:solid 2px white;
+  color:white;
+}
+
+.lobbyUsers{
+  height:30vh;
+  width:40vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.lobbyBtn{
+  height:15vh;
+  width:30vw;
+}
+
+.dummyUser{
+  height:10vh;
+  width:10vw;
+  background-color:gray;
+}
