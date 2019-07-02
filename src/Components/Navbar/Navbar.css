@@ -12,7 +12,7 @@
   }
   
   nav {
-    position: fixed;
+    /* position: fixed; */
     width: 100%;
     display: flex;
     justify-content: center;
@@ -181,7 +181,7 @@
   }
   
   
-  @media(max-width: 855px) {
+  @media(max-width: 700px) {
     nav {
       background: #212529;
       padding: 8px 16px;
