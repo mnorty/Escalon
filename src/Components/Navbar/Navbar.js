@@ -28,7 +28,11 @@ class Navbar extends Component {
               <Link to='/register'>Register</Link>
               <li>Account</li>
             </ul>
-            <button className='nav-button' onClick={this.showMenu}>Menu &#9776;</button>
+            <div className="nav-button" onClick={this.showMenu}>
+              <span className='line line01'></span> 
+              <span className='line line02'></span>
+              <span className='line line03'></span>
+            </div>
           </div>
             <div className={this.state.showMenu ? 'nav-menu nav-menu-show' : 'nav-menu'}>
               <ul className='nav-list'>
