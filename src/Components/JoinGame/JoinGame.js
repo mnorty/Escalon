@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 // import { setUsername } from "react-redux";
 import { connect } from "react-redux";
+import './JoinGame.css'
 
 class JoinGame extends Component {
   constructor() {
@@ -43,8 +44,7 @@ class JoinGame extends Component {
   render() {
     console.log(this.state)
     return (
-      <div className="join-container">
-        <form>
+        <form className="join-container"> 
           <label className="username-input" htmlFor="username">
             Username
           </label>
@@ -59,7 +59,6 @@ class JoinGame extends Component {
           <input type="text" id="gameID" onChange={this.handleJoinGameID} />
           <button>Join Game</button>
         </form>
-      </div>
     );
   }
 }
