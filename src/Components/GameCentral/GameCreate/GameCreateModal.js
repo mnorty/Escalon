@@ -3,6 +3,22 @@ import './GameCreateModal.css'
 
 
 class GameCreateModal extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: '',
+      instructions:'',
+      template: ''
+    }
+  }
+
+  handleInputUpdate = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+    console.log(this.state)
+  }
+
   render(){
     const closeCreateModel = () => {
       this.props.callbackFromParent('false')
@@ -29,11 +45,23 @@ class GameCreateModal extends Component {
           <div className='CreateGameEntryContainer'>
             <div className='CreateGameEntry'>
               <p className='entryTitles'>Game Title</p>
-              <input type="text"></input>
+              <input 
+              type="text"
+              name='title'
+              onChange={this.handleInputUpdate}
+              />
               <p className='entryTitles'>Game Instructions</p>
-              <input type="text"></input>
+              <input 
+              type="text"
+              name='instructions'
+              onChange={this.handleInputUpdate}
+              />
               <p className='entryTitles'>Game Template</p>
-              <input type="text"></input>
+              <input 
+              type="text"
+              name='template'
+              onChange={this.handleInputUpdate}
+              />
               <div  className='nextContainer'>
                <button className='centralCreateButton' id='modalCreateBtn' onClick={clickFunction}>NEXT</button>
               </div>

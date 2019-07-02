@@ -66,8 +66,8 @@ class GameCentral extends Component {
             ?<AddQuestionModal closeAddQuestion={closeAddQuestion}/>
             :null
           }
-              {/* <GameCreateModal/>
-              <AddQuestionModal closeAddQuestion={closeAddQuestion}/> */}
+              <GameCreateModal/>
+              <AddQuestionModal closeAddQuestion={closeAddQuestion}/> 
             </div>
             <div className='gameDisplayContainer'>
             <div className='gameDisplay'>

@@ -5,6 +5,25 @@ import QuestionDisplay from './QuestionDisplay'
 
 
 class AddQuestionModal extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      question:'',
+      remediation:'',
+      answer:'',
+      distractor1:'',
+      distractor2:'',
+      distractor3:''
+    }
+  }
+
+  handleInputUpdate = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+    console.log(this.state)
+  }
+
   render(){
     const closeAddQuestion = () => {
       this.props.closeAddQuestion('false')
@@ -26,17 +45,47 @@ class AddQuestionModal extends Component {
             <div className='questionContainer'>
               <div className='QuestionDetails'>
                 <p>Question</p>
-                <input type="text" className='questionDetailsInput'></input>
+                <input 
+                type="text" 
+                className='questionDetailsInput'
+                name='question'
+                onChange={this.handleInputUpdate}
+                />
                 <p>Remediation</p>
-                <input type="text" className='questionDetailsInput'></input>
+                <input 
+                type="text" 
+                className='questionDetailsInput'
+                name='remediation'
+                onChange={this.handleInputUpdate}
+                />
                 <p>Answer</p>
-                <input type="text" className='questionDetailsInput'></input>
+                <input 
+                type="text" 
+                className='questionDetailsInput'
+                name='answer'
+                onChange={this.handleInputUpdate}
+                />
                 <p>Distractor 1</p>
-                <input type="text" className='questionDetailsInput'></input>
+                <input 
+                type="text" 
+                className='questionDetailsInput'
+                name='distractor1'
+                onChange={this.handleInputUpdate}
+                />
                 <p>Distractor 2</p>
-                <input type="text" className='questionDetailsInput'></input>
+                <input 
+                type="text" 
+                className='questionDetailsInput'
+                name='distractor2'
+                onChange={this.handleInputUpdate}
+                />
                 <p>Distractor 3</p>
-                <input type="text" className='questionDetailsInput'></input>
+                <input 
+                type="text" 
+                className='questionDetailsInput'
+                name='distractor3'
+                onChange={this.handleInputUpdate}
+                />
                 <p>spacer</p>
               </div>
             </div>
