@@ -1,6 +1,6 @@
 import React from 'react'
 import './GameDisplay.css'
-import GameCard from './GameCard'
+import GameCard from '../GameCard/GameCard'
 
 const GameDisplay = () => {
   return<>
