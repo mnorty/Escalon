@@ -1,27 +1,10 @@
 const initialState = {
     username: '',
-    roomID: ''
+    GameID: ''
 }
 
 const SET_USERNAME = 'SET_USERNAME' 
-const SET_ROOMID = 'SET_ROOMID'
-
-function reducer(state = initialState, action) {
-    switch(action.type) {
-        case SET_USERNAME:
-            return {
-                ...state,
-                username: action.payload
-            }
-        case SET_ROOMID:
-            return {
-                ...state,
-                roomID: action.payload
-            }
-        default:
-            return state
-    }
-}
+const SET_GAMEID = 'SET_GAMEID'
 
 export const setUsername = (username) => {
     return {
@@ -30,12 +13,31 @@ export const setUsername = (username) => {
     }
 }
 
-export const setRoomID = (roomID) => {
-    console.log(roomID)
+export const setGameID = (gameID) => {
+    console.log(gameID)
     return {
-        type: SET_ROOMID,
-        payload: roomID
+        type: SET_GAMEID,
+        payload: gameID
     }
 }
+
+function reducer(state = initialState, action) {
+    switch(action.type) {
+        case SET_USERNAME:
+            return {
+                ...state,
+                username: action.payload
+            }
+        case SET_GAMEID:
+            return {
+                ...state,
+                gameID: action.payload
+            }
+        default:
+            return state
+    }
+}
+
+
 
 export default reducer
