@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Navbar from '../src/Navbar/Navbar'
+import Navbar from '../src/Components/Navbar/Navbar'
 import router from '../src/router'
 
 

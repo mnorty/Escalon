@@ -2,7 +2,8 @@ require('dotenv').config();
 const express = require('express')
 const session = require('express-session')
 const massive = require('massive')
-const roomCtrl = require('./Controllers/RoomController')
+const ctrl = require('./Controllers/AuthController')
+const gameCtrl = require('./Controllers/GameController')
 const app = express()
 const {CONNECTION_STRING, SERVER_PORT, SESSION_SECRET} = process.env
 const SocketConnection = require('./Controllers/SocketController')
@@ -22,12 +23,17 @@ app.use(
 )
 
 //GET ENDPOINTS
-
+app.get('/auth/gamecentral', authController.accessGameCentral);
+app.get('/auth/admin', authController.getAdmin);
+app.get('/auth/logout', authController.logout);
 //POST ENDPOINTS
-app.post('/user', roomCtrl.createUser)
-app.post('/room/create', roomCtrl.createRoom)
+app.post('/user', gameCtrl.createUser)
+app.post('/auth/register', authController.register);
+app.post('/auth/login', authController.login);
+app.post('/game/create', gameCtrl.createGame)
 
 //PUT ENDPOINTS
+
 
 //DELETE ENDPOINTS
 

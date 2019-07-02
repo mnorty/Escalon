@@ -23,7 +23,7 @@
 }
 
 .img2 {
-    background-image: url('../Assets/game-show-web-banner.png');
+    background-image: url('../../Assets/game-show-web-banner.png');
     width: 60%;
     height: 60vh;
     display: flex;
