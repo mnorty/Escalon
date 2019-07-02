@@ -40,7 +40,7 @@ class GameCreateModal extends Component {
                 <p>|</p>
                 <h4 className='progressHeader'>Add Questions</h4>
             </header>
-            <span className='closeBtn' onClick={closeCreateModel}>&times;</span>
+            <span className='closeBtn' onClick={closeCreateModel}></span>
           </div>
           <div className='CreateGameEntryContainer'>
             <div className='CreateGameEntry'>
@@ -57,11 +57,20 @@ class GameCreateModal extends Component {
               onChange={this.handleInputUpdate}
               />
               <p className='entryTitles'>Game Template</p>
-              <input 
+              {/* <input 
               type="text"
               name='template'
               onChange={this.handleInputUpdate}
-              />
+              /> */}
+              <select
+               name="template"
+                id="templateDropDown"
+                onChange={this.handleInputUpdate}
+                >
+                <option value="Game1">Game 1</option>
+                <option value="Game2">Game 2 </option>
+                <option value="Game3">Game 3</option>
+              </select>
               <div  className='nextContainer'>
                <button className='centralCreateButton' id='modalCreateBtn' onClick={clickFunction}>NEXT</button>
               </div>

@@ -40,7 +40,7 @@ class GameCentral extends Component {
         }
 
     return(
-      <div >
+      <div className='gCentralBackground'>
         <header className='navBar'>
           <div className='navBarLinks'>
             <button className='navButton'>GameList</button>
@@ -66,8 +66,8 @@ class GameCentral extends Component {
             ?<AddQuestionModal closeAddQuestion={closeAddQuestion}/>
             :null
           }
-              <GameCreateModal/>
-              <AddQuestionModal closeAddQuestion={closeAddQuestion}/> 
+              {/* <GameCreateModal/>
+              <AddQuestionModal closeAddQuestion={closeAddQuestion}/>  */}
             </div>
             <div className='gameDisplayContainer'>
             <div className='gameDisplay'>
