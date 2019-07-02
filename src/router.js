@@ -14,6 +14,6 @@ export default (
         <Route path='/register' component={Register} />
         <Route path='/gamecentral' component={GameCentral}/>
         <Route path='/join' component={JoinGame} />
-        <Route path='/game' component={Game} />
+        <Route path='/game/:id' component={Game} />
     </Switch>
 )
