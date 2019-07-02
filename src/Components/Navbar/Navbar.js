@@ -29,9 +29,9 @@ class Navbar extends Component {
               <li>Account</li>
             </ul>
             <div className="nav-button" onClick={this.showMenu}>
-              <span className='line line01'></span> 
-              <span className='line line02'></span>
-              <span className='line line03'></span>
+              <span></span> 
+              <span></span>
+              <span></span>
             </div>
           </div>
             <div className={this.state.showMenu ? 'nav-menu nav-menu-show' : 'nav-menu'}>
