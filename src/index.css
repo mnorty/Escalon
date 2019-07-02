@@ -1,13 +1,106 @@
+setting defaults for all pages
+html {
+  height: 100%;
+}
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  padding: 0;
+  height: 100%;
+  background-image: linear-gradient(to bottom right, #683ED8, #9559CE);
+  font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-code {
+/* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+} */
+
+h1 {
+  color: #fff;
+  font-size: 3em;
+  font-weight: 100;
+  line-height: 1.4em;
+}
+h2 {
+  font-size: 2em;
+  color: #fff;
+  font-weight: 100;
+  line-height: 1em;
+}
+h3 {
+  font-size: 1.2em;
+  color: #fff;
+  font-weight: 700;
+  line-height: 1em;
+}
+h4 {
+  font-size: 1em;
+  color: #fff;
+  font-weight: 700;
+  line-height: 1.5em;
+}
+
+
+p { 
+  color: #fff;
+  font-size: 1em;
+}
+
+li {
+  font-size: 1em;
+  color: #fff;
+  line-height: 1em;
+}
+
+a:visited {
+  text-decoration: none;
+  color: #fff;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #fff;
+}
+
+a:active {
+  text-decoration: none;
+  color: #fff;
+}
+
+input {
+  background: none;
+  border: solid 2px rgba(255, 255, 255, 0.3);
+  border-radius: 3em;
+  margin-bottom: 1em;
+  height: 2.5em;
+  outline: none;
+  color: #fff;
+  text-indent: .5em;
+  font-size: 1em;
+}
+
+input::placeholder {
+  color: #fff;
+}
+
+button {
+  background: none;
+  border: solid 2px #fff;
+  border-radius: 88px;
+  font-size: 1.5em;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 20px 60px;
+  outline: none;
+}
+button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+button:active {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 700px) {
+  
 }
