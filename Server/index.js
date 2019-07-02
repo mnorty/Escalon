@@ -26,11 +26,15 @@ app.use(
 app.get('/auth/gamecentral', authController.accessGameCentral);
 app.get('/auth/admin', authController.getAdmin);
 app.get('/auth/logout', authController.logout);
+
+app.get('/user/joingame', gameCtrl.joinGame)
+
 //POST ENDPOINTS
 app.post('/user', gameCtrl.createUser)
+app.post('/game/create', gameCtrl.createGame)
+
 app.post('/auth/register', authController.register);
 app.post('/auth/login', authController.login);
-app.post('/game/create', gameCtrl.createGame)
 
 //PUT ENDPOINTS
 
