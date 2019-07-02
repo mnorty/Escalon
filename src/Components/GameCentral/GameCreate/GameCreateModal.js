@@ -23,8 +23,6 @@ class GameCreateModal extends Component {
                 <h4 className='progressHeader'>Create Game</h4>
                 <p>|</p>
                 <h4 className='progressHeader'>Add Questions</h4>
-                <p>|</p>
-                <h4 className='progressHeader'>Add Answers</h4>
             </header>
             <span className='closeBtn' onClick={closeCreateModel}>&times;</span>
           </div>
