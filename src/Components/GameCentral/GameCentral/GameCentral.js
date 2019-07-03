@@ -4,7 +4,7 @@ import GameDisplay from '../GameDisplay/GameDisplay'
 import GameCreateModal from '../GameCreate/GameCreateModal'
 import AddQuestionModal from '../AddQuestionModal/AddQuestionModal'
 import {connect} from 'react-redux'
-import axios from 'axios'
+import {requestUserGames} from '../../../redux/adminReducer'
 
 class GameCentral extends Component {
   constructor(props) {
@@ -13,6 +13,14 @@ class GameCentral extends Component {
       CreateModal: 'false',
       AddQuestion: 'false'
     }
+  }
+
+  componentDidMount() {
+    let userInfo = (this.props.user.adminReducer.user)
+    console.log(this.props)
+    this.props.requestUserGames(userInfo)
+    console.log('Request Games firing',this.props)
+    
   }
   //  userCheck = () => {
   //    let userInfo = (this.props.user.adminReducer.user)
@@ -96,4 +104,4 @@ function mapStateToProps(reduxState) {
 }
 
 
-export default connect(mapStateToProps)(GameCentral)
+export default connect(mapStateToProps,{requestUserGames})(GameCentral)

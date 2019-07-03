@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import '../GameCreate/GameCreateModal.css'
 import './AddQuestionModal.css'
 import QuestionDisplay from './QuestionDisplay'
+import { connect } from 'react-redux';
 
 
 class AddQuestionModal extends Component {
@@ -25,6 +26,8 @@ class AddQuestionModal extends Component {
   }
 
   render() {
+    console.log(this.props)
+
     const closeAddQuestion = () => {
       this.props.closeAddQuestion('false')
     }
@@ -164,4 +167,11 @@ class AddQuestionModal extends Component {
     )
   }
 }
-export default AddQuestionModal
+
+function mapStateToProps(reduxState) {
+  return{
+    user:reduxState
+  }
+}
+
+export default  connect(mapStateToProps)(AddQuestionModal)

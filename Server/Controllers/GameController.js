@@ -32,6 +32,23 @@ module.exports = {
       res.status(200).send(gameInfo);
     }
   },
+
+  getUserGames: async (req,res) => {
+    const dbInstance = await req.app.get('db');
+    const id = req.session.admin.id
+    console.log(id,'Made it to Game Controller',req.session,req.session.admin.id)
+    dbInstance.games_get_all_by_id({id})
+
+    .then(game => res.status(200).send(game))
+    .catch(err => {
+      res.status(500).send({errorMessage: 'Crap it broke'})
+      console.log(err)
+    })
+    
+  },
+    
+  // }
+
   joinGame: (req, res) => {
     const { gameID } = req.body;
     const db = req.app.get("db");
