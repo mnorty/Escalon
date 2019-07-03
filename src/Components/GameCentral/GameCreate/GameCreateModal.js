@@ -1,4 +1,4 @@
-import React,{Component} from 'react'
+import React, { Component } from 'react'
 import './GameCreateModal.css'
 
 
@@ -7,7 +7,7 @@ class GameCreateModal extends Component {
     super(props);
     this.state = {
       title: '',
-      instructions:'',
+      instructions: '',
       template: ''
     }
   }
@@ -19,7 +19,7 @@ class GameCreateModal extends Component {
     console.log(this.state)
   }
 
-  render(){
+  render() {
     const closeCreateModel = () => {
       this.props.callbackFromParent('false')
     }
@@ -31,49 +31,28 @@ class GameCreateModal extends Component {
       closeCreateModel();
       opedAddQuestion();
     }
-    return(
+    return (
       <div id='gameCreateModal' className='modal'>
         <div className='gameCreateModalContent'>
-          <div className='headerContainer'>
-            <header id='CreateModalHeader'>
-                <h4 className='progressHeader'>Create Game</h4>
-                <p>|</p>
-                <h4 className='progressHeader'>Add Questions</h4>
-            </header>
-            <span className='closeBtn' onClick={closeCreateModel}></span>
+          <div className='gameCreateModalHeader'>
+            <h3>Create Game</h3>
+            <button onClick={closeCreateModel}>X</button>
           </div>
-          <div className='CreateGameEntryContainer'>
-            <div className='CreateGameEntry'>
-              <p className='entryTitles'>Game Title</p>
-              <input 
+          <div className='CreateGameEntryCont'>
+            <p>Game Title</p>
+            <input
               type="text"
               name='title'
               onChange={this.handleInputUpdate}
-              />
-              <p className='entryTitles'>Game Instructions</p>
-              <input 
+            />
+            <p>Game Instructions</p>
+            <input
               type="text"
               name='instructions'
               onChange={this.handleInputUpdate}
-              />
-              <p className='entryTitles'>Game Template</p>
-              {/* <input 
-              type="text"
-              name='template'
-              onChange={this.handleInputUpdate}
-              /> */}
-              <select
-               name="template"
-                id="templateDropDown"
-                onChange={this.handleInputUpdate}
-                >
-                <option value="Game1">Game 1</option>
-                <option value="Game2">Game 2 </option>
-                <option value="Game3">Game 3</option>
-              </select>
-              <div  className='nextContainer'>
-               <button className='centralCreateButton' id='modalCreateBtn' onClick={clickFunction}>NEXT</button>
-              </div>
+            />
+            <div className='CreateGameEntryContBtn'>
+              <button id='modalCreateBtn' onClick={clickFunction}>next</button>
             </div>
           </div>
         </div>

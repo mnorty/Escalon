@@ -8,10 +8,10 @@ class QuestionDisplay extends Component {
     return(
       <>
       <div className='questionCard'>
-        <div>Question is here with Char Limit . . . .</div>
+        <div>Question is here with Char Limit... </div>
         <div className='qBtnContainer'>
-          <button className='QButton'></button>
-          <button className='QButton'></button>
+          <button>e</button>
+          <button>d</button>
         </div>
       </div>
       </>
