@@ -30,13 +30,17 @@ module.exports = {
     }
   },
   joinGame: (req, res) => {
-    const { gameID } = req.body;
+    const { gameID, username } = req.body;
     const db = req.app.get("db");
     const getGame = db.get_game({ gameroom_id: gameID });
     if (getGame[0]) {
-      res.status(200).send(getGame[0], "Joined game!");
+      db.insert_game_user({gameID, username})
+        .then(() => {
+          res.status(200).send(getGame[0], "Joined game!");
+        })
     } else {
       res.status(404).send("Game not found");
     }
   }
+  
 };
