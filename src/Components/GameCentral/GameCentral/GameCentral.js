@@ -14,6 +14,21 @@ class GameCentral extends Component {
       AddQuestion: 'false'
     }
   }
+  //  userCheck = () => {
+  //    let userInfo = (this.props.user.adminReducer.user)
+  //    console.log(this.props)
+  //    if (userInfo == '') {
+  //      this.props.history.push('/')
+  //   } else {
+  //     console.log('got to else statement')
+  //   }
+
+  // }
+
+  // componentDidMount = async () => {
+  //   console.log('got to DidMount')
+  //   this.userCheck()
+  // }
 
 
   render() {

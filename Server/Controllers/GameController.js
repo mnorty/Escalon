@@ -17,14 +17,17 @@ module.exports = {
   },
   createGame: async (req, res) => {
     const gameID = uuid();
+    console.log(req.body)
+    const {admins_id,game_title,game_intro} = req.body
     const { session } = req;
     const db = req.app.get("db");
     if (session) {
-      const gameInfo = await db.create_gameroom({
-        admins_id: session.admins.id,
-        game_title: game_title,
-        game_intro: game_intro,
-        gameroom_id: gameID
+      const gameInfo = await db.game_create_new({
+        admins_id: admins_id, 
+        // admins_id: session.admins.id, 
+        game_title: game_title, 
+        game_intro: game_intro, // is this meant as the instructions?
+        gameroom_id: gameID // do we want this to be sequential in DB?// what do we need here?
       });
       res.status(200).send(gameInfo);
     }
