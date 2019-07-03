@@ -6,12 +6,14 @@ import "./Lobby.css";
 
 class Lobby extends Component {
   state = {
-    user: ""
+    user: "",
+    gameID: ""
   };
 
-  componenetDidMount() {
+  componentDidMount(){
+    const {id} = this.props.match.params;
     axios
-      .get("/getgame")
+      .get(`/getgame/${id}`)
       .then(res => {
         this.props.loadGameDetails(res.data);
         console.log(res.data)
@@ -23,6 +25,7 @@ class Lobby extends Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <div>
         <header className="gameCentralHeader" />

@@ -29,7 +29,7 @@ app.get('/auth/gamecentral', authController.accessGameCentral);
 app.get('/auth/admin', authController.getAdmin);
 app.get('/auth/logout', authController.logout);
 
-app.get('/getgame', gameCtrl.getGameDetails)
+app.get('/getgame/:id', gameCtrl.getGameDetails)
 
 //POST ENDPOINTS
 app.post('/user', gameCtrl.createUser)

@@ -45,10 +45,11 @@ module.exports = {
     }
   },
   getGameDetails: (req, res) => {
+    const {id} = req.params;
     const db = req.app.get('db')
-    const getGame = db.get_game_details({ game_title: game_title, game_intro: game_intro})
-    .then(() => {
-      res.status(200).send(getGame)
+    db.get_game_details({gameroom_id: id})
+    .then((dbRes) => {
+      res.status(200).send(dbRes[0])
     })
   }
   
