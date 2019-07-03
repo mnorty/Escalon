@@ -49,18 +49,29 @@ module.exports = {
     
   // }
 
-  joinGame: (req, res) => {
+  
+  joinGame: async (req, res) => {
     const { gameID, username } = req.body;
     const db = req.app.get("db");
-    const getGame = db.get_game({ gameroom_id: gameID });
+    // console.log(gameID)
+    const getGame = await db.get_game({ gameroom_id: gameID })
     if (getGame[0]) {
+      // console.log(getGame)
       db.insert_game_user({gameID, username})
         .then(() => {
-          res.status(200).send(getGame[0], "Joined game!");
+          res.status(200).send(getGame[0]);
         })
     } else {
       res.status(404).send("Game not found");
     }
+  },
+  getGameDetails: (req, res) => {
+    const {id} = req.params;
+    const db = req.app.get('db')
+    db.get_game_details({gameroom_id: id})
+    .then((dbRes) => {
+      res.status(200).send(dbRes[0])
+    })
   }
   
 };
