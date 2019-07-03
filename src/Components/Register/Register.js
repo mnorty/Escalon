@@ -37,7 +37,7 @@ class Register extends React.Component {
         // Store user to redux
         this.props.login(response.data)
         if (response.data.email) {
-          this.props.history.push('')
+          this.props.history.push('/gamecentral')
         }
       })
   }
@@ -51,7 +51,7 @@ class Register extends React.Component {
         this.props.login(response.data)
         if (response.data.email) {
           console.log('logged in')
-          // this.props.history.push('')
+          this.props.history.push('/gamecentral')
         }
       })
   }
