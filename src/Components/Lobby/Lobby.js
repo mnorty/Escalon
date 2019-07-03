@@ -1,12 +1,26 @@
 import React, { Component } from "react";
-// import axios from 'axios'
+import axios from "axios";
 import { connect } from "react-redux";
+import { loadGameDetails, setGameID } from "../../redux/userReducer";
 import "./Lobby.css";
 
 class Lobby extends Component {
   state = {
-    users: ""
+    user: ""
   };
+
+  componenetDidMount() {
+    axios
+      .get("/getgame")
+      .then(res => {
+        this.props.loadGameDetails(res.data);
+        console.log(res.data)
+      })
+      .catch(err => {
+        this.props.history.push("/join");
+        console.log(err.message);
+      });
+  }
 
   render() {
     return (
@@ -29,9 +43,17 @@ class Lobby extends Component {
 }
 
 function mapStateToProps(reduxState) {
+  // console.log(reduxState);
   return {
     gameInfo: reduxState.userReducer
   };
 }
 
-export default connect(mapStateToProps)(Lobby);
+const mapDispatchToProps = {
+  loadGameDetails,
+  setGameID
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps)(Lobby);

@@ -29,7 +29,7 @@ class JoinGame extends Component {
         // SET USERNAME ON REDUX
         this.props.setUsername(data.username);
         // FINDING THE GAME TO JOIN
-        return axios.get("/user/joingame", { gameID, username });
+        return axios.post("/joingame", { gameID, username });
       })
       .then(({ data }) => {
         this.props.setGameID(data.gameID);
@@ -42,7 +42,7 @@ class JoinGame extends Component {
   };
 
   render() {
-    console.log(this.state);
+    // console.log(this.props);
     return (
       <form className="join-container" onSubmit={this.handleLogin}>
         <label className="username-input" htmlFor="username">

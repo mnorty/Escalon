@@ -16,7 +16,7 @@ export const setUsername = username => {
 };
 
 export const setGameID = gameID => {
-  console.log(gameID);
+  // console.log(gameID);
   return {
     type: SET_GAMEID,
     payload: gameID
