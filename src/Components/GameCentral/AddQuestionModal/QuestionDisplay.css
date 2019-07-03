@@ -1,21 +1,37 @@
 .questionCard{
-  height:4vh;
-  width:100%;
-  /* background-color:red; */
-  border-bottom:solid 2px black;
-  display:flex;
+  padding: .4em 0;
+  display: flex;
   justify-content: space-between;
-  align-items:center;
+  border-bottom: solid .1em rgba(0, 0, 0, 0.1);
 }
 
 .qBtnContainer{
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
 }
 
-.QButton{
-  height:2vh;
-  width:2vw;
-  background-color:grey;
-  margin-left:.2rm;
+.qBtnContainer  button {
+  background: rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 0;
+  font-size: 1em;
+  padding: .4em;
+  margin: 0 .2em;
+  color: rgba(0, 0, 0, 0.3);
+}
+.qBtnContainer  button:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+.qBtnContainer  button:active {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+
+@media (max-width: 700px) {
+  .questionCard{
+    text-align: center;
+    padding-bottom: 1em;
+    flex-direction: column;
+  }
 }

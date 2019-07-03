@@ -1,96 +1,32 @@
-.gCentralBackground{
-  background-image: linear-gradient(146deg,#683ED8,#9559CE);
+.gameCentCont {
+  min-height: 100vh;
 }
-
-.navBar{
-  height:7vh;
-  width:100%;
-  background-color:#3A3A3A;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.navBarLinks{
-  /* background-color:red; */
-  height:7vh;
-  width:30vw;
-  display: flex;
-  justify-content: flex-end;
-  padding-right:2vw;
-}
-
-.navButton{
-  border:none;
-  height:100%;
-  background-color:#3A3A3A;
-  color:#FFFFFF;
-  outline:none;
-  
-}
-
-.navButton:hover{
-  cursor: pointer;
-  outline:none;
-}
-
 .gameCentralHeader{
-  height: 11vh;
-  width:100%;
+  height: 6em;
   background-color:rgba(0, 0, 0, 0.2);
-  opacity: 1.2;
+  padding-left: 2em;
   display: flex;
   align-items: center;
-}
-
-.gameCentralLogo{
-  color:#FFFFFF;
-  font-size:1.5rem;
-  margin-left:1rem;
-}
-
-.gameCentralContainer{
-  
-  width:100%;
-  height:82vh;
 }
 
 .createGameContainer{
-  height:13vh;
-  width:100%;
-  /* background-color:black; */
+  margin: 2em 0 4em 0;
   display:flex;
   justify-content: center;
-  align-items: flex-end;
 }
 
-.gameDisplayContainer{
-  height:69vh;
-  width:100%;
-  /* background-color:lightblue; */
-  display: flex;
-  align-items: center;
-  justify-content: center
+.gamesDisplay{
+  margin: 0 4em;
 }
 
-.gameDisplay{
-  height:60vh;
-  width:85vw;
-  /* background-color: #3A3A3A; */
-}
-
-.centralCreateButton{
-  width:9rem;
-  height:2.8rem;
-  background-color:transparent;
-  /* / */
-  border-radius: 30px;
-  border-color: #FFFFFF;
-  color:#FFFFFF;
-  border-style: solid;
-  outline:none;
-}
-
-.centralCreateButton:hover{
-  cursor: pointer;
-  outline:none;
+@media (max-width: 700px) {
+  .createGameContainer{
+    margin: 2em;
+  }
+  .createGameContainer button{
+    width: 100%;
+  }
+  .gamesDisplay{
+    margin: 0 2em;
+  }
 }

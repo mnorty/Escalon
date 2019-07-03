@@ -2,92 +2,113 @@
 } */
 
 .modal{
-  /* display:none; */
   position: fixed;
   z-index:1;
   left:0;
   top:0;
-  height:100%;
+  height: 100%;
   width:100%;
   overflow:auto;
-  background-color:rgba(0,0,0,.5);
+  background-color:rgba(0, 0, 0, .5);
+  display: flex;
+  justify-content: center;
 }
 
 .gameCreateModalContent{
-  background-color: #FFFFFF;
-  margin: 10vh auto;
-  /* padding:1rem; */
-  width:80%;
-  box-shadow:0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.2);
-  min-height:60vh;
-
-}
-
-.closeBtn{
-  background-image: url('../../../Assets//x-circle.svg');
-  background-repeat: no-repeat;
-  float:right;
-  margin-top:.6rem;
-  margin-right:1rem;
-  width:1.70rem;  
-  height:1.5rem;
-}
-
-.closeBtn:hover{
-  text-decoration: none;
-  cursor:pointer
-}
-.headerContainer{
-  display: flex;
-  background-color:lightgray;
-}
-#CreateModalHeader{
-  height:6.5vh;
-  width:100%;
-  top:0;
-  left:0;
-  display: flex;
-  align-items: center;
-  justify-content: center
-
-}
-
-.progressHeader{
-  margin:.25rem
-}
-.CreateGameEntryContainer{
-  display: flex;
-  justify-content: center;
-  align-items:center;
-  height:43.5vh;
-  width:100%;
-}
-
-.CreateGameEntry{
-  height:90%;
-  width:87%;
-  /* background-color:lightgray; */
-  display:flex;
-  flex-direction: column;
-}
-
-.entryTitles{
-  margin-top:0;
-  margin-bottom:0;
-}
-
-.nextContainer{
+  background-color: #fff;
+  margin-top: 6em;
+  width: 40em;
   height:100%;
+  /* overflow:auto; */
+  box-shadow: 0 0 2em rgba(0, 0, 0, 0.2);
+}
+
+.gameCreateModalHeader {
+  background: rgba(0, 0, 0, 0.1);
+  height: 5em;
+  padding: 0 1em;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 }
 
-#modalCreateBtn{
-  background-color:#ED0FA0;
+.gameCreateModalHeader h3 {
+  color: #333;
 }
 
-@keyframes fadeIn {
-  0% {opacity: 0;}
-  100% {opacity: 1;}
+.gameCreateModalHeader button{
+  background: rgba(0, 0, 0, 0.2);
+  border: none;
+  border-radius: 0;
+  font-size: 1em;
+  text-transform: uppercase;
+  color: #fff;
+  padding: .5em .7em;
+  width: 2em;
+  outline: none;
+}
+
+.gameCreateModalHeader button:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+.gameCreateModalHeader button:active {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.CreateGameEntryCont {
+  margin: 1em 2em;
+}
+
+.CreateGameEntryCont p {
+  margin: 0 0 .2em 0;
+  color: #333;
+}
+
+.CreateGameEntryCont input {
+  background: none;
+  border: solid 1px rgba(0, 0, 0, 0.2);
+  border-radius: 0;
+  margin-bottom: 1em;
+  height: 2em;
+  outline: none;
+  color: #333;
+  text-indent: .5em;
+  font-size: 1em;
+  width: 100%;
+}
+
+.CreateGameEntryCont input::placeholder {
+  color: #333;
+}
+
+.CreateGameEntryContBtn{
+  margin: 1em 2em;
+  text-align: center;
+}
+
+.CreateGameEntryContBtn button {
+  background: #9559CE;
+  border: none;
+  border-radius: 88px;
+  font-size: 1.5em;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 20px 60px;
+  outline: none;
+}
+
+.CreateGameEntryContBtn button:hover {
+  background: #A76BDE;
+}
+
+.CreateGameEntryContBtn button:active {
+  background: #854CBC;
+}
+
+
+@media (max-width: 700px) {
+  .gameCreateModalContent{
+    width: 100%;
+    margin: 6em 2em 0 2em;
+  }
 }

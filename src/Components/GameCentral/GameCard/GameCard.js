@@ -5,15 +5,13 @@ class GameCard extends Component {
   render() {
     return(
       <>
-      <div className='cardCard'>
-        <div className='NameContainer'>
-          <p>Name: TEST NAME</p>
-        </div>
-        <div className='buttonContainer'>
-          <button className='cardButton'></button>
-          <button className='cardButton'></button>
-          <button className='cardButton'></button>
-          <button className='cardButton'></button>
+      <div className='listingContainer'>
+          <p>I'm a game title here</p>
+        <div className='listingBtnContainer'>
+          <button>r</button>
+          <button>s</button>
+          <button>e</button>
+          <button>d</button>
         </div>
       </div>
       </>

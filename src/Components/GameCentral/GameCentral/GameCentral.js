@@ -1,21 +1,20 @@
-import React,{Component} from 'react'
+import React, { Component } from 'react'
 import './GameCentral.css'
 import GameDisplay from '../GameDisplay/GameDisplay'
 import GameCreateModal from '../GameCreate/GameCreateModal'
 import AddQuestionModal from '../AddQuestionModal/AddQuestionModal'
 
 class GameCentral extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
-    this.state= {
+    this.state = {
       CreateModal: 'false',
       AddQuestion: 'false'
     }
   }
-  
+
   render() {
-    
-    
+
     const openCreateModel = () => {
       this.setState({
         CreateModal: 'true'
@@ -27,52 +26,42 @@ class GameCentral extends Component {
         AddQuestion: 'true'
       })
     }
-    
+
     const closeCreateModel = (dataFromChild) => {
       this.setState({
         CreateModal: dataFromChild
-        })
-        }
+      })
+    }
+
     const closeAddQuestion = (dataFromChild) => {
       this.setState({
         AddQuestion: dataFromChild
-        })
-        }
+      })
+    }
 
-    return(
-      <div className='gCentralBackground'>
-        <header className='navBar'>
-          <div className='navBarLinks'>
-            <button className='navButton'>GameList</button>
-            <button className='navButton'>GameCentral</button>
-            <button className='navButton'>Login</button>
-            <button className='navButton'>SignUp</button>
-            <button className='navButton'>Account</button>
-          </div>
-        </header>
+    return (
+      <div className='gameCentCont'>
         <div className='gameCentralHeader'>
-          <div className='gameCentralLogo'>Game Central</div>
+          <h2>Game Central</h2>
         </div>
-        <div className='gameCentralContainer'>
+        <div>
           <div className='createGameContainer' >
-            <button className='centralCreateButton' id='createGameModal' onClick={openCreateModel}>CREATE GAME</button>
+            <button id='createGameModal' onClick={openCreateModel}>create game</button>
 
             {this.state.CreateModal !== 'false'
-            ?<GameCreateModal createDisplay={this.state.CreateModal} callbackFromParent={closeCreateModel} callbackForAddQuestion={openAddQuestion}/>
-            :null
-          }
+              ? <GameCreateModal createDisplay={this.state.CreateModal} callbackFromParent={closeCreateModel} callbackForAddQuestion={openAddQuestion} />
+              : null
+            }
 
             {this.state.AddQuestion !== 'false'
-            ?<AddQuestionModal closeAddQuestion={closeAddQuestion}/>
-            :null
-          }
-              {/* <GameCreateModal/>
+              ? <AddQuestionModal closeAddQuestion={closeAddQuestion} />
+              : null
+            }
+            {/* <GameCreateModal/>
               <AddQuestionModal closeAddQuestion={closeAddQuestion}/>  */}
-            </div>
-            <div className='gameDisplayContainer'>
-            <div className='gameDisplay'>
-              <GameDisplay/>
-            </div>
+          </div>
+          <div className='gamesDisplay'>
+            <GameDisplay />
           </div>
         </div>
       </div>
