@@ -40,7 +40,7 @@ class GameCentral extends Component {
 
 
   render() {
-console.log(this.props.user.adminReducer.user)
+console.log(this.props)
 
     const openCreateModel = () => {
       this.setState({

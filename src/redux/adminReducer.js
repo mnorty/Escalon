@@ -3,7 +3,7 @@ import axios from 'axios'
 const initialState = {
     roomID: '',
     user: {},
-    games: {}
+    game: {}
 }
 
 const SET_ROOMID = 'SET_ROOMID'
@@ -17,6 +17,7 @@ export const setRoomID = (roomID) => {
 }
 
 function reducer(state = initialState, action) {
+    console.log(action.type)
     switch(action.type) {
         case SET_ROOMID:
             return {
@@ -26,8 +27,9 @@ function reducer(state = initialState, action) {
         case LOGIN_USER:
             return {...state, user: action.payload
             }
-        case REQUEST_GAMES:
-            return {...state, games: action.payload}
+        case REQUEST_GAMES+'_FULFILLED':
+            console.log('made it to case')
+            return {...state, game: action.payload}
         default:
             return state
     }
@@ -51,7 +53,7 @@ export const requestUserGames = () => {
     console.log('Request Made for Games, waiting Response',game)
     return {
         type: REQUEST_GAMES,
-        payload: game
+        payload: game,
     }
 }
 
