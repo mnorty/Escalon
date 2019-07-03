@@ -3,6 +3,8 @@ import './GameCentral.css'
 import GameDisplay from '../GameDisplay/GameDisplay'
 import GameCreateModal from '../GameCreate/GameCreateModal'
 import AddQuestionModal from '../AddQuestionModal/AddQuestionModal'
+import {connect} from 'react-redux'
+import axios from 'axios'
 
 class GameCentral extends Component {
   constructor(props) {
@@ -13,7 +15,9 @@ class GameCentral extends Component {
     }
   }
 
+
   render() {
+console.log(this.props.user.adminReducer.user)
 
     const openCreateModel = () => {
       this.setState({
@@ -40,6 +44,7 @@ class GameCentral extends Component {
     }
 
     return (
+
       <div className='gameCentCont'>
         <div className='gameCentralHeader'>
           <h2>Game Central</h2>
@@ -69,4 +74,11 @@ class GameCentral extends Component {
   }
 }
 
-export default GameCentral
+function mapStateToProps(reduxState) {
+  return{
+    user:reduxState
+  }
+}
+
+
+export default connect(mapStateToProps)(GameCentral)

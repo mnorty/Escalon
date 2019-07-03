@@ -1,6 +1,6 @@
 import {createStore, combineReducers} from 'redux'
 import userReducer from './userReducer'
-import adminReducer from './userReducer'
+import adminReducer from './adminReducer'
 
 const reducers = combineReducers({userReducer, adminReducer})
 
