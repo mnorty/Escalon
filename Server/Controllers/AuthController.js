@@ -2,6 +2,7 @@ const bcrypt = require('bcryptjs')
 
 module.exports = {
     register : async (req, res) => {
+        console.log('hit')
         const{firstname, lastname, email, password} = req.body
         const db = req.app.get('db');
         const {session} = req;
@@ -26,7 +27,7 @@ module.exports = {
         const {session} = req;
         const adminFound = await db.admin_check_email({email});
         if (!adminFound[0]) return res.status(401).send('Admin account doesnt exist')
-        const authenticated = brcrypt.compareSync(password, adminFound[0].password);
+        const authenticated = bcrypt.compareSync(password, adminFound[0].password);
         if (authenticated) {
             session.admin = { id: adminFound[0].id, email: adminFound[0].email}
             res.status(200).send(session.admin)

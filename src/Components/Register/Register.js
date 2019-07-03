@@ -1,6 +1,8 @@
 import React from "react";
 import axios from 'axios';
 import './Register.css';
+import {connect} from 'react-redux';
+import {login} from '../../redux/adminReducer'
 
 
 class Register extends React.Component {
@@ -32,7 +34,7 @@ class Register extends React.Component {
   handleRegisterUser = (event) => {
     event.preventDefault()
     const { firstname, lastname, password, email } = this.state
-    axios.post('/auth/newUser', { firstname, lastname, password, email })
+    axios.post('/auth/register', { firstname, lastname, password, email })
       .then((response) => {
         // Store user to redux
         this.props.login(response.data)
@@ -83,7 +85,7 @@ class Register extends React.Component {
                 <h1>Log in to Account</h1>
                 <p>Don't have an account? <span onClick={this.toggleRegisterMenu}>Create one</span></p>
               </div>
-              <form className='registerForm' onSubmit={this.handleRegisterUser}>
+              <form className='registerForm' onSubmit={this.handleLoginUser}>
                 <p>Email</p>
                 <input onChange={this.handleInputChange} email="email" name='email' />
                 <p>Password</p>
@@ -97,4 +99,8 @@ class Register extends React.Component {
   }
 };
 
-export default Register;
+function mapStateToProps(state){
+  return state
+}
+
+export default connect(mapStateToProps, {login})(Register);
