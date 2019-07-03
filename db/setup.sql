@@ -36,3 +36,8 @@ distractor1 VARCHAR(500),
 distractor2 VARCHAR(500),
 distractor3 VARCHAR(500)
 );
+
+CREATE TABLE gamelobby (
+game_id TEXT,
+username TEXT
+)

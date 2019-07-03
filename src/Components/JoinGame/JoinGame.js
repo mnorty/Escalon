@@ -21,21 +21,19 @@ class JoinGame extends Component {
 
   handleLogin = event => {
     event.preventDefault();
-
     const { username, gameID } = this.state;
-
     // STORING USER IN SESSION
     axios
       .post("/user", { username })
       .then(({ data }) => {
         // SET USERNAME ON REDUX
-        this.props.setUsername(data.username)
+        this.props.setUsername(data.username);
         // FINDING THE GAME TO JOIN
-        return axios.get("/user/joingame", { gameID });
+        return axios.get("/user/joingame", { gameID, username });
       })
       .then(({ data }) => {
-        this.props.setGameID(data.gameID)
-        // IF SUCCESSFUL, ENTERING GAME COMPONENT
+        this.props.setGameID(data.gameID);
+        // IF SUCCESSFUL, ENTERING GAME LOBBY COMPONENT
         this.props.history.push(`/game/${data.gameroom_id}`);
       })
       .catch(error => {
