@@ -21,12 +21,21 @@ class Navbar extends Component {
     return (
         <nav>
           <div className='container'>
-            <div className='title'>Game Show</div>
+            <div className='title'>
+            <Link to='/'>Game Show</Link>
+            </div>
             <ul className='nav-links'>
-              <li>GameList</li>
+            <a className='nav-gc'>
               <Link to='/gamecentral'>Game Central</Link>
+            </a>
+              <span>|</span>
+              <a className='nav-reg'>
               <Link to='/register'>Register</Link>
-              <li>Account</li>
+              </a>
+              <span>|</span>
+              <a className='nav-join'>
+              <Link to='/join'>Join</Link>
+              </a>
             </ul>
             <div className="nav-button" onClick={this.showMenu}>
               <span></span> 

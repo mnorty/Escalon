@@ -65,7 +65,7 @@ class Register extends React.Component {
             <div className='registerContHolder'>
               <div className='registerHeader'>
                 <h1>Create An Account</h1>
-                <p>Already have an account? <span onClick={this.toggleRegisterMenu}>Log in</span></p>
+                <p>Already have an account? <span className='login-btn' onClick={this.toggleRegisterMenu}>Log in</span></p>
               </div>
               <form className='registerForm' onSubmit={this.handleRegisterUser}>
                 <p>First Name</p>
@@ -83,7 +83,7 @@ class Register extends React.Component {
             <div className='registerContHolder'>
               <div className='registerHeader'>
                 <h1>Log in to Account</h1>
-                <p>Don't have an account? <span onClick={this.toggleRegisterMenu}>Create one</span></p>
+                <p>Don't have an account? <span className='login-btn' onClick={this.toggleRegisterMenu}>Create one</span></p>
               </div>
               <form className='registerForm' onSubmit={this.handleLoginUser}>
                 <p>Email</p>
