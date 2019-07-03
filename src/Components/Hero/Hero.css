@@ -1,29 +1,43 @@
 .hero {
+    background-image: url(../../Assets/hero.png);
     height: 100vh;
     width: 100%;
-    background-color: yellow;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+   background-repeat: no-repeat;
+}
+
+.hero-btn a {
+    text-decoration: none;
 }
 
 .img1 {
     width: 30%;
     height: 40vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 75px;
+    margin-bottom: 165px;
 }
 
 .img1 h1 {
     color: black;
-    font-size: 60px
+    font-size: 60px;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
 .img1 h2 {
     color: black;
+    text-align: center;
+    margin-top: .5px;
+    margin-bottom: 50px;
 }
 
 .img2 {
-    background-image: url('../../Assets/game-show-web-banner.png');
     width: 60%;
     height: 60vh;
     display: flex;
@@ -32,3 +46,7 @@
     background-position: center;
     background-repeat: no-repeat;
 }
+
+button:hover {
+    background: rgba(224, 224, 224, .6);
+  }
