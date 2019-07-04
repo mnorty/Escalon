@@ -1,5 +1,4 @@
 .Background {
-    background: yellow;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -12,12 +11,10 @@
   }
   
   nav {
-    /* position: fixed; */
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: transparent;
   }
   
   
@@ -29,10 +26,22 @@
     padding: 5px 0;
     font-family: cursive;
   }
+
+  .title a {
+    color: #A8A8A8
+  }
+
+  .title:hover a {
+    color: rgba(255, 255, 255, .8);
+  }
+
+  .title:active a {
+    color: rgba(255, 255, 255, 1);
+  }
   
   ul {
     font-family: 'Montserrat', sans-serif;
-    font-size: 90%;
+    font-size: 20px;
     font-weight: 400;
     letter-spacing: 1px;
     color: ivory;
@@ -40,15 +49,57 @@
     list-style: none;
     display: flex;
     flex-direction: row;
+    text-decoration: none;
   }
+
+  ul a {
+    text-decoration: none;
+  }
+
+  .title a {
+    text-decoration: none;
+  }
+
+  .nav-gc:hover a {
+      color: rgba(255, 255, 255, .8);
+  }
+
+  .nav-reg:hover a {
+    color: rgba(255, 255, 255, .8);
+}
+
+.nav-join:hover a {
+  color: rgba(255, 255, 255, .8);
+}
+
+.nav-gc:active a {
+  color: rgba(255, 255, 255, 1);
+}
+
+.nav-reg:active a {
+  color: rgba(255, 255, 255, 1);
+}
+
+.nav-join:active a {
+  color: rgba(255, 255, 255, 1);
+}
   
   .container {
 
     background-color: black;
     width: 100%;
-    height: 8vh;
+    height: 100px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-links {
+    width: 30%;
+    /* height: 100%; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
     align-items: center;
   }
   
@@ -56,8 +107,12 @@
     padding: 0 .75em;
   }
   
-  .nav-links > li:hover {
-    color: #FEC503;
+  .nav-links a {
+    color: #A8A8A8;
+  }
+
+  .nav-links span {
+    color: #A8A8A8;
   }
   
   
@@ -69,7 +124,7 @@
     padding-left: 30px;
     background: #212529;
     transition: 2s;
-    height: 21%;
+    height: 200px;
   }
   
   .nav-button {
@@ -95,11 +150,15 @@
     margin: 5% 0;
   }
 
- 
   
   .nav-menu-show {
     display: none;
     animation: slide-down 300ms linear;
+    margin: 6.87% 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
   }
   
   .nav-list {
@@ -238,4 +297,10 @@
       margin-bottom: 25px;
       font-weight: 700;
   }
+  }
+
+  @media (min-width: 700px){
+    .nav-menu-show {
+      display: none;
+    }
   }

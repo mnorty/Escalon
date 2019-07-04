@@ -29,10 +29,11 @@ class JoinGame extends Component {
         // SET USERNAME ON REDUX
         this.props.setUsername(data.username);
         // FINDING THE GAME TO JOIN
-        return axios.get("/user/joingame", { gameID });
+        return axios.post("/joingame", { gameID, username });
       })
       .then(({ data }) => {
-        this.props.setGameID(data.gameID);
+        console.log(data)
+        this.props.setGameID(data.gameroom_id);
         // IF SUCCESSFUL, ENTERING GAME LOBBY COMPONENT
         this.props.history.push(`/game/${data.gameroom_id}`);
       })
@@ -42,7 +43,7 @@ class JoinGame extends Component {
   };
 
   render() {
-    console.log(this.state);
+    // console.log(this.props);
     return (
       <form className="join-container" onSubmit={this.handleLogin}>
         <label className="username-input" htmlFor="username">

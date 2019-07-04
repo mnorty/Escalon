@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import './Hero.css'
+import {Link} from 'react-router-dom'
 
 
 export default class About extends Component {
@@ -8,19 +9,24 @@ export default class About extends Component {
       <div>
         <div className='hero'>
           <div className="img1">
-            <h1> Hero Title Here</h1>
-            <h2>I spend a lot of time walking around in the woods and talking to trees, and squirrels and little rabbits and stuff.</h2>
+            <h1>Welcome to Game-Show!</h1>
+            <h2>You create the test, we do the rest!</h2>
+            <button className="hero-btn">
+                <Link to="/register">
+                  Get Started
+                </Link>
+            </button>
           </div>
           <div className="img2"></div>
         </div>
-        <div>
+        {/* <div>
           <h1>h1 title</h1>
           <h2>h2 title</h2>
           <h3>h3 title</h3>
           <h4>h4 title</h4>
           <p>p text</p>
           <li>li text</li>
-        </div>
+        </div> */}
       </div>
     )
   }

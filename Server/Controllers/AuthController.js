@@ -29,7 +29,7 @@ module.exports = {
         if (!adminFound[0]) return res.status(401).send('Admin account doesnt exist')
         const authenticated = bcrypt.compareSync(password, adminFound[0].password);
         if (authenticated) {
-            session.admin = { id: adminFound[0].id, email: adminFound[0].email}
+            session.admin = { id: adminFound[0].id, email: adminFound[0].email, firstname:adminFound[0].firstname,lastname:adminFound[0].lastname}
             res.status(200).send(session.admin)
         } else {
             return res.status(401).send ('Incorrect email or password.')
