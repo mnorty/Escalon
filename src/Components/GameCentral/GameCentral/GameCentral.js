@@ -3,6 +3,8 @@ import './GameCentral.css'
 import GameDisplay from '../GameDisplay/GameDisplay'
 import GameCreateModal from '../GameCreate/GameCreateModal'
 import AddQuestionModal from '../AddQuestionModal/AddQuestionModal'
+import {connect} from 'react-redux'
+import {requestUserGames} from '../../../redux/adminReducer'
 
 class GameCentral extends Component {
   constructor(props) {
@@ -13,7 +15,32 @@ class GameCentral extends Component {
     }
   }
 
+  componentDidMount() {
+    let userInfo = (this.props.user.adminReducer.user)
+    console.log(this.props)
+    this.props.requestUserGames(userInfo)
+    console.log('Request Games firing',this.props)
+    
+  }
+  //  userCheck = () => {
+  //    let userInfo = (this.props.user.adminReducer.user)
+  //    console.log(this.props)
+  //    if (userInfo == '') {
+  //      this.props.history.push('/')
+  //   } else {
+  //     console.log('got to else statement')
+  //   }
+
+  // }
+
+  // componentDidMount = async () => {
+  //   console.log('got to DidMount')
+  //   this.userCheck()
+  // }
+
+
   render() {
+console.log(this.props)
 
     const openCreateModel = () => {
       this.setState({
@@ -40,6 +67,7 @@ class GameCentral extends Component {
     }
 
     return (
+
       <div className='gameCentCont'>
         <div className='gameCentralHeader'>
           <h2>Game Central</h2>
@@ -69,4 +97,11 @@ class GameCentral extends Component {
   }
 }
 
-export default GameCentral
+function mapStateToProps(reduxState) {
+  return{
+    user:reduxState
+  }
+}
+
+
+export default connect(mapStateToProps,{requestUserGames})(GameCentral)
