@@ -7,12 +7,12 @@ import GameDisplayCard from './GameDisplayCard'
 class GameDisplay extends Component{
   constructor(props){
     super(props)
-  console.log('GameDisplay Props',this.props,this.state)
   }
-
-
+  
+  
   render(){
-
+    console.log('GameDisplay Props',this.props)
+    
     // let game = this.props.game.map((games => <GameDisplayCard key={game.id} game={game} />)) || []
     return(
       <div>
