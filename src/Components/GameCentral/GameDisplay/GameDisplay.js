@@ -2,21 +2,22 @@ import React,{Component} from 'react'
 import GameCard from '../GameCard/GameCard'
 import { connect } from 'react-redux';
 import {requestUserGames} from '../../../redux/adminReducer'
+import GameDisplayCard from './GameDisplayCard'
 
 class GameDisplay extends Component{
   constructor(props){
     super(props)
-  console.log('GameDisplay Props',this.props.userId)
+  console.log('GameDisplay Props',this.props,this.state)
   }
 
 
   render(){
+
+    // let game = this.props.game.map((games => <GameDisplayCard key={game.id} game={game} />)) || []
     return(
       <div>
-      <GameCard/>
-      <GameCard/>
-      <GameCard/>
-      <GameCard/>
+      {/* {game} */}
+      <h1>Hi I am a game</h1>
     </div>
     )
   }

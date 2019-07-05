@@ -89,7 +89,7 @@ console.log(this.props)
               <AddQuestionModal closeAddQuestion={closeAddQuestion}/>  */}
           </div>
           <div className='gamesDisplay'>
-            <GameDisplay userId = {this.props.user.adminReducer.user.id}/>
+            <GameDisplay userGames = {this.props.user.adminReducer.game}/>
           </div>
         </div>
       </div>
