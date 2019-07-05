@@ -1,0 +1,9 @@
+.cardContainer{
+  background-color:slategray;
+  margin-bottom:1rem;
+}
+
+.cardBtn{
+  width:5vw;
+  height: 3vh;
+}

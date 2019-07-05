@@ -1,17 +1,18 @@
 import React, { Component } from 'react'
 import './GameCentral.css'
-import GameDisplay from '../GameDisplay/GameDisplay'
+// import GameDisplay from '../GameDisplay/GameDisplay'
 import GameCreateModal from '../GameCreate/GameCreateModal'
 import AddQuestionModal from '../AddQuestionModal/AddQuestionModal'
 import {connect} from 'react-redux'
 import {requestUserGames} from '../../../redux/adminReducer'
+import GameDisplayCard from '../GameDisplay/GameDisplayCard'
 
 class GameCentral extends Component {
   constructor(props) {
     super(props)
     this.state = {
       CreateModal: 'false',
-      AddQuestion: 'false'
+      AddQuestion: 'false',
     }
   }
 
@@ -66,6 +67,9 @@ console.log(this.props)
       })
     }
 
+    let games = this.props.user.adminReducer.game
+    let game = games.map(game => <GameDisplayCard key={game.id} game={game} />)
+    console.log(this.props.user.adminReducer.game)
     return (
 
       <div className='gameCentCont'>
@@ -89,7 +93,8 @@ console.log(this.props)
               <AddQuestionModal closeAddQuestion={closeAddQuestion}/>  */}
           </div>
           <div className='gamesDisplay'>
-            <GameDisplay userGames = {this.props.user.adminReducer.game}/>
+            {/* <GameDisplay userGames = {this.props.user.adminReducer.game}/> */}
+            {game}
           </div>
         </div>
       </div>

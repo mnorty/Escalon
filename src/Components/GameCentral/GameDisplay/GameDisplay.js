@@ -1,33 +1,16 @@
-import React,{Component} from 'react'
-import GameCard from '../GameCard/GameCard'
-import { connect } from 'react-redux';
-import {requestUserGames} from '../../../redux/adminReducer'
-import GameDisplayCard from './GameDisplayCard'
+import React from 'react'
+// import GameCard from '../GameCard/GameCard'
 
-class GameDisplay extends Component{
-  constructor(props){
-    super(props)
-  }
+
+export default function GameDisplay({...props}){
   
-  
-  render(){
-    console.log('GameDisplay Props',this.props)
-    
-    // let game = this.props.game.map((games => <GameDisplayCard key={game.id} game={game} />)) || []
+    console.log(props)
+    let games = props.userGames
+    let game = games.map(game => <GameDisplayCard key={game.id} game={game} />)
     return(
-      <div>
-      {/* {game} */}
-      <h1>Hi I am a game</h1>
-    </div>
+        <div>
+            {this.props.userGames ? game : null}
+            <h1>Hi I am a game</h1>
+        </div>
     )
-  }
 }
-
-
-function mapStateToProps(reduxState) {
-  return{
-    user:reduxState
-  }
-}
-
-export default connect(mapStateToProps,{requestUserGames})(GameDisplay)
