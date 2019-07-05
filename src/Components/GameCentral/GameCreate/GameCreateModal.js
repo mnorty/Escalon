@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import './GameCreateModal.css'
-
+import axios from 'axios'
+import {connect} from 'react-redux'
 
 class GameCreateModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: '',
-      instructions: '',
-      template: ''
+      game_title: '',
+      game_intro: '',
     }
   }
 
@@ -27,8 +27,17 @@ class GameCreateModal extends Component {
       this.props.callbackForAddQuestion('true')
     }
 
+    const createGame = () => {
+      let admins_id = (this.props.user.adminReducer.user.id)
+      let game_title = (this.state.game_title)
+      let game_intro = (this.state.game_intro)
+      console.log('yo', this.props,this.state)
+      axios.post('/game/create',{admins_id,game_title,game_intro})///add the information we are sending over.
+    }
+
     const clickFunction = () => {
       closeCreateModel();
+      createGame();
       opedAddQuestion();
     }
     return (
@@ -42,13 +51,13 @@ class GameCreateModal extends Component {
             <p>Game Title</p>
             <input
               type="text"
-              name='title'
+              name='game_title'
               onChange={this.handleInputUpdate}
             />
             <p>Game Instructions</p>
             <input
               type="text"
-              name='instructions'
+              name='game_intro'
               onChange={this.handleInputUpdate}
             />
             <div className='CreateGameEntryContBtn'>
@@ -60,4 +69,11 @@ class GameCreateModal extends Component {
     )
   }
 }
-export default GameCreateModal
+
+function mapStateToProps(reduxState) {
+  return{
+    user:reduxState
+  }
+}
+
+export default connect(mapStateToProps)(GameCreateModal)
