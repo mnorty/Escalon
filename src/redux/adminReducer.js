@@ -17,7 +17,7 @@ export const setRoomID = (roomID) => {
 }
 
 function reducer(state = initialState, action) {
-    console.log(action.type)
+    // console.log(action.type)
     switch(action.type) {
         case SET_ROOMID:
             return {

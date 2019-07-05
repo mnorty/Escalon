@@ -32,7 +32,7 @@ class JoinGame extends Component {
         return axios.post("/joingame", { gameID, username });
       })
       .then(({ data }) => {
-        console.log(data)
+        // console.log(data)
         this.props.setGameID(data.gameroom_id);
         // IF SUCCESSFUL, ENTERING GAME LOBBY COMPONENT
         this.props.history.push(`/game/${data.gameroom_id}`);

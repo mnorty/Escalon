@@ -25,15 +25,15 @@ class Navbar extends Component {
             <Link to='/'>Game Show</Link>
             </div>
             <ul className='nav-links'>
-            <a className='nav-gc'>
+            <a href='10000' className='nav-gc'>
               <Link to='/gamecentral'>Game Central</Link>
             </a>
               <span>|</span>
-              <a className='nav-reg'>
+              <a href='10000'  className='nav-reg'>
               <Link to='/register'>Register</Link>
               </a>
               <span>|</span>
-              <a className='nav-join'>
+              <a href='10000'  className='nav-join'>
               <Link to='/join'>Join</Link>
               </a>
             </ul>

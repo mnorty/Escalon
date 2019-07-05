@@ -26,7 +26,7 @@ module.exports = {
         admins_id: admins_id, 
         // admins_id: session.admins.id, 
         game_title: game_title, 
-        game_intro: game_intro, // is this meant as the instructions?
+        game_intro: game_intro, // game instructions
         gameroom_id: gameID // do we want this to be sequential in DB?// what do we need here?
       });
       res.status(200).send(gameInfo);
@@ -46,9 +46,6 @@ module.exports = {
     })
     
   },
-    
-  // }
-
   
   joinGame: async (req, res) => {
     const { gameID, username } = req.body;
@@ -65,6 +62,7 @@ module.exports = {
       res.status(404).send("Game not found");
     }
   },
+  
   getGameDetails: (req, res) => {
     const {id} = req.params;
     const db = req.app.get('db')
