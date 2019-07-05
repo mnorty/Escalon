@@ -1,16 +1,28 @@
 const socket = require("socket.io");
-const SocketConnection = server => {
+const SocketConnection = (server, app) => {
   const io = socket(server);
-  io.on("connection", (socket) => {
+
+  io.on("connection", socket => {
     console.log("A user has connected");
-    socket.on("change username", username => {
+    console.log(socket.id);
+    const db = app.get("db");
+    socket.on("username", username => {
       socket.username = username;
     });
-    socket.on("join room", roomID => {
-      socket.join(roomID);
+    socket.on("join room", async gameID => {
+      socket.join(gameID);
+      const users = await db.get_lobby_users({ game_id: gameID });
+      io.to(gameID).emit("room joined", users);
     });
-    socket.on("end room", roomID => {
-      socket.to(roomID).emit("end room");
+    socket.on('leave room', async (username, gameID) => {
+      await db.delete_user_lobby({username})
+      socket.disconnect()
+      const users = await db.get_lobby_users({ game_id: gameID });
+      io.to(gameID).emit("room joined", users);
+      // console.log(username)
+    })
+    socket.on("end game", gameID => {
+      socket.to(gameID).emit("end room");
     });
     socket.on("disconnect", () => {
       console.log("A user has disconnected");
