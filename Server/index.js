@@ -8,9 +8,6 @@ const app = express()
 const {CONNECTION_STRING, SERVER_PORT, SESSION_SECRET} = process.env
 const SocketConnection = require('./Controllers/SocketController')
 
-let server;
-
-SocketConnection(server)
 app.use(express.json())
 app.use(express.static(`${__dirname}/../build`))
 app.use(
@@ -22,36 +19,38 @@ app.use(
             maxAge: 1000 * 60 * 60
         }
     })
-)
-
-//GET ENDPOINTS
-app.get('/auth/gamecentral', authController.accessGameCentral);
-app.get('/auth/admin', authController.getAdmin);
-app.get('/auth/logout', authController.logout);
-app.get('/gamecentral/games', gameCtrl.getUserGames)
-
-app.get('/getgame/:id', gameCtrl.getGameDetails)
-
-//POST ENDPOINTS
-app.post('/user', gameCtrl.createUser)
-app.post('/game/create', gameCtrl.createGame)
-app.post('/joingame', gameCtrl.joinGame)
-
-app.post('/auth/register', authController.register);
-app.post('/auth/login', authController.login);
-
-//PUT ENDPOINTS
-
-
-//DELETE ENDPOINTS
-
-
-
-
-
-massive(CONNECTION_STRING).then((database) => {
-    app.set('db', database)
-    server = app.listen(SERVER_PORT, () => console.log(`Hulk Smashing on ${SERVER_PORT}`))
-})
-
-
+    )
+    
+    //GET ENDPOINTS
+    app.get('/auth/gamecentral', authController.accessGameCentral);
+    app.get('/auth/admin', authController.getAdmin);
+    app.get('/auth/logout', authController.logout);
+    
+    app.get('/gamecentral/games', gameCtrl.getUserGames)
+    app.get('/getgame/:id', gameCtrl.getGameDetails)
+    
+    //POST ENDPOINTS
+    app.post('/user', gameCtrl.createUser)
+    app.post('/game/create', gameCtrl.createGame)
+    app.post('/joingame', gameCtrl.joinGame)
+    
+    app.post('/auth/register', authController.register);
+    app.post('/auth/login', authController.login);
+    
+    //PUT ENDPOINTS
+    
+    
+    //DELETE ENDPOINTS
+    
+    
+    
+    
+    massive(CONNECTION_STRING).then((database) => {
+        app.set('db', database)
+        console.log('Database is set')
+    })
+    const server = app.listen(SERVER_PORT, () => console.log(`Hulk Smashing on ${SERVER_PORT}`))
+    SocketConnection(server)
+    
+    
+    
