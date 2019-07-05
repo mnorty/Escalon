@@ -50,7 +50,7 @@ app.use(
         console.log('Database is set')
     })
     const server = app.listen(SERVER_PORT, () => console.log(`Hulk Smashing on ${SERVER_PORT}`))
-    SocketConnection(server)
+    SocketConnection(server, app)
     
     
     
