@@ -17,7 +17,7 @@ export default class About extends Component {
     this.hOne = React.createRef();
     this.hTwo = React.createRef();
     this.hThree = React.createRef();
-    
+    this.textOne = React.createRef();
   }
 
   componentDidMount(){
@@ -59,6 +59,10 @@ export default class About extends Component {
 
       if(window.pageYOffset >= 1561){
         this.hThree.current.style.display = 'flex'
+      }
+
+      if(window.pageYOffset >= 2100){
+        this.textOne.current.style.display = 'flex'
       }
 
       
@@ -124,12 +128,14 @@ export default class About extends Component {
           </div>
         </div>
         <div className='info-section'>
-        
+        <div ref={this.textOne} className='info-text-section'>
+
         <h2>I spend a lot of time walking around in the woods and talking to trees, and squirrels, and little rabbits and stuff.</h2>
         <h2>I spend a lot of time walking around in the woods and talking to trees, and squirrels, and little rabbits and stuff.</h2>
         <h2>I spend a lot of time walking around in the woods and talking to trees, and squirrels, and little rabbits and stuff.</h2>
         <h2>I spend a lot of time walking around in the woods and talking to trees, and squirrels, and little rabbits and stuff.</h2>
       
+        </div>
         </div>
         <div className='bottom-bar'></div>
       </div>

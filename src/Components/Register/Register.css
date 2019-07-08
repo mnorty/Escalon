@@ -1,4 +1,5 @@
 .registerCont {
+    background-image: url(../../Assets/space_texture.png);
     min-height: 100vh;
     display: flex;
     justify-content: center;

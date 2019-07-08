@@ -1,12 +1,14 @@
 .hero {
     background-image: url(../../Assets/hero.png);
+    background-position: center;
+    background-size: cover;
     height: 80vh;
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-   background-repeat: no-repeat;
+    background-repeat: no-repeat;
 }
 
 .monitor-section {
@@ -33,12 +35,8 @@
         margin-left: 100vw;
         opacity: 0;
     }
-    75% {
-        margin-left: 0vw;
-        opacity: 1;
-    }
     100% {
-        margin-left: 4vw;
+        margin-left: 0vw;
         opacity: 1;
     }
 }
@@ -65,7 +63,21 @@
     }
 }
 
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 
+.info-text-section {
+    display: none;
+    height: 20%;
+    flex-direction: row;
+    animation: fade-in 900ms linear;
+}
 
 
 
@@ -95,7 +107,7 @@
 
 .monitor-img {
     background-image: url(../../Assets/game_monitor.png);
-    height: 85vh;
+    height: 90vh;
     width: 50%;
     display: none;
     flex-direction: row;
