@@ -24,11 +24,11 @@ module.exports = {
     if (session) {
       const gameInfo = await db.game_create_new({
         admins_id: admins_id, 
-        // admins_id: session.admins.id, 
         game_title: game_title, 
-        game_intro: game_intro, // game instructions
-        gameroom_id: gameID // do we want this to be sequential in DB?// what do we need here?
+        game_intro: game_intro,
+        gameroom_id: gameID 
       });
+      console.log(gameInfo)
       res.status(200).send(gameInfo);
     }
   },
@@ -81,7 +81,7 @@ module.exports = {
   },
   
   addQuestion: async (req,res) => {
-    console.log('Made it to Add Question') 
+    console.log('Made it to Add Question in Game Controller', req.session,req.session) 
   }
   
 };

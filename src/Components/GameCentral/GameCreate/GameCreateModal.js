@@ -33,6 +33,9 @@ class GameCreateModal extends Component {
       let game_intro = (this.state.game_intro)
       console.log('yo', this.props,this.state)
       axios.post('/game/create',{admins_id,game_title,game_intro})///add the information we are sending over.
+      .then(res => {
+        console.log('CreateGameModal', res.data)
+      })
     }
 
     const clickFunction = () => {
