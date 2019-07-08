@@ -16,7 +16,6 @@ export default (
         <Route path='/gamecentral' component={GameCentral}/>
         <Route path='/join' component={JoinGame} />
         <Route path='/game/:id' component={Lobby} />
-        {/* <Route path='/game' component={Lobby} /> */}
         <Route path='/game' component={Game} />
         
     </Switch>
