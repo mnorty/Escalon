@@ -3,7 +3,7 @@ import axios from 'axios'
 const initialState = {
     roomID: '',
     user: {},
-    game: {}
+    game:[]
 }
 
 const SET_ROOMID = 'SET_ROOMID'
@@ -17,7 +17,7 @@ export const setRoomID = (roomID) => {
 }
 
 function reducer(state = initialState, action) {
-    console.log(action.type)
+    // console.log(action.type)
     switch(action.type) {
         case SET_ROOMID:
             return {

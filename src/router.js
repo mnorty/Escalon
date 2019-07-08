@@ -5,7 +5,11 @@ import Register from '../src/Components/Register/Register'
 import GameCentral from './Components/GameCentral/GameCentral/GameCentral'
 import JoinGame from './Components/JoinGame/JoinGame';
 import Lobby from './Components/Lobby/Lobby'
+<<<<<<< HEAD
 import Game from '../src/Components/Game/Game'
+=======
+import Game from './Components/Game/Game'
+>>>>>>> master
 
 
 
@@ -16,7 +20,13 @@ export default (
         <Route path='/gamecentral' component={GameCentral}/>
         <Route path='/join' component={JoinGame} />
         <Route path='/game/:id' component={Lobby} />
+<<<<<<< HEAD
         <Route path='/game' component={Lobby} />
         <Route path='/game1' component={Game} />
+=======
+        {/* <Route path='/game' component={Lobby} /> */}
+        <Route path='/game' component={Game} />
+        
+>>>>>>> master
     </Switch>
 )
