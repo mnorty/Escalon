@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './GameCreateModal.css'
 import axios from 'axios'
 import {connect} from 'react-redux'
+import {updateNewGameID} from '../../../redux/adminReducer'
 
 class GameCreateModal extends Component {
   constructor(props) {
@@ -17,15 +18,16 @@ class GameCreateModal extends Component {
     this.setState({
       [e.target.name]: e.target.value
     })
-    console.log(this.state)
   }
 
   handleGameId = (data) => {
     this.state.newGameId=data[0].id
-    console.log(this.state)
+    console.log(this.props)
+    updateNewGameID()
   }
 
   render() {
+    console.log(this.props)
     const closeCreateModel = () => {
       this.props.callbackFromParent('false')
     }

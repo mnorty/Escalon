@@ -17,7 +17,6 @@ class GameCentral extends Component {
 
   componentDidMount() {
     let userInfo = (this.props.user.adminReducer.user)
-    console.log(this.props)
     this.props.requestUserGames(userInfo)
     console.log('Request Games firing',this.props)
   }
@@ -39,7 +38,6 @@ class GameCentral extends Component {
 
 
   render() {
-console.log(this.props)
 
     const openCreateModel = () => {
       this.setState({
@@ -66,7 +64,6 @@ console.log(this.props)
     }
     let games = this.props.user.adminReducer.game
     let game = games.map(game => <GameDisplayCard key={game.id} game={game} />)
-    console.log(this.props.user.adminReducer.game)
     return (
 
       <div className='gameCentCont'>

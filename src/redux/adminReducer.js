@@ -28,8 +28,12 @@ function reducer(state = initialState, action) {
         case LOGIN_USER:
             return {...state, user: action.payload
             }
+        case NEW_GAME_ID:
+            console.log('New Game Case')
+            return {
+                ...state
+            }
         case REQUEST_GAMES+'_FULFILLED':
-            console.log('made it to case')
             return {...state, game: action.payload}
         default:
             return state
@@ -49,13 +53,18 @@ export function login(user) {
 const REQUEST_GAMES = 'REQUEST_GAMES'
 
 export const requestUserGames = () => {
-    console.log('made it Admin Reducer')
     let game = axios.get('/gamecentral/games').then(res => res.data);
     console.log('Request Made for Games, waiting Response',game)
     return {
         type: REQUEST_GAMES,
         payload: game,
     }
+}
+
+const NEW_GAME_ID = 'NEW_GAME_ID'
+
+export function updateNewGameID() {
+    console.log('made it to New Game Id on Reducer')
 }
 
 export default reducer
