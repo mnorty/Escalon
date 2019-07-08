@@ -12,6 +12,13 @@
     cursor: pointer;
 }
 
+.box-container {
+    height: 40vh;
+    width: 40vw;
+    background-color: white;
+    
+}
+
 .registerContHolder {
     margin-top: 5em;
     max-width: 35em;
