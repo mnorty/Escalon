@@ -1,12 +1,108 @@
 .hero {
-    background-image: url(../../Assets/boom.jpg);
-    height: 100vh;
+    background-image: url(../../Assets/hero.png);
+    height: 80vh;
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
    background-repeat: no-repeat;
+}
+
+.monitor-section {
+    height: 140vh;
+    width: 100%;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+.text-section {
+    height: 120vh;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 80px;
+    justify-content: flex-start;
+}
+
+@keyframes slide {
+    0% {
+        margin-left: 100vw;
+        opacity: 0;
+    }
+    75% {
+        margin-left: 0vw;
+        opacity: 1;
+    }
+    100% {
+        margin-left: 4vw;
+        opacity: 1;
+    }
+}
+
+@keyframes slide-in {
+    0% {
+        margin-bottom: 100vw;
+        opacity: 0;
+    }
+    100% {
+        margin-bottom: 0vw;
+        opacity: 1;
+    }
+}
+
+@keyframes slide-up {
+    0% {
+        margin-top: 100vw;
+        opacity: 0;
+    }
+    100% {
+        margin-top: 0vw;
+        opacity: 1;
+    }
+}
+
+
+
+
+
+.text-section div {
+    display: none;
+    height: 20%;
+    flex-direction: column;
+    animation: slide 900ms linear;
+}
+
+.text-section h1 {
+    color: black;
+}
+
+.text-section h2 {
+    color: black;
+}
+
+.space-theme div {
+    display: none;
+    height: 20%;
+    flex-direction: column;
+    animation: slide-up 900ms linear;
+}
+
+
+
+.monitor-img {
+    background-image: url(../../Assets/game_monitor.png);
+    height: 85vh;
+    width: 50%;
+    display: none;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+   background-repeat: no-repeat;
+   animation: slide-in 700ms linear;
 }
 
 .hero-btn {
@@ -45,6 +141,50 @@
     margin-top: .5px;
     margin-bottom: 50px;
 }
+
+.benefit-section {
+    background-color: #24A1D3;
+}
+
+.space-theme {
+    background-image: url(../../Assets/space_texture.png);
+    height: 55vh;
+    width: 100%;
+    display: flex; 
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.space-theme h1 {
+    display: flex;
+    justify-content: center;
+}
+
+.space-theme h2 {
+    display: flex;
+    justify-content: center;
+}
+
+.info-section {
+    height: 70vh;
+    width: 100%;
+    background-color: #6F6F6F;
+    display: flex;
+    flex-direction: row;
+}
+
+.info-section h2 {
+    color: #9E9E9E;
+}
+
+.bottom-bar {
+    height: 15vh;
+    width: 100%;
+    background-color: #333333;
+}
+
+
 
 
 

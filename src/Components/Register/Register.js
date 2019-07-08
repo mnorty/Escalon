@@ -62,6 +62,7 @@ class Register extends React.Component {
       <div className='registerCont'>
         {
           this.state.showRegisterDisplay ?
+            // <div className='box-container'>
             <div className='registerContHolder'>
               <div className='registerHeader'>
                 <h1>Create An Account</h1>
@@ -79,6 +80,7 @@ class Register extends React.Component {
                 <div className='registerFormBtn'><button>create account</button></div>
               </form>
             </div>
+            // </div>
             :
             <div className='registerContHolder'>
               <div className='registerHeader'>
