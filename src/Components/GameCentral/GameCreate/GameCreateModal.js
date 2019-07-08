@@ -9,6 +9,7 @@ class GameCreateModal extends Component {
     this.state = {
       game_title: '',
       game_intro: '',
+      newGameId: ''
     }
   }
 
@@ -19,6 +20,11 @@ class GameCreateModal extends Component {
     console.log(this.state)
   }
 
+  handleGameId = (data) => {
+    this.state.newGameId=data[0].id
+    console.log(this.state)
+  }
+
   render() {
     const closeCreateModel = () => {
       this.props.callbackFromParent('false')
@@ -26,17 +32,16 @@ class GameCreateModal extends Component {
     const opedAddQuestion = () => {
       this.props.callbackForAddQuestion('true')
     }
-
     const createGame = () => {
       let admins_id = (this.props.user.adminReducer.user.id)
       let game_title = (this.state.game_title)
       let game_intro = (this.state.game_intro)
-      console.log('yo', this.props,this.state)
       axios.post('/game/create',{admins_id,game_title,game_intro})///add the information we are sending over.
       .then(res => {
-        console.log('CreateGameModal', res.data)
+        this.handleGameId(res.data)
       })
     }
+
 
     const clickFunction = () => {
       closeCreateModel();

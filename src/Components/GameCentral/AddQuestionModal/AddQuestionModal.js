@@ -9,6 +9,7 @@ class AddQuestionModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      game_id: '',
       question: '',
       remediation: '',
       answer: '',

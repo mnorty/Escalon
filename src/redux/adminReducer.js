@@ -3,7 +3,8 @@ import axios from 'axios'
 const initialState = {
     roomID: '',
     user: {},
-    game:[]
+    game:[],
+    newGameId:''
 }
 
 const SET_ROOMID = 'SET_ROOMID'

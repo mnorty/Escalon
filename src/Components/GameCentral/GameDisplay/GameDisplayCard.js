@@ -6,15 +6,12 @@ import axios from 'axios'
 class Card extends Component {
 
   handleDeleteGame = () => {
-    console.log('made it to handle Delete Game')
     axios.delete(`/deletegame/${this.props.game.id}`)
     .then(res => {
-        console.log('handleDeleteGame',this.props)
     })
 }
 
   render() {
-    console.log('made it to Game Display Card',this.props,this.props.game.id)
     const { game_title,game_intro,gameroom_id} = this.props.game;
 
 
