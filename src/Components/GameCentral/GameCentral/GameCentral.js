@@ -20,7 +20,6 @@ class GameCentral extends Component {
     console.log(this.props)
     this.props.requestUserGames(userInfo)
     console.log('Request Games firing',this.props)
-    
   }
   //  userCheck = () => {
   //    let userInfo = (this.props.user.adminReducer.user)

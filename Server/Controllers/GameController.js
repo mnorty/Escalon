@@ -78,6 +78,10 @@ module.exports = {
     console.log( 'UserId:',user_id,'GameId:',id)
     const dbInstance = await req.app.get('db');
     dbInstance.game_delete({id})
+  },
+  
+  addQuestion: async (req,res) => {
+    console.log('Made it to Add Question') 
   }
   
 };

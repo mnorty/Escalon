@@ -32,6 +32,7 @@ app.use(
     //POST ENDPOINTS
     app.post('/user', gameCtrl.createUser)
     app.post('/game/create', gameCtrl.createGame)
+    app.post('/game/addquestion',gameCtrl.addQuestion)
     app.post('/joingame', gameCtrl.joinGame)
     
     app.post('/auth/register', authController.register);
