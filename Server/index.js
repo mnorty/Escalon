@@ -41,7 +41,7 @@ app.use(
     
     
     //DELETE ENDPOINTS
-    
+    app.delete('/deletegame/:id', gameCtrl.deleteGame)
     
     
     

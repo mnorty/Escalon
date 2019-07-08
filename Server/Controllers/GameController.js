@@ -36,7 +36,7 @@ module.exports = {
   getUserGames: async (req,res) => {
     const dbInstance = await req.app.get('db');
     const id = req.session.admin.id
-    console.log(id,'Made it to Game Controller',req.session,req.session.admin.id)
+    // console.log(id,'Made it to Game Controller',req.session,req.session.admin.id)
     dbInstance.games_get_all_by_id({id})
 
     .then(game => res.status(200).send(game))
@@ -70,6 +70,13 @@ module.exports = {
     .then((dbRes) => {
       res.status(200).send(dbRes[0])
     })
+  },
+
+  deleteGame: async(req,res) => {
+    const user_id = req.session.admin.id
+    const id = req.params.id
+    console.log( 'UserId:',user_id,'GameId:',id)
+    const dbInstance = await req.app.get('db');
   }
   
 };
