@@ -77,6 +77,7 @@ module.exports = {
     const id = req.params.id
     console.log( 'UserId:',user_id,'GameId:',id)
     const dbInstance = await req.app.get('db');
+    dbInstance.game_delete({id})
   }
   
 };
