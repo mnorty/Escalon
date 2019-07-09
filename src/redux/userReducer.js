@@ -1,5 +1,5 @@
 const initialState = {
-  username: "",
+  users: [],
   gameID: "",
   game_title: "",
   game_intro: ""
@@ -8,6 +8,7 @@ const initialState = {
 const SET_USERNAME = "SET_USERNAME";
 const SET_GAMEID = "SET_GAMEID";
 const LOAD_GAME_DETAILS = "LOAD_GAME_DETAILS";
+const LOBBY_USERS = "LOBBY_USERS";
 
 export const setUsername = username => {
   return {
@@ -24,11 +25,18 @@ export const setGameID = gameID => {
   };
 };
 
-export const loadGameDetails = (gameInfo) => {
+export const loadGameDetails = gameInfo => {
   // console.log('Game details loading..', gameInfo)
   return {
     type: LOAD_GAME_DETAILS,
     payload: gameInfo
+  };
+};
+
+export const lobbyUsers = users => {
+  return {
+    type: LOBBY_USERS,
+    payload: users
   };
 };
 
@@ -47,6 +55,8 @@ function reducer(state = initialState, action) {
     case LOAD_GAME_DETAILS:
       const { game_title, game_intro } = action.payload;
       return { ...state, game_title, game_intro };
+    case LOBBY_USERS:
+      return { ...state, users: action.payload };
     default:
       return state;
   }

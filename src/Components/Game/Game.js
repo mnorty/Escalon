@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import GameQuestion from './GameQuestion';
 import LeaderBoard from './LeaderBoard';
-import BgDirt from './BackgroundItems/BgDirt';
+import { connect } from 'react-redux'
+import {
+    loadGameDetails,
+    setGameID,
+    lobbyUsers
+  } from "../../redux/userReducer";
 import './Game.css';
+
 
 class Game extends Component {
     constructor(props) {
@@ -42,6 +48,7 @@ class Game extends Component {
 
 
     render() {
+        console.log(this.props)
         const { score, questions } = this.state;
         return (
             <div className='playGameCont'>
@@ -65,4 +72,16 @@ class Game extends Component {
     }
 }
 
-export default Game;
+function mapStateToProps(reduxState){
+    return {
+      gameInfo: reduxState.userReducer
+    }
+}
+
+const mapDispatchToProps = {
+    loadGameDetails,
+    setGameID,
+    lobbyUsers
+  };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Game);
