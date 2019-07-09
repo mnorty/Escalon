@@ -96,7 +96,21 @@ module.exports = {
   
   addQuestion: async (req,res) => {
     const {games_id,question,remediation,answer,distractor1,distractor2,distractor3} = req.body
-    console.log('Made it to Add Question in Game Controller', req.session,req.params,req.body) 
+    const { session } = req;
+    const db = req.app.get("db");
+    if (session) {
+      const gameQuestion = await db.question_create_new({
+        games_id: games_id, 
+        question: question,
+        remediation: remediation,
+        answer:answer,
+        distractor1:distractor1,  
+        distractor2:distractor2,
+        distractor3:distractor3
+      });
+      res.status(200).send(gameQuestion);
+    }
+    console.log('Made it to Add Question in Game Controller') 
   }
   
 };
