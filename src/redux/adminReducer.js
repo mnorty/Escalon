@@ -31,7 +31,7 @@ function reducer(state = initialState, action) {
         case NEW_GAME_ID:
             console.log('New Game Case')
             return {
-                ...state
+                ...state, newGameId:action.payload
             }
         case REQUEST_GAMES+'_FULFILLED':
             return {...state, game: action.payload}
@@ -63,8 +63,12 @@ export const requestUserGames = () => {
 
 const NEW_GAME_ID = 'NEW_GAME_ID'
 
-export function updateNewGameID() {
-    console.log('made it to New Game Id on Reducer')
+export function updateNewGameID(GameId) {
+    console.log('made it to New Game Id on Reducer',GameId)
+    return {
+        type:NEW_GAME_ID,
+        payload:GameId
+    }
 }
 
 export default reducer

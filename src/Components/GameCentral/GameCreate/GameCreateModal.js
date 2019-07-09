@@ -10,7 +10,7 @@ class GameCreateModal extends Component {
     this.state = {
       game_title: '',
       game_intro: '',
-      newGameId: ''
+      newGameId: []
     }
   }
 
@@ -23,7 +23,8 @@ class GameCreateModal extends Component {
   handleGameId = (data) => {
     this.state.newGameId=data[0].id
     console.log(this.props)
-    updateNewGameID()
+    updateNewGameID(data[0].id)
+    console.log(this.props)
   }
 
   render() {
@@ -34,13 +35,18 @@ class GameCreateModal extends Component {
     const opedAddQuestion = () => {
       this.props.callbackForAddQuestion('true')
     }
+
+    const updateGameId = (data) => {
+      this.props.callbackForupdateNewGameId(data)
+    }
+
     const createGame = () => {
       let admins_id = (this.props.user.adminReducer.user.id)
       let game_title = (this.state.game_title)
       let game_intro = (this.state.game_intro)
       axios.post('/game/create',{admins_id,game_title,game_intro})///add the information we are sending over.
       .then(res => {
-        this.handleGameId(res.data)
+        updateGameId(res.data)
       })
     }
 

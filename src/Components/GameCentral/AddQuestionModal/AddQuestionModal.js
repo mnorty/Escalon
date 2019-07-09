@@ -9,7 +9,7 @@ class AddQuestionModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      game_id: '',
+      game_id: this.props.MotherGame,
       question: '',
       remediation: '',
       answer: '',
@@ -27,7 +27,7 @@ class AddQuestionModal extends Component {
   }
 
   render() {
-    console.log(this.props)
+    console.log(this.props.MotherGame)
 
     const closeAddQuestion = () => {
       this.props.closeAddQuestion('false')

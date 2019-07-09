@@ -11,7 +11,8 @@ class GameCentral extends Component {
     super(props)
     this.state = {
       CreateModal: 'false',
-      AddQuestion: 'false'
+      AddQuestion: 'false',
+      NewGameId: ''
     }
   }
 
@@ -62,9 +63,17 @@ class GameCentral extends Component {
         AddQuestion: dataFromChild
       })
     }
+
+    const updateNewGameId = (dataFromChild) => {
+      this.setState({
+        NewGameId: dataFromChild
+      })
+      console.log(this.state,this.state.NewGameId[0].id)
+    }
     let games = this.props.user.adminReducer.game
     let game = games.map(game => <GameDisplayCard key={game.id} game={game} />)
-    return (
+
+    return ( 
 
       <div className='gameCentCont'>
         <div className='gameCentralHeader'>
@@ -75,12 +84,12 @@ class GameCentral extends Component {
             <button id='createGameModal' onClick={openCreateModel}>create game</button>
 
             {this.state.CreateModal !== 'false'
-              ? <GameCreateModal createDisplay={this.state.CreateModal} callbackFromParent={closeCreateModel} callbackForAddQuestion={openAddQuestion} />
+              ? <GameCreateModal createDisplay={this.state.CreateModal} callbackFromParent={closeCreateModel} callbackForupdateNewGameId={updateNewGameId} callbackForAddQuestion={openAddQuestion} />
               : null
             }
 
             {this.state.AddQuestion !== 'false'
-              ? <AddQuestionModal closeAddQuestion={closeAddQuestion} />
+              ? <AddQuestionModal closeAddQuestion={closeAddQuestion} MotherGame = {this.state.NewGameId[0]}/>
               : null
             }
             {/* <GameCreateModal/>
