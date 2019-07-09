@@ -21,8 +21,8 @@ class Navbar extends Component {
     return (
         <nav>
           <div className='container'>
+          <Link to='/'><div className='logo-container'></div></Link>
             <div className='title'>
-            <Link to='/'>Game Show</Link>
             </div>
             <ul className='nav-links'>
             <a href='10000' className='nav-gc'>

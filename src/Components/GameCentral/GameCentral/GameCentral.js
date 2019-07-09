@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './GameCentral.css'
-// import GameDisplay from '../GameDisplay/GameDisplay'
+// import GameDisplay from '../../GameDisplay/GameDisplay'
 import GameCreateModal from '../GameCreate/GameCreateModal'
 import AddQuestionModal from '../AddQuestionModal/AddQuestionModal'
 import {connect} from 'react-redux'
