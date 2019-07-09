@@ -7,7 +7,7 @@ class TimerCountDown extends Component {
         this.state = {
             timerOn: false,
             timerStart: 0,
-            timerTime: 500000
+            timerTime: 20000
         }
     }
     componentDidMount() {
