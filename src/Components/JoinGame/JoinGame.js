@@ -45,6 +45,8 @@ class JoinGame extends Component {
   render() {
     // console.log(this.props);
     return (
+      <div>
+      {/* <div className="join-banner">Join Game</div> */}
       <form className="join-container" onSubmit={this.handleLogin}>
         <label className="username-input" htmlFor="username">
           Username
@@ -58,8 +60,9 @@ class JoinGame extends Component {
           Game ID
         </label>
         <input type="text" id="gameID" onChange={this.handleLoginInfoUpdate} />
-        <button type="submit">Join Game</button>
+        <button className="join-btn" type="submit">Join Game</button>
       </form>
+      </div>
     );
   }
 }

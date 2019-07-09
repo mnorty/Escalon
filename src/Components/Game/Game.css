@@ -1,22 +1,11 @@
-.playCont {
-    /* background: url('https://yellingyak.com/wp-content/uploads/2019/06/bg_shaper2.jpg') no-repeat center center fixed; */
-    background: linear-gradient(to bottom right, #900835, #F00C66);
-    min-height: 100vh;
-    /* position: relative; */
+.playGameCont {
+    background-image: linear-gradient( #000000, #2d2053);
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
 }
-.playHeader {
-    background: rgba(0, 0, 0, 0.2);
-    height: 6em;
-    padding: 0 2em;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.playHeaderScore {
-    display: flex;
-    align-items: center;
-}
-.playHeaderScore h3 {
-    margin-right: .3em;
-    color: rgba(255, 255, 255, 0.6);
-}
+/* .playGameLeaderBoard {
+    position: absolute;
+    z-index: 1;
+} */
