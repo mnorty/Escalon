@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../GameQuestion.css';
 
 class TimerCountDown extends Component {
     constructor(props) {
@@ -6,7 +7,7 @@ class TimerCountDown extends Component {
         this.state = {
             timerOn: false,
             timerStart: 0,
-            timerTime: 3000
+            timerTime: 20000
         }
     }
     componentDidMount() {
@@ -16,11 +17,10 @@ class TimerCountDown extends Component {
     startTimer = () => {
         this.setState({
           timerOn: true,
-          timerTime: this.state.timerTime,
           timerStart: this.state.timerTime
         });
         this.timer = setInterval(() => {
-          const newTime = this.state.timerTime - 10;
+            const newTime = this.state.timerTime - 1000;
           if (newTime >= 0) {
             this.setState({
               timerTime: newTime
@@ -28,16 +28,17 @@ class TimerCountDown extends Component {
           } else {
             clearInterval(this.timer);
             this.setState({ timerOn: false });
-            alert("Countdown ended");
+              this.props.handleGameCompledToggle();
           }
-        }, 10);
+        }, 1000);
       };
 
     render() {
         const { timerTime } = this.state;
+        const newTime = timerTime / 1000
         return (
-            <div>
-                <h1>{timerTime}</h1>
+            <div className='spaceHeaderTimer'>
+                <h1>{newTime}</h1>
             </div>
         )
     }

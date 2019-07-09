@@ -92,6 +92,8 @@ class Lobby extends Component {
               Leave Game
             </button>
         </div>
+
+        
       </div>
     );
   }
