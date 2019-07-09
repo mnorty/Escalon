@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
-import './Game.css';
 import GameQuestion from './GameQuestion';
 import TimerCountDown from './TimerCountDown';
+import { connect } from 'react-redux'
+import {
+    loadGameDetails,
+    setGameID,
+    lobbyUsers
+  } from "../../redux/userReducer";
+import './Game.css';
+
 
 class Game extends Component {
     constructor(props) {
@@ -41,11 +48,13 @@ class Game extends Component {
     
 
     render() {
+        console.log(this.props)
         const { score, questions } = this.state;
         return (
             <div>
                 <div className='playHeader'>
-                    <h2>username</h2><TimerCountDown />
+                    <h2>{this.props.gameInfo.username}</h2>
+                    <TimerCountDown />
                     <div className='playHeaderScore'>
                         <h3>SCORE:</h3>
                         <h1>{score}</h1>
@@ -67,4 +76,16 @@ class Game extends Component {
     }
 }
 
-export default Game;
+function mapStateToProps(reduxState){
+    return {
+      gameInfo: reduxState.userReducer
+    }
+}
+
+const mapDispatchToProps = {
+    loadGameDetails,
+    setGameID,
+    lobbyUsers
+  };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Game);

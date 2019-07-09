@@ -8,13 +8,27 @@ module.exports = {
     };
     res.status(200).send(req.session.user);
   },
-  checkUser: (req, res, next) => {
-    if (req.session.user.username) {
-      next();
-    } else {
-      res.status(401).send("Please login");
-    }
-  },
+  // createUser: async (req, res) => {
+  //   const { username } = req.body;
+  //   const db = req.app.get('db')
+  //   const userFound = await db.check_username({ username });
+  //   if (userFound[0]) return res.status(409).send("User exists!");
+  //   const createUsername = await db.user_create_new({
+  //     username
+  //   })
+  //   session.user = { id: createUsername[0].id, 
+  //     username: createUsername[0].username
+  //   };
+  //   res.status(200).send(session.user);
+  // },
+
+  // checkUser: (req, res, next) => {
+  //   if (req.session.user.username) {
+  //     next();
+  //   } else {
+  //     res.status(401).send("Please login");
+  //   }
+  // },
   createGame: async (req, res) => {
     const gameID = uuid();
     console.log(req.body)
