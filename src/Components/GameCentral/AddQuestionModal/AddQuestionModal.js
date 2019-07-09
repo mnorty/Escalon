@@ -18,6 +18,7 @@ class AddQuestionModal extends Component {
       distractor3: ''
     }
   }
+  
 
   handleInputUpdate = (e) => {
     this.setState({
@@ -27,7 +28,8 @@ class AddQuestionModal extends Component {
   }
 
   render() {
-    console.log(this.props.MotherGame)
+    const motherGameid = this.props.MotherGame
+    console.log(this.props.MotherGame,motherGameid)
 
     const closeAddQuestion = () => {
       this.props.closeAddQuestion('false')

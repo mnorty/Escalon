@@ -24,6 +24,8 @@ class GameCreateModal extends Component {
     this.state.newGameId=data[0].id
     console.log(this.props)
     updateNewGameID(data[0].id)
+    console.log(this.state.newGameId)
+    // updateGameId(this.state.newGameId)
     console.log(this.props)
   }
 
