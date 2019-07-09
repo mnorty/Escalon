@@ -1,4 +1,10 @@
 import React, { Component } from 'react';
+import { Spring } from 'react-spring/renderprops';
+import BgDirt from './BackgroundItems/BgDirt';
+import Cockpit from './BackgroundItems/Cockpit';
+import Question from './BackgroundItems/Question';
+import Spaceship from './BackgroundItems/Spaceship';
+
 import './GameQuestion.css';
 
 class Game extends Component {
@@ -7,6 +13,7 @@ class Game extends Component {
         this.state = {
             remediationShowing: false,
             question: {},
+            questions: [],
             questionCount: null
         }
     }
@@ -20,14 +27,7 @@ class Game extends Component {
         let questionCount = questions.length
         this.setState({
             questionCount,
-            question: questions[questionCount - 1]
-        })
-    }
-
-    handleSetQuestion = () => {
-        const { questions } = this.props;
-        const { questionCount } = this.state;
-        this.setState({
+            questions,
             question: questions[questionCount - 1]
         })
     }
@@ -49,14 +49,18 @@ class Game extends Component {
     }
 
     handleNextQuestion = () => {
-        const { questionCount } = this.state;
-        if (questionCount !== 1) {
+        let { questionCount, questions } = this.state;
+        let newCount = questionCount -= 1
+        let newQuestion = questions[newCount - 1]
+        console.log('new', newCount)
+        console.log('qC', questionCount)
+        if (questionCount !== 0) {
             this.setState({
-                questionCount: this.state.questionCount -= 1
+                questionCount: newCount,
+                question: newQuestion
             })
-            this.handleSetQuestion();
             this.handleRemediationToggle();
-        } else if (questionCount === 1) {
+        } else if (questionCount === 0) {
             console.log('quiz completed')
             this.props.handleGameCompledToggle();
         }
@@ -76,37 +80,42 @@ class Game extends Component {
     }
 
     render() {
-        console.log('count', this.state.questionCount)
         const randomAnswers = this.handleRandomAnswers();
         const answerBtns = randomAnswers.map((answerChoice, ind) => {
             return (
                 <div key={ind}><button value={answerChoice} onClick={this.handleAnswerClicked}>{answerChoice}</button></div>
             )
         })
-        const { question, remediation } = this.state.question;
         return (
-            <div>
-                <div className='playSetupCont'>
-                    <div className='playSetupScreen'>
-                        <h2>{question}</h2>
+            <Spring
+                from={{ opacity: 0 }}
+                to={{ opacity: 1 }}
+                config={{ tension: 200, friction: 7 }} >
+                {props => (<div style={props}>
+                    
+                    <div className='spaceIntroCont'>
+                        <div className='spaceQuestionCont'>
+                            <Question
+                                answerBtns={answerBtns}
+                                state={this.state}
+                                handleNextQuestion={this.handleNextQuestion}/>
+                        </div>
+                        <div className='spaceCockpitCont'>
+                            <Cockpit
+                                score={this.props.score}
+                                handleGameCompledToggle={this.props.handleGameCompledToggle}/>
+                        </div>
+                        <div className='spaceShip'>
+                            <Spaceship />
+                        </div>
+                        <BgDirt />
                     </div>
-                    {(this.state.remediationShowing === false)
-                        ? (
-                            <div className='playSetubBtns'>
-                                {answerBtns}
-                            </div>
-                        ) : (
-                            <div className='playSetupRemediation'>
-                                <div className='playSetupRemediationInside'>
-                                    <h3>{remediation}</h3>
-                                    <button onClick={this.handleNextQuestion}>Next</button>
-                                </div>
-                            </div>
-                        )}
-                </div>
-            </div>
+
+                </div>)}</Spring>
         )
     }
 }
 
 export default Game;
+
+

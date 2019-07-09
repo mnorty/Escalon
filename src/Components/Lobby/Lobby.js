@@ -72,6 +72,8 @@ class Lobby extends Component {
             <button className="leaveBtn" onClick={this.leaveRoom}>Leave Game</button>
           </div>
         </div>
+
+        
       </div>
     );
   }
