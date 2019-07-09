@@ -53,6 +53,7 @@ class Lobby extends Component {
       this.props.gameInfo.username,
       this.props.gameInfo.gameID
     );
+    // window.alert('Left game');
     this.props.history.push("/join");
   };
 
@@ -74,7 +75,8 @@ class Lobby extends Component {
         <header className="gameCentralHeader" />
         <div className="lobbyContainer">
           <div className="lobbybox">
-            {this.props.gameInfo.game_title}
+            <div className="game-title" />
+          </div>
             <div className="lobbyDescription">
               Game Instructions:
               {this.props.gameInfo.game_intro}
@@ -89,7 +91,6 @@ class Lobby extends Component {
             <button className="leaveBtn" onClick={this.leaveRoom}>
               Leave Game
             </button>
-          </div>
         </div>
       </div>
     );

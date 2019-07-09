@@ -1,9 +1,24 @@
+.join-banner {
+ 
+}
+
 .join-container{
+  background-image: url(../../Assets/space_texture.png);
+  background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  height:81vh;
+  height:80vh;
   flex-direction: column;
-  margin-bottom: 8rem;
   color: #ffffff;
+}
+
+input {
+  background: white;
+  width: 220px;
+  height: 25px;
+}
+
+.join-btn {
+  background: #824ED3;
 }
