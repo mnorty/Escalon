@@ -68,11 +68,9 @@ class GameCentral extends Component {
       this.setState({
         NewGameId: dataFromChild
       })
-      console.log(this.state,this.state.NewGameId[0].id)
       this.setState({
         NewGameId:this.state.NewGameId[0].id
       })
-      console.log(this.state.NewGameId)
     }
     let games = this.props.user.adminReducer.game
     let game = games.map(game => <GameDisplayCard key={game.id} game={game} />)

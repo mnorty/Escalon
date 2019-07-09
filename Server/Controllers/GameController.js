@@ -44,7 +44,6 @@ module.exports = {
         game_intro: game_intro,
         gameroom_id: gameID 
       });
-      console.log(gameInfo)
       res.status(200).send(gameInfo);
     }
   },
@@ -91,13 +90,13 @@ module.exports = {
   deleteGame: async(req,res) => {
     const user_id = req.session.admin.id
     const id = req.params.id
-    console.log( 'UserId:',user_id,'GameId:',id)
     const dbInstance = await req.app.get('db');
     dbInstance.game_delete({id})
   },
   
   addQuestion: async (req,res) => {
-    console.log('Made it to Add Question in Game Controller', req.session,req.session) 
+    const {games_id,question,remediation,answer,distractor1,distractor2,distractor3} = req.body
+    console.log('Made it to Add Question in Game Controller', req.session,req.params,req.body) 
   }
   
 };
