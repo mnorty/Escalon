@@ -22,13 +22,11 @@ class GameCreateModal extends Component {
 
   handleGameId = (data) => {
     this.state.newGameId=data[0].id
-    console.log(this.props)
     updateNewGameID(data[0].id)
-    console.log(this.props)
+    // updateGameId(this.state.newGameId)
   }
 
   render() {
-    console.log(this.props)
     const closeCreateModel = () => {
       this.props.callbackFromParent('false')
     }

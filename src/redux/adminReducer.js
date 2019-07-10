@@ -30,9 +30,7 @@ function reducer(state = initialState, action) {
             }
         case NEW_GAME_ID:
             console.log('New Game Case')
-            return {
-                ...state, newGameId:action.payload
-            }
+            return {...state, newGameId:action.payload}
         case REQUEST_GAMES+'_FULFILLED':
             return {...state, game: action.payload}
         default:

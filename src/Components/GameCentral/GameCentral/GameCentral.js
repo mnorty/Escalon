@@ -68,7 +68,9 @@ class GameCentral extends Component {
       this.setState({
         NewGameId: dataFromChild
       })
-      console.log(this.state,this.state.NewGameId[0].id)
+      this.setState({
+        NewGameId:this.state.NewGameId[0].id
+      })
     }
     let games = this.props.user.adminReducer.game
     let game = games.map(game => <GameDisplayCard key={game.id} game={game} />)
@@ -89,7 +91,7 @@ class GameCentral extends Component {
             }
 
             {this.state.AddQuestion !== 'false'
-              ? <AddQuestionModal closeAddQuestion={closeAddQuestion} MotherGame = {this.state.NewGameId[0]}/>
+              ? <AddQuestionModal closeAddQuestion={closeAddQuestion} MotherGame = {this.state.NewGameId}/>
               : null
             }
             {/* <GameCreateModal/>
