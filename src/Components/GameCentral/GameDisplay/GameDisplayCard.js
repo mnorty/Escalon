@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
-import './GameDisplayCard.css'
+import '../GameDisplay/GameDisplayCard.css'
 import axios from 'axios'
+import GameEditModal from '../GameEditModal/GameEditModal'
 
 class Card extends Component {
   constructor(){
     super()
     this.state = {
-      shareDisplay: 'false'
+      shareDisplay: 'false',
+      editModal: 'false'
     }
   }
 
@@ -32,12 +34,32 @@ class Card extends Component {
       } 
     }
 
+    const toggleEditModal = () => {
+      if(
+        this.state.shareDisplay === 'true'
+      ){this.setState({
+        editModal:'false'
+      })}else {
+        this.setState({
+          editModal:'true'
+        })
+      } 
+    }
+
+    const closeEditModal = (dataFromChild) => {
+      this.setState({
+        editModal: dataFromChild
+      })
+    }
+
 
     return (      
     <div  className='cardContainer'>
     <p>Game Intro: {game_intro}</p>
     <p>Game Name: {game_title}</p>
-    <button className='cardBtn'>Edit</button>
+    <button className='cardBtn'
+    onClick={toggleEditModal}
+    >Edit</button>
     <button
     className='cardBtn'
     onClick={toggleShareModal}
@@ -48,6 +70,10 @@ class Card extends Component {
     >Delete</button>
     {this.state.shareDisplay !== 'false'
               ? <div id='modal' >Game Room id:{gameroom_id}</div>
+              : null
+            }
+    {this.state.editModal !== 'false'
+              ? <GameEditModal callbackFromParent = {closeEditModal}/>
               : null
             }
   </div>
