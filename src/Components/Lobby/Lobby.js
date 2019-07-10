@@ -43,7 +43,7 @@ class Lobby extends Component {
     this.socket.emit("join room", this.props.match.params.id);
   };
   joinSuccess = currentUsers => {
-    console.log(currentUsers);
+    // console.log(currentUsers);
     this.props.lobbyUsers(currentUsers);
   };
 
@@ -72,22 +72,21 @@ class Lobby extends Component {
     });
     return (
       <div>
-        <header className="gameCentralHeader" />
         <div className="lobbyContainer">
-          <div className="lobbybox">
-            <div className="game-title" />
-          </div>
+          <div className="lobbybox" />
+            <div className="game-title">Game Title</div>
             <div className="lobbyDescription">
-              Game Instructions:
+              Game Instructions: <br />
               {this.props.gameInfo.game_intro}
             </div>
-            <div className="lobbyUsers" />
-            {currentSession}
-
+            <h2>Users in lobby</h2><br />
+            <div className="lobbyUsers">
+              {currentSession}
+            </div>
             <button className="lobbyBtn" onClick={this.toggleStartGame}>
               Start Game
             </button>
-
+            <br />
             <button className="leaveBtn" onClick={this.leaveRoom}>
               Leave Game
             </button>
