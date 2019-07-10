@@ -45,10 +45,9 @@ class Navbar extends Component {
           </div>
             <div className={this.state.showMenu ? 'nav-menu nav-menu-show' : 'nav-menu'}>
               <ul className='nav-list'>
-                <li>GameList</li>
-                <li>GameCentral</li>
-                <li>Register</li>
-                <li>Account</li>
+                <Link to='/gamecentral'>GameCentral</Link>
+                <Link to='/register'>Register</Link>
+                <Link to='/join'>Join</Link>
                 
               </ul>
             </div>

@@ -15,7 +15,8 @@ class AddQuestionModal extends Component {
       answer: '',
       distractor1: '',
       distractor2: '',
-      distractor3: ''
+      distractor3: '',
+      gameQuestion: [],
     }
   }
 
@@ -34,9 +35,18 @@ class AddQuestionModal extends Component {
     }
 
     const addQuestionFunction = () => {
-      axios.post('/game/addquestion', )
+      
+      axios.post('/game/addquestion', this.state )
       .then(res => {
         console.log('addQuestion hit in Modal')
+      })
+      this.setState({
+      question: '',
+      remediation: '',
+      answer: '',
+      distractor1: '',
+      distractor2: '',
+      distractor3: ''
       })
     }
 
@@ -66,36 +76,42 @@ class AddQuestionModal extends Component {
               type="text"
               name='question'
               onChange={this.handleInputUpdate}
+              value={this.state.question}
             />
             <p>Remediation</p>
             <input
               type="text"
               name='remediation'
               onChange={this.handleInputUpdate}
+              value={this.state.remediation}
             />
             <p>Answer</p>
             <input
               type="text"
               name='answer'
               onChange={this.handleInputUpdate}
+              value={this.state.answer}
             />
             <p>Distractor</p>
             <input
               type="text"
               name='distractor1'
               onChange={this.handleInputUpdate}
+              value={this.state.distractor1}
             />
             <p>Distractor</p>
             <input
               type="text"
               name='distractor2'
               onChange={this.handleInputUpdate}
+              value={this.state.distractor2}
             />
             <p>Distractor</p>
             <input
               type="text"
               name='distractor3'
               onChange={this.handleInputUpdate}
+              value={this.state.distractor3}
             />
           </div>
             <div className='questionDisplayCont'>
