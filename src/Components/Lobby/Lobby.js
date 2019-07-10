@@ -59,6 +59,15 @@ class Lobby extends Component {
     this.props.history.push("/join");
   };
 
+  userLeave = (username) => {
+    axios.delete(`/deleteuser?username=${username}`)
+      .then(res => {
+        console.log(res)
+        console.log(this.props)
+        this.props.history.push("/join")
+      })
+  }
+
   toggleStartGame = () => {
     this.setState({
       startGame: true
@@ -67,7 +76,7 @@ class Lobby extends Component {
   };
 
   render() {
-    // console.log(this.props);
+    console.log(this.props);
     const currentSession = this.props.gameInfo.users.map((ele, i) => {
       // console.log(ele);
       return <p key={i}>{ele.username}</p>;
@@ -76,22 +85,22 @@ class Lobby extends Component {
       <div>
         <div className="lobbyContainer">
           <div className="lobbybox" />
-          <div className="game-title">Game Title</div>
-          <div className="lobbyDescription">
-            Game Instructions: <br />
-            {this.props.gameInfo.game_intro}
-          </div>
-          <h2>Users in lobby</h2>
-          <br />
-          <div className="lobbyUsers">{currentSession}</div>
-          <ReactAudioPlayer src={song} autoPlay loop/>
-          <button className="lobbyBtn" onClick={this.toggleStartGame}>
-            Start Game
-          </button>
-          <br />
-          <button className="leaveBtn" onClick={this.leaveRoom}>
-            Leave Game
-          </button>
+            <div className="game-title">Game Title</div>
+            <div className="lobbyDescription">
+              Game Instructions: <br />
+              {this.props.gameInfo.game_intro}
+            </div>
+            <h2>Users in lobby</h2><br />
+            <div className="lobbyUsers">
+              {currentSession}
+            </div>
+            <button className="lobbyBtn" onClick={this.toggleStartGame}>
+              Start Game
+            </button>
+            <br />
+            <button className="leaveBtn" onClick={e => this.userLeave(this.props.gameInfo.username.username)}>
+              Leave Game
+            </button>
         </div>
       </div>
     );
