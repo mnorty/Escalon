@@ -15,7 +15,6 @@ class GameEditModal extends Component {
     this.setState({
       [e.target.name]: e.target.value
     })
-    console.log(this.state)
   }
   
   
@@ -48,7 +47,7 @@ class GameEditModal extends Component {
       callbackQuestion();
       closeEditModel();
     }
-    console.log('This is the Game Id',this.props,this.props.gameId.game.id,'Current State:',console.log(this.state))
+
     const name = 'bob'
     return (
       <div id='gameCreateModal' className='modal'>
