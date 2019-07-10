@@ -9,7 +9,8 @@ import {
     lobbyUsers
   } from "../../redux/userReducer";
 import './Game.css';
-
+import ReactAudioPlayer from 'react-audio-player'
+import song from '../../Assets/GameTheme.wav'
 
 class Game extends Component {
     constructor(props) {
@@ -70,6 +71,7 @@ class Game extends Component {
         const { score, questions, username } = this.state;
         return (
             <div className='playGameCont'>
+            <ReactAudioPlayer src={song} autoPlay loop/>
                 {(this.state.completedToggle === false)
                     ? (
                         <div>

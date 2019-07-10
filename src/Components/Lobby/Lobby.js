@@ -8,6 +8,8 @@ import {
 } from "../../redux/userReducer";
 import io from "socket.io-client";
 import "./Lobby.css";
+import ReactAudioPlayer from 'react-audio-player';
+import song from "../../Assets/GameLogin.wav";
 
 class Lobby extends Component {
   constructor(props) {
@@ -60,7 +62,7 @@ class Lobby extends Component {
   toggleStartGame = () => {
     this.setState({
       startGame: true
-    }); 
+    });
     this.props.history.push("/game");
   };
 
@@ -74,25 +76,23 @@ class Lobby extends Component {
       <div>
         <div className="lobbyContainer">
           <div className="lobbybox" />
-            <div className="game-title">Game Title</div>
-            <div className="lobbyDescription">
-              Game Instructions: <br />
-              {this.props.gameInfo.game_intro}
-            </div>
-            <h2>Users in lobby</h2><br />
-            <div className="lobbyUsers">
-              {currentSession}
-            </div>
-            <button className="lobbyBtn" onClick={this.toggleStartGame}>
-              Start Game
-            </button>
-            <br />
-            <button className="leaveBtn" onClick={this.leaveRoom}>
-              Leave Game
-            </button>
+          <div className="game-title">Game Title</div>
+          <div className="lobbyDescription">
+            Game Instructions: <br />
+            {this.props.gameInfo.game_intro}
+          </div>
+          <h2>Users in lobby</h2>
+          <br />
+          <div className="lobbyUsers">{currentSession}</div>
+          <ReactAudioPlayer src={song} autoPlay loop/>
+          <button className="lobbyBtn" onClick={this.toggleStartGame}>
+            Start Game
+          </button>
+          <br />
+          <button className="leaveBtn" onClick={this.leaveRoom}>
+            Leave Game
+          </button>
         </div>
-
-        
       </div>
     );
   }
