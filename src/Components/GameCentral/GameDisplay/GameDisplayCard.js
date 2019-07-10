@@ -50,7 +50,7 @@ class Card extends Component {
 
     const toggleEditQuestion = () => {
       if(
-        this.state.shareDisplay === 'true'
+        this.state.editQuestion === 'true'
       ){this.setState({
         editQuestion:'false'
       })}else {
@@ -90,7 +90,7 @@ class Card extends Component {
               : null
             }
     {this.state.editQuestion !== 'false'
-              ? <EditQuestionModal gameId ={this.props}/>
+              ? <EditQuestionModal gameId ={this.props} callbackQuestion = {toggleEditQuestion}/>
               : null
             }
   </div>

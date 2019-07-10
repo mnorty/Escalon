@@ -29,8 +29,8 @@ class EditQuestionModal extends Component {
     const motherGameid = this.props.MotherGame
     console.log(motherGameid)
     
-    const closeAddQuestion = () => {
-      this.props.closeAddQuestion('false')
+    const closeEditQuestion = () => {
+      this.props.callbackQuestion()
     }
 
     const addQuestionFunction = () => {
@@ -49,7 +49,7 @@ class EditQuestionModal extends Component {
     }
 
     const doubleQuestion = () => {
-      closeAddQuestion();
+      closeEditQuestion();
       addQuestionFunction()
     } 
     console.log(this.state,this.props)
@@ -59,7 +59,7 @@ class EditQuestionModal extends Component {
         <div className='gameCreateModalContent'>
           <div className='gameCreateModalHeader'>
             <h3>{`Edit Questions For:  ${game_title}`}</h3>
-            <button onClick={closeAddQuestion}>X</button>
+            <button onClick={closeEditQuestion}>X</button>
           </div>
             <div className='CreateGameEntryContBtn'>
               <button 

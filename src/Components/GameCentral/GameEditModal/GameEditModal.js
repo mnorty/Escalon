@@ -46,6 +46,7 @@ class GameEditModal extends Component {
     const clickFunction = () => {
       editGame();
       callbackQuestion();
+      closeEditModel();
     }
     console.log('This is the Game Id',this.props,this.props.gameId.game.id,'Current State:',console.log(this.state))
     const name = 'bob'
