@@ -4,7 +4,7 @@ const SocketConnection = (server, app) => {
 
   io.on("connection", socket => {
     console.log("A user has connected");
-    console.log(socket.id);
+    // console.log(socket.id);
     const db = app.get("db");
     socket.on("username", username => {
       socket.username = username;
@@ -12,20 +12,27 @@ const SocketConnection = (server, app) => {
     socket.on("join room", async gameID => {
       socket.join(gameID);
       const users = await db.get_lobby_users({ game_id: gameID });
-      io.to(gameID).emit("room joined", users);
+      io.in(gameID).emit("room joined", users);
     });
-    socket.on('leave room', async (username, gameID) => {
-      await db.delete_user_lobby({username})
-      socket.disconnect()
+    socket.on("leave room", async (username, gameID) => {
+      await db.delete_user_lobby({username});
+      // console.log(db.get_lobby_users)
       const users = await db.get_lobby_users({ game_id: gameID });
-      io.to(gameID).emit("room joined", users);
-      // console.log(username)
-    })
+      await socket.disconnect();
+      console.log(users)
+      await io.to(gameID).emit("room joined", users);
+      console.log(username);
+      console.log(gameID);
+    });
     socket.on("end game", gameID => {
       socket.to(gameID).emit("end room");
     });
-    socket.on("disconnect", () => {
-      console.log("A user has disconnected");
+    socket.on("finish game", async (data) => {
+      const { gameID, username, userID, score } = data;
+      await db.user_update({id: userID, score})
+      const users = await db.get_lobby_users({ game_id: gameID });
+      socket.emit("finishedGame", users)
+      // console.log(data);
     });
   });
 };

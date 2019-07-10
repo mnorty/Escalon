@@ -2,9 +2,6 @@
     background-image: linear-gradient( #000000, #2d2053);
     height: 100vh;
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .leaderBoardBoxsCont {
@@ -14,16 +11,13 @@
 }
 
 .leaderUsersBox {
-    background: blue;
     min-width: 20em;
-    /* padding: 2em; */
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.leaderImgBox {
-    /* background: red; */
-    /* width: 20em; */
+.leaderUsersBox button {
+    margin-top: 1em;
 }
 
 

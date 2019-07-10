@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 import {
     loadGameDetails,
     setGameID,
-    lobbyUsers
+    lobbyUsers,
+    userScore
 } from "../../redux/userReducer";
 import './LeaderBoard.css';
 
@@ -18,9 +19,13 @@ class LeaderBoard extends Component {
     }
 
     render() {
-        console.log('LB props', this.props)
-        const currentSession = this.props.gameInfo.users.map((ele, i) => {
-            return <h3 key={i}>{ele.username}</h3>;
+        // console.log('LB props', this.props)
+        const { users } = this.props;
+        const currentSession = users.map((ele, i) => {
+            return <div key={i}>
+                <h3>{ele.username}</h3>
+                <h3>{ele.score}</h3>
+            </div>;
         });
         return (
             <div className='leaderBoardCont'>
@@ -28,29 +33,31 @@ class LeaderBoard extends Component {
                     <div className='leaderUsersBox'>
                         <h1>Leader Board</h1>
                         {currentSession}
+                        <button>LEAVE GAME</button>
                     </div>
                     <div className='leaderImgBox'>
-                        <img src='https://yellingyak.com/wp-content/uploads/2019/07/rr_logo.png' />
+                        <img src='https://yellingyak.com/wp-content/uploads/2019/07/rr_logo.png' alt='img' />
                     </div>
                 </div>
-                <button>LEAVE GAME</button>
             </div>
         )
     }
 }
 
 
-function mapStateToProps(reduxState) {
-    return {
-        gameInfo: reduxState.userReducer
-    }
-}
+// function mapStateToProps(reduxState) {
+//     return {
+//         gameInfo: reduxState.userReducer
+//     }
+// }
 
-const mapDispatchToProps = {
-    loadGameDetails,
-    setGameID,
-    lobbyUsers,
-    userScore
-};
+// const mapDispatchToProps = {
+//     loadGameDetails,
+//     setGameID,
+//     lobbyUsers,
+//     userScore
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(LeaderBoard);
+// export default connect(mapStateToProps, mapDispatchToProps)(LeaderBoard);
+
+export default LeaderBoard;

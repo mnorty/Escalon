@@ -9,8 +9,10 @@ import {
     lobbyUsers,
     userScore
   } from "../../redux/userReducer";
+import socket from '../Sockets';
 import './Game.css';
-
+import ReactAudioPlayer from 'react-audio-player'
+import song from '../../Assets/GameTheme.wav'
 
 class Game extends Component {
     constructor(props) {
@@ -20,6 +22,7 @@ class Game extends Component {
             score: 0,
             timer: 30,
             username: '',
+            users: [],
             userID: null,
             questions: [
                 { question: 'question 3', remediation: 'this is remediation 3', answer: 'answer3', distractor1: 'distractor12', distractor2: 'distractor23', distractor3: 'distractor33' },
@@ -30,6 +33,12 @@ class Game extends Component {
 
     componentDidMount() {
         this.handleGetGame();
+        socket.on('finishedGame', (data) => {
+            // console.log('data', data)
+            this.setState({
+                users: data
+            })
+        })
     }
 
     handleGetGame = () => {
@@ -57,23 +66,28 @@ class Game extends Component {
     }
 
     handleUpdateUser = () => {
+        const { gameID } = this.props.gameInfo;
         const { username, userID, score } = this.state;
-        axios.put(`/user/${userID}`, { id: userID, username, score })
-            .then(({ data }) => {
-                this.props.userScore(data)
-            })
-            .then(res => {
-            this.handleGameCompledToggle()
-        })
+        socket.emit('finish game', { gameID, username, userID, score })
+        this.handleGameCompledToggle()
+
+        // axios.put(`/user/${userID}`, { id: userID, username, score })
+        //     .then( async ({ data }) => {
+        //         // await this.props.userScore(data)
+                
+        //         this.handleGameCompledToggle()
+        //     })
     }
 
 
     render() {
         
         console.log('game', this.props.gameInfo)
+        const { users } = this.state
         const { score, questions, username } = this.state;
         return (
             <div className='playGameCont'>
+            <ReactAudioPlayer src={song} autoPlay loop/>
                 {(this.state.completedToggle === false)
                     ? (
                         <div>
@@ -87,7 +101,9 @@ class Game extends Component {
                     ) : (
                         <div>
                             <LeaderBoard
-                                score={score} />
+                                score={score}
+                                username={username}
+                                users={users}/>
                         </div>
                     )}
             </div>
