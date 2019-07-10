@@ -8,6 +8,8 @@ import {
 } from "../../redux/userReducer";
 import io from "socket.io-client";
 import "./Lobby.css";
+import ReactAudioPlayer from 'react-audio-player';
+import song from "../../Assets/GameLogin.wav";
 
 class Lobby extends Component {
   constructor(props) {
@@ -69,7 +71,7 @@ class Lobby extends Component {
   toggleStartGame = () => {
     this.setState({
       startGame: true
-    }); 
+    });
     this.props.history.push("/game");
   };
 
@@ -100,8 +102,6 @@ class Lobby extends Component {
               Leave Game
             </button>
         </div>
-
-        
       </div>
     );
   }
