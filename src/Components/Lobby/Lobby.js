@@ -57,6 +57,10 @@ class Lobby extends Component {
     this.props.history.push("/join");
   };
 
+  userLeave = () => {
+    axios.delete('/deleteuser', { username })
+  }
+
   toggleStartGame = () => {
     this.setState({
       startGame: true
