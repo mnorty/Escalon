@@ -4,7 +4,7 @@ import {
     loadGameDetails,
     setGameID,
     lobbyUsers
-  } from "../../redux/userReducer";
+} from "../../redux/userReducer";
 import './LeaderBoard.css';
 
 class LeaderBoard extends Component {
@@ -18,9 +18,10 @@ class LeaderBoard extends Component {
     }
 
     render() {
+        console.log('LB props', this.props)
         const currentSession = this.props.gameInfo.users.map((ele, i) => {
-            return <p key={i}>{ele.username}</p>;
-          });
+            return <h3 key={i}>{ele.username}</h3>;
+        });
         return (
             <div className='leaderBoardCont'>
                 <div className='leaderBoardBoxsCont'>
@@ -28,24 +29,28 @@ class LeaderBoard extends Component {
                         <h1>Leader Board</h1>
                         {currentSession}
                     </div>
-                    <div className='leaderChatBox'>Chat Box Here</div>
+                    <div className='leaderImgBox'>
+                        <img src='https://yellingyak.com/wp-content/uploads/2019/07/rr_logo.png' />
+                    </div>
                 </div>
+                <button>LEAVE GAME</button>
             </div>
         )
     }
 }
 
 
-function mapStateToProps(reduxState){
+function mapStateToProps(reduxState) {
     return {
-      gameInfo: reduxState.userReducer
+        gameInfo: reduxState.userReducer
     }
 }
 
 const mapDispatchToProps = {
     loadGameDetails,
     setGameID,
-    lobbyUsers
-  };
+    lobbyUsers,
+    userScore
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(LeaderBoard);

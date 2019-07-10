@@ -6,7 +6,8 @@ import { connect } from 'react-redux'
 import {
     loadGameDetails,
     setGameID,
-    lobbyUsers
+    lobbyUsers,
+    userScore
   } from "../../redux/userReducer";
 import './Game.css';
 
@@ -58,6 +59,9 @@ class Game extends Component {
     handleUpdateUser = () => {
         const { username, userID, score } = this.state;
         axios.put(`/user/${userID}`, { id: userID, username, score })
+            .then(({ data }) => {
+                this.props.userScore(data)
+            })
             .then(res => {
             this.handleGameCompledToggle()
         })
@@ -100,7 +104,8 @@ function mapStateToProps(reduxState){
 const mapDispatchToProps = {
     loadGameDetails,
     setGameID,
-    lobbyUsers
+    lobbyUsers,
+    userScore
   };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Game);
