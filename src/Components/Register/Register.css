@@ -53,6 +53,7 @@
 }
 .registerForm input{
     width: 100%;
+    color: black;
 }
 
 .registerHeader h1 {
@@ -67,6 +68,7 @@
 
 .registerForm input {
     border-color: #ABABAB;
+    color: black;
 }
 
 
