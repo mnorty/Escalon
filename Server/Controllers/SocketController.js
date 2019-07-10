@@ -14,13 +14,16 @@ const SocketConnection = (server, app) => {
       const users = await db.get_lobby_users({ game_id: gameID });
       io.to(gameID).emit("room joined", users);
     });
-    socket.on('leave room', async (username, gameID) => {
-      await db.delete_user_lobby({username})
-      socket.disconnect()
+    socket.on("leave room", async (username, gameID) => {
+      await db.delete_user_lobby({username});
+      console.log(db.get_lobby_users)
       const users = await db.get_lobby_users({ game_id: gameID });
-      io.to(gameID).emit("room joined", users);
-      // console.log(username)
-    })
+      await socket.disconnect();
+      // console.log(users)
+      await io.to(gameID).emit("room joined", users);
+      console.log(username);
+      console.log(gameID);
+    });
     socket.on("end game", gameID => {
       socket.to(gameID).emit("end room");
     });

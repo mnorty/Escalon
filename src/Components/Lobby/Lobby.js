@@ -31,7 +31,7 @@ class Lobby extends Component {
       .get(`/getgame/${id}`)
       .then(res => {
         this.props.loadGameDetails(res.data);
-        console.log(res.data);
+        // console.log(res.data);
       })
       .catch(err => {
         this.props.history.push("/join");
@@ -40,7 +40,7 @@ class Lobby extends Component {
   }
 
   joinRoom = () => {
-    this.socket.emit("join room", this.props.match.params.id);
+    this.socket.emit("join room", this.props.match.params.id)
   };
   joinSuccess = currentUsers => {
     // console.log(currentUsers);
@@ -53,7 +53,7 @@ class Lobby extends Component {
       this.props.gameInfo.username,
       this.props.gameInfo.gameID
     );
-    // window.alert('Left game');
+    window.alert('Left game');
     this.props.history.push("/join");
   };
 
@@ -65,9 +65,9 @@ class Lobby extends Component {
   };
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     const currentSession = this.props.gameInfo.users.map((ele, i) => {
-      console.log(ele);
+      // console.log(ele);
       return <p key={i}>{ele.username}</p>;
     });
     return (
