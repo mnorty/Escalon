@@ -137,6 +137,30 @@ module.exports = {
     const db = req.app.get('db')
     await db.remove_user_game({ username })
     res.status(200).send('User removed from lobby')
-  }
+  },
+
+  editGame: async (req, res) => {
+    console.log('Made it To Edit Gamecontroller',req.body)
+    const {game_id,game_title,game_intro} = req.body
+    const { session } = req;
+    const db = req.app.get("db");
+    if (session) {
+      const gameInfo = await db.game_update({
+        game_id: game_id, 
+        game_title: game_title, 
+        game_intro: game_intro,
+      });
+      res.status(200).send(gameInfo);
+    }
+  },
+  deleteQuestion: async(req,res) => {
+    console.log('made it to Game Controller, Delete Question',req.params.id)
+    const user_id = req.session.admin.id
+    const id = req.params.id
+    const dbInstance = await req.app.get('db');
+    dbInstance.question_delete({id})
+  },
+
+
   
 };

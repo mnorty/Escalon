@@ -30,7 +30,7 @@ class AddQuestionModal extends Component {
 
   render() {
     const motherGameid = this.props.MotherGame
-    console.log(motherGameid)
+    console.log(motherGameid, this.props)
     
     const closeAddQuestion = () => {
       this.props.closeAddQuestion('false')
@@ -130,7 +130,7 @@ class AddQuestionModal extends Component {
             {
               this.state.gameQuestion.map(question => {
                 return(
-                  <QuestionDisplay question={question}/>
+                  <QuestionDisplay question={question} />
                 )
               })
             }

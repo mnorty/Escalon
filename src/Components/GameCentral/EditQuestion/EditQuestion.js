@@ -108,10 +108,10 @@ class EditQuestionModal extends Component {
             />
           </div>
             <div className='questionDisplayCont'>
+            {/* <QuestionDisplay />
             <QuestionDisplay />
             <QuestionDisplay />
-            <QuestionDisplay />
-            <QuestionDisplay />
+            <QuestionDisplay /> */}
           </div>
         </div>
         
