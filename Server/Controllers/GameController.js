@@ -124,14 +124,19 @@ module.exports = {
     console.log('Made it to Add Question in Game Controller') 
   }, 
 
-  deleteUser: (req, res) => {
-    const { username } = req.body
+  deleteUserFromLobby: async (req, res) => {
+    const { username } = req.query
+    // console.log(req.query)
+    // console.log(username)
     const db = req.app.get('db')
-    db.delete_user_lobby({ username })
-    .then(response => {
-      console.log(response)
-      res.status(200).send('User deleted')
-    }).catch(err => res.status(500).send(err))
+    await db.delete_user_lobby({ username })
+    res.status(200).send('User deleted')
+  },
+
+  removedUser: async (req, res ) => {
+    const db = req.app.get('db')
+    await db.remove_user_game({ username })
+    res.status(200).send('User removed from lobby')
   }
   
 };

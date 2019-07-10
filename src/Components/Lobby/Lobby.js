@@ -57,8 +57,13 @@ class Lobby extends Component {
     this.props.history.push("/join");
   };
 
-  userLeave = () => {
-    axios.delete('/deleteuser', { username })
+  userLeave = (username) => {
+    axios.delete(`/deleteuser?username=${username}`)
+      .then(res => {
+        console.log(res)
+        console.log(this.props)
+        this.props.history.push("/join")
+      })
   }
 
   toggleStartGame = () => {
@@ -69,7 +74,7 @@ class Lobby extends Component {
   };
 
   render() {
-    // console.log(this.props);
+    console.log(this.props);
     const currentSession = this.props.gameInfo.users.map((ele, i) => {
       // console.log(ele);
       return <p key={i}>{ele.username}</p>;
@@ -91,7 +96,7 @@ class Lobby extends Component {
               Start Game
             </button>
             <br />
-            <button className="leaveBtn" onClick={this.leaveRoom}>
+            <button className="leaveBtn" onClick={e => this.userLeave(this.props.gameInfo.username.username)}>
               Leave Game
             </button>
         </div>
