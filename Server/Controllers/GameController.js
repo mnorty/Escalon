@@ -122,6 +122,16 @@ module.exports = {
       res.status(200).send(gameQuestion);
     }
     console.log('Made it to Add Question in Game Controller') 
+  }, 
+
+  deleteUser: (req, res) => {
+    const { username } = req.body
+    const db = req.app.get('db')
+    db.delete_user_lobby({ username })
+    .then(response => {
+      console.log(response)
+      res.status(200).send('User deleted')
+    }).catch(err => res.status(500).send(err))
   }
   
 };
