@@ -122,20 +122,21 @@ module.exports = {
       res.status(200).send(gameQuestion);
     }
     console.log('Made it to Add Question in Game Controller') 
+  }, 
+
+  deleteUserFromLobby: async (req, res) => {
+    const { username } = req.query
+    // console.log(req.query)
+    // console.log(username)
+    const db = req.app.get('db')
+    await db.delete_user_lobby({ username })
+    res.status(200).send('User deleted')
   },
-  editGame: async (req, res) => {
-    console.log('Made it To Edit Gamecontroller',req.body)
-    const {game_id,game_title,game_intro} = req.body
-    const { session } = req;
-    const db = req.app.get("db");
-    if (session) {
-      const gameInfo = await db.game_update({
-        game_id: game_id, 
-        game_title: game_title, 
-        game_intro: game_intro,
-      });
-      res.status(200).send(gameInfo);
-    }
-  },
+
+  removedUser: async (req, res ) => {
+    const db = req.app.get('db')
+    await db.remove_user_game({ username })
+    res.status(200).send('User removed from lobby')
+  }
   
 };

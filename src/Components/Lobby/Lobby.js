@@ -8,6 +8,8 @@ import {
 } from "../../redux/userReducer";
 import io from "socket.io-client";
 import "./Lobby.css";
+import ReactAudioPlayer from 'react-audio-player';
+import song from "../../Assets/GameLogin.wav";
 
 class Lobby extends Component {
   constructor(props) {
@@ -31,7 +33,7 @@ class Lobby extends Component {
       .get(`/getgame/${id}`)
       .then(res => {
         this.props.loadGameDetails(res.data);
-        console.log(res.data);
+        // console.log(res.data);
       })
       .catch(err => {
         this.props.history.push("/join");
@@ -40,7 +42,7 @@ class Lobby extends Component {
   }
 
   joinRoom = () => {
-    this.socket.emit("join room", this.props.match.params.id);
+    this.socket.emit("join room", this.props.match.params.id)
   };
   joinSuccess = currentUsers => {
     // console.log(currentUsers);
@@ -53,21 +55,30 @@ class Lobby extends Component {
       this.props.gameInfo.username,
       this.props.gameInfo.gameID
     );
-    // window.alert('Left game');
+    window.alert('Left game');
     this.props.history.push("/join");
   };
+
+  userLeave = (username) => {
+    axios.delete(`/deleteuser?username=${username}`)
+      .then(res => {
+        console.log(res)
+        console.log(this.props)
+        this.props.history.push("/join")
+      })
+  }
 
   toggleStartGame = () => {
     this.setState({
       startGame: true
-    }); 
+    });
     this.props.history.push("/game");
   };
 
   render() {
     console.log(this.props);
     const currentSession = this.props.gameInfo.users.map((ele, i) => {
-      console.log(ele);
+      // console.log(ele);
       return <p key={i}>{ele.username}</p>;
     });
     return (
@@ -87,12 +98,10 @@ class Lobby extends Component {
               Start Game
             </button>
             <br />
-            <button className="leaveBtn" onClick={this.leaveRoom}>
+            <button className="leaveBtn" onClick={e => this.userLeave(this.props.gameInfo.username.username)}>
               Leave Game
             </button>
         </div>
-
-        
       </div>
     );
   }

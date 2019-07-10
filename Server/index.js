@@ -43,6 +43,9 @@ app.use(
     app.put('/game/edit',gameCtrl.editGame)
     //DELETE ENDPOINTS
     app.delete('/deletegame/:id', gameCtrl.deleteGame)
+    app.delete('/deleteuser', gameCtrl.deleteUserFromLobby)
+    app.delete('/removeuser', gameCtrl.removedUser)
+
     
     
     
