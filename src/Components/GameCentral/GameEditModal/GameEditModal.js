@@ -27,6 +27,9 @@ class GameEditModal extends Component {
       this.props.callbackForAddQuestion('true')
     }
 
+    const callbackQuestion = () => {
+      this.props.callbackQuestion()
+    }
     // const updateGameId = (data) => {
     //   this.props.callbackForupdateNewGameId(data)
     // }
@@ -41,9 +44,8 @@ class GameEditModal extends Component {
 
 
     const clickFunction = () => {
-      // closeEditModel();
       editGame();
-      // opedAddQuestion();
+      callbackQuestion();
     }
     console.log('This is the Game Id',this.props,this.props.gameId.game.id,'Current State:',console.log(this.state))
     const name = 'bob'

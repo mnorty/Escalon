@@ -3,13 +3,15 @@ import {connect} from 'react-redux'
 import '../GameDisplay/GameDisplayCard.css'
 import axios from 'axios'
 import GameEditModal from '../GameEditModal/GameEditModal'
+import EditQuestionModal from '../EditQuestion/EditQuestion'
 
 class Card extends Component {
   constructor(){
     super()
     this.state = {
       shareDisplay: 'false',
-      editModal: 'false'
+      editModal: 'false',
+      editQuestion: 'false'
     }
   }
 
@@ -46,6 +48,18 @@ class Card extends Component {
       } 
     }
 
+    const toggleEditQuestion = () => {
+      if(
+        this.state.shareDisplay === 'true'
+      ){this.setState({
+        editQuestion:'false'
+      })}else {
+        this.setState({
+          editQuestion:'true'
+        })
+      } 
+    }
+
     const closeEditModal = (dataFromChild) => {
       this.setState({
         editModal: dataFromChild
@@ -72,7 +86,11 @@ class Card extends Component {
               : null
             }
     {this.state.editModal !== 'false'
-              ? <GameEditModal callbackFromParent = {closeEditModal} gameId ={this.props}/>
+              ? <GameEditModal callbackFromParent = {closeEditModal} gameId ={this.props} callbackQuestion = {toggleEditQuestion}/>
+              : null
+            }
+    {this.state.editQuestion !== 'false'
+              ? <EditQuestionModal gameId ={this.props}/>
               : null
             }
   </div>
