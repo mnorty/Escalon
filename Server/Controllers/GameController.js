@@ -122,6 +122,21 @@ module.exports = {
       res.status(200).send(gameQuestion);
     }
     console.log('Made it to Add Question in Game Controller') 
+  }, 
+
+  deleteUserFromLobby: async (req, res) => {
+    const { username } = req.query
+    // console.log(req.query)
+    // console.log(username)
+    const db = req.app.get('db')
+    await db.delete_user_lobby({ username })
+    res.status(200).send('User deleted')
+  },
+
+  removedUser: async (req, res ) => {
+    const db = req.app.get('db')
+    await db.remove_user_game({ username })
+    res.status(200).send('User removed from lobby')
   }
   
 };

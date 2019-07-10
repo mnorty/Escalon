@@ -1,2 +1,2 @@
 SELECT * FROM gamelobby 
-WHERE game_id = $(game_id)
+WHERE game_id = ${game_id}
