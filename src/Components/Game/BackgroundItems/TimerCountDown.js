@@ -28,7 +28,7 @@ class TimerCountDown extends Component {
           } else {
             clearInterval(this.timer);
             this.setState({ timerOn: false });
-              this.props.handleGameCompledToggle();
+              this.props.handleUpdateUser();
           }
         }, 1000);
       };

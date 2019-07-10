@@ -27,7 +27,7 @@ class JoinGame extends Component {
       .post("/user", { username })
       .then(({ data }) => {
         // SET USERNAME ON REDUX
-        this.props.setUsername(data.username);
+        this.props.setUsername(data);
         // FINDING THE GAME TO JOIN
         return axios.post("/joingame", { gameID, username });
       })

@@ -86,6 +86,17 @@ module.exports = {
     .then((dbRes) => {
       res.status(200).send(dbRes[0])
     })
+  },
+
+  editUser: (req, res) => {
+    console.log('editUser', req.body)
+    const { id } = req.params;
+    const { username, score } = req.body;
+    const db = req.app.get('db');
+    db.user_update({ id, username, score })
+      .then(updatedUser => {
+      res.status(200).send(updatedUser)
+    })
   }
   
 };
