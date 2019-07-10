@@ -122,6 +122,20 @@ module.exports = {
       res.status(200).send(gameQuestion);
     }
     console.log('Made it to Add Question in Game Controller') 
-  }
+  },
+  editGame: async (req, res) => {
+    console.log('Made it To Edit Gamecontroller',req.body)
+    const {game_id,game_title,game_intro} = req.body
+    const { session } = req;
+    const db = req.app.get("db");
+    if (session) {
+      const gameInfo = await db.game_update({
+        game_id: game_id, 
+        game_title: game_title, 
+        game_intro: game_intro,
+      });
+      res.status(200).send(gameInfo);
+    }
+  },
   
 };

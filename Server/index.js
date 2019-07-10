@@ -40,7 +40,7 @@ app.use(
     
     //PUT ENDPOINTS
     app.put('/user/:id', gameCtrl.editUser)
-    
+    app.put('/game/edit',gameCtrl.editGame)
     //DELETE ENDPOINTS
     app.delete('/deletegame/:id', gameCtrl.deleteGame)
     

@@ -27,25 +27,23 @@ class GameEditModal extends Component {
       this.props.callbackForAddQuestion('true')
     }
 
-    const updateGameId = (data) => {
-      this.props.callbackForupdateNewGameId(data)
-    }
+    // const updateGameId = (data) => {
+    //   this.props.callbackForupdateNewGameId(data)
+    // }
 
     const editGame = () => {
-      let admins_id = (this.props.gameId.game.id)
+      let game_id = (this.props.gameId.game.id)
       let game_title = (this.state.game_title)
       let game_intro = (this.state.game_intro)
-      axios.post('/game/create',{admins_id,game_title,game_intro})///add the information we are sending over.
-      .then(res => {
-        updateGameId(res.data)
-      })
+      axios.put('/game/edit',{game_id,game_title,game_intro})///add the information we are sending over.
+      .then(console.log('Game Update'))
     }
 
 
     const clickFunction = () => {
-      closeEditModel();
+      // closeEditModel();
       editGame();
-      opedAddQuestion();
+      // opedAddQuestion();
     }
     console.log('This is the Game Id',this.props,this.props.gameId.game.id,'Current State:',console.log(this.state))
     const name = 'bob'
