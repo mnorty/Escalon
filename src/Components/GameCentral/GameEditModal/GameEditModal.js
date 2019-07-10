@@ -1,31 +1,24 @@
 import React, { Component } from 'react'
-// import '../GameCreate/GameCreate'
 import axios from 'axios'
 import {connect} from 'react-redux'
-import {updateNewGameID} from '../../../redux/adminReducer'
 
 class GameEditModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      game_title: '',
-      game_intro: '',
-      newGameId: []
+      game_title: this.props.gameId.game.game_title,
+      game_intro: this.props.gameId.game.game_intro,
     }
   }
-
+  
   handleInputUpdate = (e) => {
     this.setState({
       [e.target.name]: e.target.value
     })
+    console.log(this.state)
   }
-
-  handleGameId = (data) => {
-    this.state.newGameId=data[0].id
-    updateNewGameID(data[0].id)
-    // updateGameId(this.state.newGameId)
-  }
-
+  
+  
   render() {
     const closeEditModel = () => {
       this.props.callbackFromParent('false')
@@ -38,8 +31,8 @@ class GameEditModal extends Component {
       this.props.callbackForupdateNewGameId(data)
     }
 
-    const createGame = () => {
-      let admins_id = (this.props.user.adminReducer.user.id)
+    const editGame = () => {
+      let admins_id = (this.props.gameId.game.id)
       let game_title = (this.state.game_title)
       let game_intro = (this.state.game_intro)
       axios.post('/game/create',{admins_id,game_title,game_intro})///add the information we are sending over.
@@ -51,9 +44,11 @@ class GameEditModal extends Component {
 
     const clickFunction = () => {
       closeEditModel();
-      createGame();
+      editGame();
       opedAddQuestion();
     }
+    console.log('This is the Game Id',this.props,this.props.gameId.game.id,'Current State:',console.log(this.state))
+    const name = 'bob'
     return (
       <div id='gameCreateModal' className='modal'>
         <div className='gameCreateModalContent'>
@@ -67,12 +62,14 @@ class GameEditModal extends Component {
               type="text"
               name='game_title'
               onChange={this.handleInputUpdate}
+              value={this.state.game_title}
             />
             <p>Game Instructions</p>
             <input
               type="text"
               name='game_intro'
               onChange={this.handleInputUpdate}
+              value={this.state.game_intro}
             />
             <div className='CreateGameEntryContBtn'>
               <button id='modalCreateBtn' onClick={clickFunction}>next</button>

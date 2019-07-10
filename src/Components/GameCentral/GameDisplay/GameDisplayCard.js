@@ -52,7 +52,6 @@ class Card extends Component {
       })
     }
 
-
     return (      
     <div  className='cardContainer'>
     <p>Game Intro: {game_intro}</p>
@@ -73,7 +72,7 @@ class Card extends Component {
               : null
             }
     {this.state.editModal !== 'false'
-              ? <GameEditModal callbackFromParent = {closeEditModal}/>
+              ? <GameEditModal callbackFromParent = {closeEditModal} gameId ={this.props}/>
               : null
             }
   </div>
