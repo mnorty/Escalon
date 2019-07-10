@@ -3,12 +3,13 @@ import '../GameCreate/GameCreateModal.css'
 import './AddQuestionModal.css'
 import QuestionDisplay from './QuestionDisplay'
 import { connect } from 'react-redux';
-
+import axios from 'axios'
 
 class AddQuestionModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      game_id: this.props.MotherGame,
       question: '',
       remediation: '',
       answer: '',
@@ -26,11 +27,24 @@ class AddQuestionModal extends Component {
   }
 
   render() {
-    console.log(this.props)
+    console.log(this.props.MotherGame)
 
     const closeAddQuestion = () => {
       this.props.closeAddQuestion('false')
     }
+
+    const addQuestionFunction = () => {
+      axios.post('/game/addquestion', )
+      .then(res => {
+        console.log('addQuestion hit in Modal')
+      })
+    }
+
+    const doubleQuestion = () => {
+      closeAddQuestion();
+      addQuestionFunction()
+    } 
+
     return (
       <div id='gameCreateModal' className='modal'>
         <div className='gameCreateModalContent'>
@@ -39,11 +53,14 @@ class AddQuestionModal extends Component {
             <button onClick={closeAddQuestion}>X</button>
           </div>
             <div className='CreateGameEntryContBtn'>
-              <button id='modalCreateBtn'>add question</button>
+              <button 
+              id='modalCreateBtn'
+              onClick={addQuestionFunction}
+              >add question</button>
           </div>
           
           
-          {/* <div className='CreateGameEntryCont'>
+          <div className='CreateGameEntryCont'>
             <p>Question</p>
             <input
               type="text"
@@ -80,7 +97,7 @@ class AddQuestionModal extends Component {
               name='distractor3'
               onChange={this.handleInputUpdate}
             />
-          </div> */}
+          </div>
             <div className='questionDisplayCont'>
             <QuestionDisplay />
             <QuestionDisplay />

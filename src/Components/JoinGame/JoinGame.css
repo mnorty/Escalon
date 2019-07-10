@@ -10,11 +10,11 @@
   justify-content: center;
   height:80vh;
   flex-direction: column;
-  color: #ffffff;
 }
 
 input {
   background: white;
+  border-color: gray;
   width: 220px;
   height: 25px;
 }

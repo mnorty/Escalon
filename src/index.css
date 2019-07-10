@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  /* background-image: linear-gradient(to bottom right, #683ED8, #9559CE); */
+  background-image: linear-gradient(to bottom right, #683ED8, #9559CE);
   font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

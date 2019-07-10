@@ -72,7 +72,6 @@ class Lobby extends Component {
     });
     return (
       <div>
-        <header className="gameCentralHeader" />
         <div className="lobbyContainer">
           <div className="lobbybox">
             <div className="game-title" />

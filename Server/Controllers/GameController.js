@@ -40,11 +40,11 @@ module.exports = {
     if (session) {
       const gameInfo = await db.game_create_new({
         admins_id: admins_id, 
-        // admins_id: session.admins.id, 
         game_title: game_title, 
-        game_intro: game_intro, // game instructions
-        gameroom_id: gameID // do we want this to be sequential in DB?// what do we need here?
+        game_intro: game_intro,
+        gameroom_id: gameID 
       });
+      console.log(gameInfo)
       res.status(200).send(gameInfo);
     }
   },
@@ -52,7 +52,7 @@ module.exports = {
   getUserGames: async (req,res) => {
     const dbInstance = await req.app.get('db');
     const id = req.session.admin.id
-    console.log(id,'Made it to Game Controller',req.session,req.session.admin.id)
+    // console.log(id,'Made it to Game Controller',req.session,req.session.admin.id)
     dbInstance.games_get_all_by_id({id})
 
     .then(game => res.status(200).send(game))
@@ -86,6 +86,18 @@ module.exports = {
     .then((dbRes) => {
       res.status(200).send(dbRes[0])
     })
+  },
+
+  deleteGame: async(req,res) => {
+    const user_id = req.session.admin.id
+    const id = req.params.id
+    console.log( 'UserId:',user_id,'GameId:',id)
+    const dbInstance = await req.app.get('db');
+    dbInstance.game_delete({id})
+  },
+  
+  addQuestion: async (req,res) => {
+    console.log('Made it to Add Question in Game Controller', req.session,req.session) 
   }
   
 };
