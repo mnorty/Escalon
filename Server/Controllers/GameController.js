@@ -87,6 +87,17 @@ module.exports = {
     })
   },
 
+  editUser: (req, res) => {
+    console.log('editUser', req.body)
+    const { id } = req.params;
+    const { username, score } = req.body;
+    const db = req.app.get('db');
+    db.user_update({ id, username, score })
+      .then(updatedUser => {
+        res.status(200).send(updatedUser)
+      })
+  },
+  
   deleteGame: async(req,res) => {
     const user_id = req.session.admin.id
     const id = req.params.id

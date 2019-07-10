@@ -62,7 +62,7 @@ class Game extends Component {
             this.handleRemediationToggle();
         } else if (questionCount === 0) {
             console.log('quiz completed')
-            this.props.handleGameCompledToggle();
+            this.props.handleUpdateUser();
         }
     }
 
@@ -80,6 +80,7 @@ class Game extends Component {
     }
 
     render() {
+        const { username } = this.props;
         const randomAnswers = this.handleRandomAnswers();
         const answerBtns = randomAnswers.map((answerChoice, ind) => {
             return (
@@ -103,7 +104,8 @@ class Game extends Component {
                         <div className='spaceCockpitCont'>
                             <Cockpit
                                 score={this.props.score}
-                                handleGameCompledToggle={this.props.handleGameCompledToggle}/>
+                                handleUpdateUser={this.props.handleUpdateUser}
+                                username={username}/>
                         </div>
                         <div className='spaceShip'>
                             <Spaceship />
