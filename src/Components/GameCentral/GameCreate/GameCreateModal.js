@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './GameCreateModal.css'
 import axios from 'axios'
 import {connect} from 'react-redux'
+import {updateNewGameID} from '../../../redux/adminReducer'
 
 class GameCreateModal extends Component {
   constructor(props) {
@@ -9,6 +10,7 @@ class GameCreateModal extends Component {
     this.state = {
       game_title: '',
       game_intro: '',
+      newGameId: []
     }
   }
 
@@ -16,7 +18,12 @@ class GameCreateModal extends Component {
     this.setState({
       [e.target.name]: e.target.value
     })
-    console.log(this.state)
+  }
+
+  handleGameId = (data) => {
+    this.state.newGameId=data[0].id
+    updateNewGameID(data[0].id)
+    // updateGameId(this.state.newGameId)
   }
 
   render() {
@@ -27,13 +34,20 @@ class GameCreateModal extends Component {
       this.props.callbackForAddQuestion('true')
     }
 
+    const updateGameId = (data) => {
+      this.props.callbackForupdateNewGameId(data)
+    }
+
     const createGame = () => {
       let admins_id = (this.props.user.adminReducer.user.id)
       let game_title = (this.state.game_title)
       let game_intro = (this.state.game_intro)
-      console.log('yo', this.props,this.state)
       axios.post('/game/create',{admins_id,game_title,game_intro})///add the information we are sending over.
+      .then(res => {
+        updateGameId(res.data)
+      })
     }
+
 
     const clickFunction = () => {
       closeCreateModel();

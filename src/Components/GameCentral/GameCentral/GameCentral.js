@@ -1,26 +1,25 @@
 import React, { Component } from 'react'
 import './GameCentral.css'
-// import GameDisplay from '../../GameDisplay/GameDisplay'
 import GameCreateModal from '../GameCreate/GameCreateModal'
 import AddQuestionModal from '../AddQuestionModal/AddQuestionModal'
 import {connect} from 'react-redux'
 import {requestUserGames} from '../../../redux/adminReducer'
+import GameDisplayCard from '../GameDisplay/GameDisplayCard'
 
 class GameCentral extends Component {
   constructor(props) {
     super(props)
     this.state = {
       CreateModal: 'false',
-      AddQuestion: 'false'
+      AddQuestion: 'false',
+      NewGameId: ''
     }
   }
 
   componentDidMount() {
     let userInfo = (this.props.user.adminReducer.user)
-    console.log(this.props)
     this.props.requestUserGames(userInfo)
     console.log('Request Games firing',this.props)
-    
   }
   //  userCheck = () => {
   //    let userInfo = (this.props.user.adminReducer.user)
@@ -40,7 +39,6 @@ class GameCentral extends Component {
 
 
   render() {
-console.log(this.props)
 
     const openCreateModel = () => {
       this.setState({
@@ -66,7 +64,18 @@ console.log(this.props)
       })
     }
 
-    return (
+    const updateNewGameId = (dataFromChild) => {
+      this.setState({
+        NewGameId: dataFromChild
+      })
+      this.setState({
+        NewGameId:this.state.NewGameId[0].id
+      })
+    }
+    let games = this.props.user.adminReducer.game
+    let game = games.map(game => <GameDisplayCard key={game.id} game={game} />)
+
+    return ( 
 
       <div className='gameCentCont'>
         <div className='gameCentralHeader'>
@@ -77,19 +86,19 @@ console.log(this.props)
             <button id='createGameModal' onClick={openCreateModel}>create game</button>
 
             {this.state.CreateModal !== 'false'
-              ? <GameCreateModal createDisplay={this.state.CreateModal} callbackFromParent={closeCreateModel} callbackForAddQuestion={openAddQuestion} />
+              ? <GameCreateModal createDisplay={this.state.CreateModal} callbackFromParent={closeCreateModel} callbackForupdateNewGameId={updateNewGameId} callbackForAddQuestion={openAddQuestion} />
               : null
             }
 
             {this.state.AddQuestion !== 'false'
-              ? <AddQuestionModal closeAddQuestion={closeAddQuestion} />
+              ? <AddQuestionModal closeAddQuestion={closeAddQuestion} MotherGame = {this.state.NewGameId}/>
               : null
             }
             {/* <GameCreateModal/>
               <AddQuestionModal closeAddQuestion={closeAddQuestion}/>  */}
           </div>
           <div className='gamesDisplay'>
-            {/* <GameDisplay /> */}
+            {game}
           </div>
         </div>
       </div>

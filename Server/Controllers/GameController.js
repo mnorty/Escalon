@@ -40,10 +40,9 @@ module.exports = {
     if (session) {
       const gameInfo = await db.game_create_new({
         admins_id: admins_id, 
-        // admins_id: session.admins.id, 
         game_title: game_title, 
-        game_intro: game_intro, // game instructions
-        gameroom_id: gameID // do we want this to be sequential in DB?// what do we need here?
+        game_intro: game_intro,
+        gameroom_id: gameID 
       });
       res.status(200).send(gameInfo);
     }
@@ -52,7 +51,7 @@ module.exports = {
   getUserGames: async (req,res) => {
     const dbInstance = await req.app.get('db');
     const id = req.session.admin.id
-    console.log(id,'Made it to Game Controller',req.session,req.session.admin.id)
+    // console.log(id,'Made it to Game Controller',req.session,req.session.admin.id)
     dbInstance.games_get_all_by_id({id})
 
     .then(game => res.status(200).send(game))
@@ -95,8 +94,34 @@ module.exports = {
     const db = req.app.get('db');
     db.user_update({ id, username, score })
       .then(updatedUser => {
-      res.status(200).send(updatedUser)
-    })
+        res.status(200).send(updatedUser)
+      })
+  },
+  
+  deleteGame: async(req,res) => {
+    const user_id = req.session.admin.id
+    const id = req.params.id
+    const dbInstance = await req.app.get('db');
+    dbInstance.game_delete({id})
+  },
+  
+  addQuestion: async (req,res) => {
+    const {games_id,question,remediation,answer,distractor1,distractor2,distractor3} = req.body
+    const { session } = req;
+    const db = req.app.get("db");
+    if (session) {
+      const gameQuestion = await db.question_create_new({
+        games_id: games_id, 
+        question: question,
+        remediation: remediation,
+        answer:answer,
+        distractor1:distractor1,  
+        distractor2:distractor2,
+        distractor3:distractor3
+      });
+      res.status(200).send(gameQuestion);
+    }
+    console.log('Made it to Add Question in Game Controller') 
   }
   
 };

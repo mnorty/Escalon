@@ -3,12 +3,13 @@ import '../GameCreate/GameCreateModal.css'
 import './AddQuestionModal.css'
 import QuestionDisplay from './QuestionDisplay'
 import { connect } from 'react-redux';
-
+import axios from 'axios'
 
 class AddQuestionModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      games_id: this.props.MotherGame,
       question: '',
       remediation: '',
       answer: '',
@@ -17,6 +18,7 @@ class AddQuestionModal extends Component {
       distractor3: ''
     }
   }
+  
 
   handleInputUpdate = (e) => {
     this.setState({
@@ -26,11 +28,33 @@ class AddQuestionModal extends Component {
   }
 
   render() {
-    console.log(this.props)
-
+    const motherGameid = this.props.MotherGame
+    console.log(motherGameid)
+    
     const closeAddQuestion = () => {
       this.props.closeAddQuestion('false')
     }
+
+    const addQuestionFunction = () => {
+      let games_id = motherGameid
+    let question = (this.state.question)
+    let remediation = (this.state.remediation)
+    let answer = (this.state.answer)
+    let distractor1 = (this.state.distractor1)
+    let distractor2 = (this.state.distractor2)
+    let distractor3 = (this.state.distractor3)
+      console.log('made it to addquestion','games_id:',games_id)
+      axios.post('/game/addquestion',{games_id,question,remediation,answer,distractor1,distractor2,distractor3} )
+      .then(res => {
+        console.log('addQuestion hit in Modal')
+      })
+    }
+
+    const doubleQuestion = () => {
+      closeAddQuestion();
+      addQuestionFunction()
+    } 
+    console.log(this.state)
     return (
       <div id='gameCreateModal' className='modal'>
         <div className='gameCreateModalContent'>
@@ -39,11 +63,14 @@ class AddQuestionModal extends Component {
             <button onClick={closeAddQuestion}>X</button>
           </div>
             <div className='CreateGameEntryContBtn'>
-              <button id='modalCreateBtn'>add question</button>
+              <button 
+              id='modalCreateBtn'
+              onClick={addQuestionFunction}
+              >add question</button>
           </div>
           
           
-          {/* <div className='CreateGameEntryCont'>
+          <div className='CreateGameEntryCont'>
             <p>Question</p>
             <input
               type="text"
@@ -80,7 +107,7 @@ class AddQuestionModal extends Component {
               name='distractor3'
               onChange={this.handleInputUpdate}
             />
-          </div> */}
+          </div>
             <div className='questionDisplayCont'>
             <QuestionDisplay />
             <QuestionDisplay />
