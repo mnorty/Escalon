@@ -1,5 +1,6 @@
 .lobbyContainer{
-  background-image: url('../../Assets/space_texture.png');
+  background-image: url('../../Assets/space_texture.png'),
+                    linear-gradient(to top, rgb(64, 18, 104), black);
   display: flex;
   align-items: center;
   justify-content: center;
