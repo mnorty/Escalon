@@ -39,7 +39,7 @@ app.use(
     app.post('/auth/login', authController.login);
     
     //PUT ENDPOINTS
-    
+    app.put('/user/:id', gameCtrl.editUser)
     
     //DELETE ENDPOINTS
     app.delete('/deletegame/:id', gameCtrl.deleteGame)

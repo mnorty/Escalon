@@ -6,7 +6,7 @@ import '../GameQuestion.css';
 class Cockpit extends Component {
 
     render() {
-        const { score } = this.props;
+        const { score, username } = this.props;
         return (
             <Spring
                 from={{ opacity: 0, transform: 'translate3d(0,100px,0) scale(1) rotateX(0deg)' }}
@@ -17,9 +17,9 @@ class Cockpit extends Component {
                         <div className='spaceHeader'>
                             <div className='spaceHeaderCaptain'>
                                 <h4>captain</h4>
-                                <h2>username</h2>
+                                <h2>{username}</h2>
                             </div>
-                            <TimerCountDown handleGameCompledToggle={this.props.handleGameCompledToggle} />
+                            <TimerCountDown handleUpdateUser={this.props.handleUpdateUser} />
                             <div className='spaceHeaderScore'>
                                 <h3>SCORE:</h3>
                                 <h1>{score}</h1>
