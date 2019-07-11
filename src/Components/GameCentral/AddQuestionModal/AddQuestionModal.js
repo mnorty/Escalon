@@ -85,10 +85,10 @@ class AddQuestionModal extends Component {
     }
 
     const doubleQuestion = () => {
-      closeAddQuestion();
+  
       addQuestionFunction()
     } 
-    console.log(this.state)
+    console.log(this.state,this.props)
     return (
       <div id='gameCreateModal' className='modal'>
         <div className='gameCreateModalContent'>
@@ -99,7 +99,7 @@ class AddQuestionModal extends Component {
             <div className='CreateGameEntryContBtn'>
               <button 
               id='modalCreateBtn'
-              onClick={addQuestionFunction}
+              onClick={doubleQuestion}
               >add question</button>
           </div>
           
