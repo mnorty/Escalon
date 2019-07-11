@@ -6,7 +6,8 @@ import {
   setGameID,
   lobbyUsers
 } from "../../redux/userReducer";
-import io from "socket.io-client";
+import socket from '../Sockets';
+// import io from "socket.io-client";
 import "./Lobby.css";
 import ReactAudioPlayer from 'react-audio-player';
 import song from "../../Assets/GameLogin.wav";
@@ -23,8 +24,8 @@ class Lobby extends Component {
   }
 
   componentDidMount() {
-    this.socket = io();
-    this.socket.on("room joined", data => {
+    // socket = io();
+    socket.on("room joined", data => {
       this.joinSuccess(data);
     });
     this.joinRoom();
@@ -42,7 +43,7 @@ class Lobby extends Component {
   }
 
   joinRoom = () => {
-    this.socket.emit("join room", this.props.match.params.id)
+    socket.emit("join room", this.props.match.params.id)
   };
   joinSuccess = currentUsers => {
     // console.log(currentUsers);
@@ -50,7 +51,7 @@ class Lobby extends Component {
   };
 
   leaveRoom = () => {
-    this.socket.emit(
+    socket.emit(
       "leave room",
       this.props.gameInfo.username,
       this.props.gameInfo.gameID
@@ -84,13 +85,15 @@ class Lobby extends Component {
     return (
       <div>
         <div className="lobbyContainer">
-          <div className="lobbybox" />
-            <div className="game-title">Game Title</div>
+            <div className='spaceRaceImg'></div>
+            <div className='holder'>
+            <ReactAudioPlayer src={song} autoPlay loop/>
+
             <div className="lobbyDescription">
               Game Instructions: <br />
               {this.props.gameInfo.game_intro}
             </div>
-            <h2>Users in lobby</h2><br />
+            <h2 className='users'>Users in lobby</h2><br />
             <div className="lobbyUsers">
               {currentSession}
             </div>
@@ -101,6 +104,7 @@ class Lobby extends Component {
             <button className="leaveBtn" onClick={e => this.userLeave(this.props.gameInfo.username.username)}>
               Leave Game
             </button>
+            </div>
         </div>
       </div>
     );
