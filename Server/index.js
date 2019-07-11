@@ -25,7 +25,7 @@ app.use(
     app.get('/auth/gamecentral', authController.accessGameCentral);
     app.get('/auth/admin', authController.getAdmin);
     app.get('/auth/logout', authController.logout);
-    
+    app.get('/game/getquestions', gameCtrl.getGameQuestions)
     app.get('/gamecentral/games', gameCtrl.getUserGames)
     app.get('/getgame/:id', gameCtrl.getGameDetails)
     

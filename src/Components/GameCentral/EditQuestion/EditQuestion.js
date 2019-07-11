@@ -7,7 +7,7 @@ class EditQuestionModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      games_id: this.props.MotherGame,
+      games_id: this.props.gameId.game.id,
       question: '',
       remediation: '',
       answer: '',
@@ -26,8 +26,8 @@ class EditQuestionModal extends Component {
   }
 
   render() {
-    const motherGameid = this.props.MotherGame
-    console.log(motherGameid)
+    const motherGameid = this.props.gameId.game.id
+    console.log(this.props.gameId.game.id)
     
     const closeEditQuestion = () => {
       this.props.callbackQuestion()

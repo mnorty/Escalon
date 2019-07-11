@@ -154,12 +154,20 @@ module.exports = {
     }
   },
   deleteQuestion: async(req,res) => {
-    console.log('made it to Game Controller, Delete Question',req.params.id)
-    const user_id = req.session.admin.id
     const id = req.params.id
     const dbInstance = await req.app.get('db');
     dbInstance.question_delete({id})
   },
+
+  getGameQuestions: (req,res) => {
+    const game_id = req.body.game_id
+    const dbInstance = req.app.get('db');
+    dbInstance.questions_get_all({game_id})
+    .then((question) => {
+      res.status(200).send(question[0])
+    })
+
+  }
 
 
   

@@ -8,6 +8,7 @@ class GameEditModal extends Component {
     this.state = {
       game_title: this.props.gameId.game.game_title,
       game_intro: this.props.gameId.game.game_intro,
+      gameQuestion: []
     }
   }
   
@@ -17,6 +18,9 @@ class GameEditModal extends Component {
     })
   }
   
+  // handleQuestionRequest = () => {
+  //   axios.
+  // }
   
   render() {
     const closeEditModel = () => {
