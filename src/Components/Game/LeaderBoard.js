@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import {
-    loadGameDetails,
-    setGameID,
-    lobbyUsers,
-    userScore
-} from "../../redux/userReducer";
+import axios from 'axios';
+import { withRouter } from 'react-router-dom';
 import './LeaderBoard.css';
 
 class LeaderBoard extends Component {
@@ -18,11 +13,20 @@ class LeaderBoard extends Component {
 
     }
 
+    handleRemoveUser = (username) => { 
+        axios.delete(`/removeuser?username=${username}`)
+        .then(res => {
+          this.props.history.push("/")
+            
+        })
+    }
+
+
     render() {
-        // console.log('LB props', this.props)
-        const { users } = this.props;
+        console.log('LB props', this.props)
+        const { users, username } = this.props;
         const currentSession = users.map((ele, i) => {
-            return <div key={i}>
+            return <div className='usernameScoreCont' key={i}>
                 <h3>{ele.username}</h3>
                 <h3>{ele.score}</h3>
             </div>;
@@ -33,7 +37,7 @@ class LeaderBoard extends Component {
                     <div className='leaderUsersBox'>
                         <h1>Leader Board</h1>
                         {currentSession}
-                        <button>LEAVE GAME</button>
+                        <button onClick={e => this.handleRemoveUser(username)}>LEAVE GAME</button>
                     </div>
                     <div className='leaderImgBox'>
                         <img src='https://yellingyak.com/wp-content/uploads/2019/07/rr_logo.png' alt='img' />
@@ -45,19 +49,6 @@ class LeaderBoard extends Component {
 }
 
 
-// function mapStateToProps(reduxState) {
-//     return {
-//         gameInfo: reduxState.userReducer
-//     }
-// }
 
-// const mapDispatchToProps = {
-//     loadGameDetails,
-//     setGameID,
-//     lobbyUsers,
-//     userScore
-// };
 
-// export default connect(mapStateToProps, mapDispatchToProps)(LeaderBoard);
-
-export default LeaderBoard;
+export default withRouter(LeaderBoard);

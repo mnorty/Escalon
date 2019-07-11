@@ -19,6 +19,12 @@
 .leaderUsersBox button {
     margin-top: 1em;
 }
+.usernameScoreCont {
+    padding: 1em;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
 
 
 @media (max-width: 700px) {
