@@ -138,14 +138,46 @@ module.exports = {
     res.status(200).send('User removed from lobby')
   },
 
-  getQuestions: (req, res) => {
+  getQuestionsPlayGame: (req, res) => {
     console.log('hit controller', req.params)
     const { id } = req.params;
     const db = req.app.get('db');
-    db.questions_get_all( id )
+    db.questions_getall_forgame(id)
       .then(questions => {
-      res.status(200).send(questions)
+        res.status(200).send(questions)
+      })
+  },
+  
+  editGame: async (req, res) => {
+    console.log('Made it To Edit Gamecontroller',req.body)
+    const {game_id,game_title,game_intro} = req.body
+    const { session } = req;
+    const db = req.app.get("db");
+    if (session) {
+      const gameInfo = await db.game_update({
+        game_id: game_id, 
+        game_title: game_title, 
+        game_intro: game_intro,
+      });
+      res.status(200).send(gameInfo);
+    }
+  },
+  deleteQuestion: async(req,res) => {
+    const id = req.params.id
+    const dbInstance = await req.app.get('db');
+    dbInstance.question_delete({id})
+  },
+
+  getGameQuestions: (req,res) => {
+    const game_id = req.body.game_id
+    const dbInstance = req.app.get('db');
+    dbInstance.questions_get_all({game_id})
+    .then((question) => {
+      res.status(200).send(question[0])
     })
+
   }
+
+
   
 };

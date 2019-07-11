@@ -2,8 +2,6 @@
 -- SELECT * FROM questions
 -- WHERE ID = ${id};
 
-SELECT *
-from questions
-INNER JOIN games
-ON questions.games_id = games.id
-WHERE games.gameroom_id = $1
+
+SELECT * FROM questions
+WHERE ID = ${game_id};

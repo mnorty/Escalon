@@ -21,6 +21,7 @@
 }
 .usernameScoreCont {
     padding: 1em;
+    margin-right: 1em;
     width: 100%;
     display: flex;
     justify-content: space-between;

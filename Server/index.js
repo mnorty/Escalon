@@ -25,11 +25,11 @@ app.use(
     app.get('/auth/gamecentral', authController.accessGameCentral);
     app.get('/auth/admin', authController.getAdmin);
     app.get('/auth/logout', authController.logout);
-    
+    app.get('/game/getquestions', gameCtrl.getGameQuestions)
     app.get('/gamecentral/games', gameCtrl.getUserGames)
     app.get('/getgame/:id', gameCtrl.getGameDetails)
     
-    app.get('/questions/:id', gameCtrl.getQuestions)
+    app.get('/questions/:id', gameCtrl.getQuestionsPlayGame)
     
     //POST ENDPOINTS
     app.post('/user', gameCtrl.createUser)
@@ -42,8 +42,9 @@ app.use(
     
     //PUT ENDPOINTS
     app.put('/user/:id', gameCtrl.editUser)
-    
+    app.put('/game/edit',gameCtrl.editGame)
     //DELETE ENDPOINTS
+    app.delete('/deletequestion/:id', gameCtrl.deleteQuestion)
     app.delete('/deletegame/:id', gameCtrl.deleteGame)
     app.delete('/deleteuser', gameCtrl.deleteUserFromLobby)
     app.delete('/removeuser', gameCtrl.removedUser)
