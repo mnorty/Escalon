@@ -21,11 +21,11 @@ class AddQuestionModal extends Component {
     }
   }
   
-  componentDidMount() {
-    let userInfo = (this.props.user.adminReducer.user)
-    this.props.requestUserGames(userInfo)
-    console.log('Request Games firing',this.props)
-  }
+  // componentDidMount() {
+  //   let userInfo = (this.props.user.adminReducer.user)
+  //   this.props.requestUserGames(userInfo)
+  //   console.log('Request Games firing',this.props)
+  // }
 
   componentDidUpdate(){
     let userInfo = (this.props.user.adminReducer.user)
