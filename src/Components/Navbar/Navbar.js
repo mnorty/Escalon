@@ -32,10 +32,10 @@ class Navbar extends Component {
               <a href='10000'  className='nav-reg'>
               <Link to='/register'>Register</Link>
               </a>
-              <span>|</span>
+              {/* <span>|</span>
               <a href='10000'  className='nav-join'>
               <Link to='/join'>Join</Link>
-              </a>
+              </a> */}
             </ul>
             <div className="nav-button" onClick={this.showMenu}>
               <span></span> 
@@ -47,7 +47,7 @@ class Navbar extends Component {
               <ul className='nav-list'>
                 <Link to='/gamecentral'>GameCentral</Link>
                 <Link to='/register'>Register</Link>
-                <Link to='/join'>Join</Link>
+                {/* <Link to='/join'>Join</Link> */}
                 
               </ul>
             </div>
